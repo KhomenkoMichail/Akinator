@@ -1,0 +1,241 @@
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe,
+
+ВНЕЗАПНО: signal (22, 0x00): SIGABRT: Аварийное завершение программы, вызвана функция abort(). 
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-03 17:59:06 +0400], Instance: 0x005091DC (32-bit), Flags: Cmdre0, Thread: 0x6090 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004120D0 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: (anonymous namespace)::TX::_txOnSignal() at c:/users/admin/downloads/codeblocks/mingw/include/txlib.h:11173
+# 1 0x76028F03 in C:\WINDOWS\System32\msvcrt.dll: raise()
+# 2 0x7602D3CB in C:\WINDOWS\System32\msvcrt.dll: abort()
+# 3 0x76029D47 in C:\WINDOWS\System32\msvcrt.dll: assert()
+
+# 4 0x00430425 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: nodeLeft() at C:/Users/Admin/Desktop/prodva/Akinator/structAccessFunctions.cpp:14:
+
+     12: 
+     13: node_t** nodeLeft (node_t* node) {
+=>   14:     assert(node);
+     15: 
+     16:     return &(node->left);
+
+# 5 0x00401489 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: main() at C:/Users/Admin/Desktop/prodva/Akinator/main.cpp:22:
+
+     20: 
+     21:     node_t* root = *treeRoot(&tree);
+=>   22:     *nodeLeft(root) = nodePolt;
+     23:     *nodeRight(root) = nodeVedetMatan;
+     24:     *nodeLeft(nodeVedetMatan) = nodePetrovich;
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-03 17:59:06 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\admin\downloads\codeblocks\mingw\include\txlib.h
+Compiled:	Nov  8 2025 11:11:01, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Nov 08 2025 11:11:14
+
+Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
+Directory:	C:\Users\Admin\Desktop\prodva\Akinator
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe,
+
+ВНЕЗАПНО: signal (22, 0x00): SIGABRT: Аварийное завершение программы, вызвана функция abort(). 
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-03 17:59:06 +0400], Instance: 0x005091DC (32-bit), Flags: Cmdre0, Thread: 0x4C68 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004120E4 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: (anonymous namespace)::TX::_txOnSignal() at c:/users/admin/downloads/codeblocks/mingw/include/txlib.h:11173
+# 1 0x76028F03 in C:\WINDOWS\System32\msvcrt.dll: raise()
+# 2 0x7602D3CB in C:\WINDOWS\System32\msvcrt.dll: abort()
+# 3 0x76029D47 in C:\WINDOWS\System32\msvcrt.dll: assert()
+
+# 4 0x00430439 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: nodeLeft() at C:/Users/Admin/Desktop/prodva/Akinator/structAccessFunctions.cpp:14:
+
+     12: 
+     13: node_t** nodeLeft (node_t* node) {
+=>   14:     assert(node);
+     15: 
+     16:     return &(node->left);
+
+# 5 0x0040149D in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: main() at C:/Users/Admin/Desktop/prodva/Akinator/main.cpp:23:
+
+     21:     node_t* root = *treeRoot(&tree);
+     22:     printf("root == %p\n", root);
+=>   23:     *nodeLeft(root) = nodePolt;
+     24:     *nodeRight(root) = nodeVedetMatan;
+     25:     *nodeLeft(nodeVedetMatan) = nodePetrovich;
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-03 17:59:06 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\admin\downloads\codeblocks\mingw\include\txlib.h
+Compiled:	Nov  8 2025 11:13:35, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Nov 08 2025 11:13:38
+
+Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
+Directory:	C:\Users\Admin\Desktop\prodva\Akinator
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe,
+
+ВНЕЗАПНО: signal (22, 0x00): SIGABRT: Аварийное завершение программы, вызвана функция abort(). 
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-03 17:59:06 +0400], Instance: 0x005091DC (32-bit), Flags: Cmdre0, Thread: 0x6C3C (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004120D8 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: (anonymous namespace)::TX::_txOnSignal() at c:/users/admin/downloads/codeblocks/mingw/include/txlib.h:11173
+# 1 0x76028F03 in C:\WINDOWS\System32\msvcrt.dll: raise()
+# 2 0x7602D3CB in C:\WINDOWS\System32\msvcrt.dll: abort()
+# 3 0x76029D47 in C:\WINDOWS\System32\msvcrt.dll: assert()
+
+# 4 0x0043042D in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: nodeLeft() at C:/Users/Admin/Desktop/prodva/Akinator/structAccessFunctions.cpp:14:
+
+     12: 
+     13: node_t** nodeLeft (node_t* node) {
+=>   14:     assert(node);
+     15: 
+     16:     return &(node->left);
+
+# 5 0x00401493 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: main() at C:/Users/Admin/Desktop/prodva/Akinator/main.cpp:23:
+
+     21:     node_t* root = tree.rootNode;
+     22:     printf("root == %p\n", root);
+=>   23:     *nodeLeft(root) = nodePolt;
+     24:     *nodeRight(root) = nodeVedetMatan;
+     25:     *nodeLeft(nodeVedetMatan) = nodePetrovich;
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-03 17:59:06 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\admin\downloads\codeblocks\mingw\include\txlib.h
+Compiled:	Nov  8 2025 11:14:05, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Nov 08 2025 11:14:08
+
+Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
+Directory:	C:\Users\Admin\Desktop\prodva\Akinator
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe, файл: treeFunctions.cpp, строка: 57, функция: int fprintfNodeGraph(node_t*, int, FILE*, size_t*, size_t),
+
+Сообщение: ВНЕЗАПНО: Логическая ошибка: Неверно, что "node".
+
+#1: TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-03 17:59:06 +0400], Instance: 0x005091DC (32-bit), Flags: Cmdre0, Thread: 0x1598 (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0042DDB2 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:57:
+
+     55: 
+     56: int fprintfNodeGraph (node_t* node, int rank, FILE* graphFile, size_t* nodesPassed, size_t treeSize) {
+=>   57:     assert(node);
+     58:     assert(graphFile);
+     59: 
+
+# 1 0x0042DFDF in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:77:
+
+     75:     node_t** left = nodeLeft(node);
+     76:     //if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   77:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     78: 
+     79:     node_t** right = nodeRight(node);
+
+# 2 0x0042DCB2 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfTreeGraphDump() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:42:
+
+     40: 
+     41:     size_t graphNodesMade = 0;
+=>   42:     fprintfNodeGraph(*treeRoot(tree), 0, graphFile, &graphNodesMade, *treeSize(tree));
+     43:     size_t graphLinksMade = 0;
+     44:     fprintfNodeLinksForGraph(*treeRoot(tree), graphFile, &graphLinksMade, *treeSize(tree));
+
+# 3 0x0042E7B3 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: createGraphImageForDump() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:170:
+
+    168:     graphImageCounter++;
+    169: 
+=>  170:     fprintfTreeGraphDump(tree, nameOfTextGraphFile);
+    171: 
+    172:     char graphvizCallCommand[STR_SIZE] = {};
+
+# 4 0x0042E617 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: treeDump() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:153:
+
+    151:     fprintf(dumpFile, "ErrorCode == %d\n", tree->errorCode);
+    152: 
+=>  153:     createGraphImageForDump (tree, dumpFile, nameOfTextGraphFile);
+    154: 
+    155:     if (fclose(dumpFile) != 0) {
+
+# 5 0x0042E962 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: akinatorTreeCtor() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:188:
+
+    186: 
+    187:     dumpInfo->nameOfFunc = __func__;
+=>  188:     treeDump(tree, dumpInfo, "AFTER creation of the tree");
+    189: 
+    190:     return tree;
+
+# 6 0x0040143F in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: main() at C:/Users/Admin/Desktop/prodva/Akinator/main.cpp:14:
+
+     12:     dumpInfo.nameOfDumpFile = "dump.html";
+     13: 
+=>   14:     akinatorTreeCtor(&tree, &dumpInfo);
+     15: 
+     16:     node_t* nodePolt = treeNodeCtor("РџРѕР»С‚РѕСЂР°С€РєР°");
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-03 17:59:06 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\admin\downloads\codeblocks\mingw\include\txlib.h
+Compiled:	Nov  8 2025 11:19:33, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Nov 08 2025 11:19:40
+
+Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
+Directory:	C:\Users\Admin\Desktop\prodva\Akinator
+
+--------------------------------------------------

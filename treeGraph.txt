@@ -1,0 +1,13 @@
+digraph Tree {
+    rankdir = TB;
+    node [shape = Mrecord, color = black];
+    node0x0135B868 [rank = 0, label = "{ <addr>0x0135B868| animal?| PARENT:\n0x00000000|{<left>LEFT\n 0x0135b7d8| <right>RIGHT\n 0x0135b7c0}}", style = filled, fillcolor = "#c1e0a7ff", color = black];
+    node0x0135B7D8 [rank = 1, label = "{ <addr>0x0135B7D8| Poltorashka| PARENT:\n0x00000000|{<left>LEFT\n NULL| <right>RIGHT\n NULL}}", style = filled, fillcolor = "#c1e0a7ff", color = black];
+    node0x0135B7C0 [rank = 1, label = "{ <addr>0x0135B7C0| Teaches mathan?| PARENT:\n0x00000000|{<left>LEFT\n 0x0135b838| <right>RIGHT\n 0x0135b790}}", style = filled, fillcolor = "#c1e0a7ff", color = black];
+    node0x0135B838 [rank = 2, label = "{ <addr>0x0135B838| Petrovich?| PARENT:\n0x00000000|{<left>LEFT\n NULL| <right>RIGHT\n NULL}}", style = filled, fillcolor = "#c1e0a7ff", color = black];
+    node0x0135B790 [rank = 2, label = "{ <addr>0x0135B790| Divari| PARENT:\n0x00000000|{<left>LEFT\n NULL| <right>RIGHT\n NULL}}", style = filled, fillcolor = "#c1e0a7ff", color = black];
+    node0x0135B868:left -> node0x0135B7D8:addr [color = "#5d510cff"];
+    node0x0135B868:right -> node0x0135B7C0:addr [color = "#5d510cff"];
+    node0x0135B7C0:left -> node0x0135B838:addr [color = "#5d510cff"];
+    node0x0135B7C0:right -> node0x0135B790:addr [color = "#5d510cff"];
+ }
