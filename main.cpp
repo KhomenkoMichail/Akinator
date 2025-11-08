@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <TXLib.h>
 
 #include "structsAndConsts.h"
 #include "structAccessFunctions.h"
@@ -6,9 +7,6 @@
 #include "akinatorFunctions.h"
 
 int main (void) {
-
-    //SetConsoleOutputCP(CP_UTF8);
-    //SetConsoleCP(CP_UTF8);
 
     tree_t tree = {};
     struct dump dumpInfo = {};
@@ -22,18 +20,15 @@ int main (void) {
     node_t* nodePetrovich = treeNodeCtor("Petrovich?");
     node_t* nodeDivari = treeNodeCtor("Divari");
 
-    printf("%s\n", *nodeObjectDescription(nodeVedetMatan));
-
     node_t* root = *treeRoot(&tree);
     *nodeLeft(root) = nodePolt;
     *nodeRight(root) = nodeVedetMatan;
     *nodeLeft(nodeVedetMatan) = nodePetrovich;
     *nodeRight(nodeVedetMatan) = nodeDivari;
-    printf("%p\n", *nodeLeft(root));
-    printf("%p\n", *nodeRight(root));
 
     tree.size = 5;
-    objectSearch(&tree);
+    for (int i = 0; i<10; i++)
+        objectSearch(&tree, &dumpInfo);
     treeDump(&tree, &dumpInfo, "review");
 
     return 0;

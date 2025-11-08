@@ -239,3 +239,495 @@ Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
 Directory:	C:\Users\Admin\Desktop\prodva\Akinator
 
 --------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x75853F79 в функции ungetwc(). Попытка записать данные по адресу NULL в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-03 17:59:06 +0400], Instance: 0x0050A1DC (32-bit), Flags: Cmdre0, Thread: 0x2620 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x75853F79 in C:\WINDOWS\System32\msvcrt.dll: ungetwc()
+# 1 0x758540CC in C:\WINDOWS\System32\msvcrt.dll: ungetwc()
+# 2 0x75854C38 in C:\WINDOWS\System32\msvcrt.dll: ungetwc()
+# 3 0x758487FD in C:\WINDOWS\System32\msvcrt.dll: scanf()
+# 4 0x75848798 in C:\WINDOWS\System32\msvcrt.dll: scanf()
+
+# 5 0x00430E89 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: getDifference() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:88:
+
+     86:     printf("It...");
+     87:     while(1) {
+=>   88:         scanf("%63[^\n]", nodesDifference);
+     89:         bufferCleaner();
+     90:         //fgets(nodesDifference, NODE_DESCRIPTION_SIZE, stdin);
+
+# 6 0x00430DCC in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: addNewObject() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:75:
+
+     73:     printf("And how is this \"%s\" different from my \"%s\"?\n",
+     74:         nodeDescription, *nodeObjectDescription(parentNode));
+=>   75:     getDifference(nodesDifference);
+     76:     printf("So, \"%s\" differs from \"%s\" in that it \"%s\".\n",
+     77:            nodeDescription, *nodeObjectDescription(parentNode), nodesDifference);
+
+# 7 0x00430C06 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: objectSearch() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:29:
+
+     27:             if((*nodeLeft(currentNode) == NULL) && (*nodeRight(currentNode) == NULL)) {
+     28:                 printf("It can't be! Pathetic creature, you've guessed at an object that isn't in my database.\n");
+=>   29:                 addNewObject (tree, currentNode, dumpInfo);
+     30:                 return 0;
+     31:             }
+
+# 8 0x00401551 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: main() at C:/Users/Admin/Desktop/prodva/Akinator/main.cpp:37:
+
+     35:     tree.size = 5;
+     36:     for (int i = 0; i<10; i++)
+=>   37:         objectSearch(&tree, &dumpInfo);
+     38:     treeDump(&tree, &dumpInfo, "review");
+     39: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in void createGraphImageForDump(tree_t*, FILE*, const char*) at treeFunctions.cpp:181:
+
+    179:     system(graphvizCallCommand);
+    180:     fprintf(dumpFile, "Image:\n <img src=DUMPS/graph%d.png width=1000px>\n", graphImageCounter);
+=>  181: $$
+    182: }
+    183: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-03 17:59:06 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\admin\downloads\codeblocks\mingw\include\txlib.h
+Compiled:	Nov  8 2025 17:51:45, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Nov 08 2025 17:51:49
+
+Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
+Directory:	C:\Users\Admin\Desktop\prodva\Akinator
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x75853F79 в функции ungetwc(). Попытка записать данные по адресу NULL в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-03 17:59:06 +0400], Instance: 0x0050A1DC (32-bit), Flags: Cmdre0, Thread: 0x2620 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x75853F79 in C:\WINDOWS\System32\msvcrt.dll: ungetwc()
+# 1 0x758540CC in C:\WINDOWS\System32\msvcrt.dll: ungetwc()
+# 2 0x75854C38 in C:\WINDOWS\System32\msvcrt.dll: ungetwc()
+# 3 0x758487FD in C:\WINDOWS\System32\msvcrt.dll: scanf()
+# 4 0x75848798 in C:\WINDOWS\System32\msvcrt.dll: scanf()
+
+# 5 0x00430E89 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: getDifference() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:88:
+
+     86:     printf("It...");
+     87:     while(1) {
+=>   88:         scanf("%63[^\n]", nodesDifference);
+     89:         bufferCleaner();
+     90:         //fgets(nodesDifference, NODE_DESCRIPTION_SIZE, stdin);
+
+# 6 0x00430DCC in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: addNewObject() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:75:
+
+     73:     printf("And how is this \"%s\" different from my \"%s\"?\n",
+     74:         nodeDescription, *nodeObjectDescription(parentNode));
+=>   75:     getDifference(nodesDifference);
+     76:     printf("So, \"%s\" differs from \"%s\" in that it \"%s\".\n",
+     77:            nodeDescription, *nodeObjectDescription(parentNode), nodesDifference);
+
+# 7 0x00430C06 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: objectSearch() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:29:
+
+     27:             if((*nodeLeft(currentNode) == NULL) && (*nodeRight(currentNode) == NULL)) {
+     28:                 printf("It can't be! Pathetic creature, you've guessed at an object that isn't in my database.\n");
+=>   29:                 addNewObject (tree, currentNode, dumpInfo);
+     30:                 return 0;
+     31:             }
+
+# 8 0x00401551 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: main() at C:/Users/Admin/Desktop/prodva/Akinator/main.cpp:37:
+
+     35:     tree.size = 5;
+     36:     for (int i = 0; i<10; i++)
+=>   37:         objectSearch(&tree, &dumpInfo);
+     38:     treeDump(&tree, &dumpInfo, "review");
+     39: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in void createGraphImageForDump(tree_t*, FILE*, const char*) at treeFunctions.cpp:181:
+
+    179:     system(graphvizCallCommand);
+    180:     fprintf(dumpFile, "Image:\n <img src=DUMPS/graph%d.png width=1000px>\n", graphImageCounter);
+=>  181: $$
+    182: }
+    183: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-03 17:59:06 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\admin\downloads\codeblocks\mingw\include\txlib.h
+Compiled:	Nov  8 2025 17:51:45, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Nov 08 2025 17:51:49
+
+Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
+Directory:	C:\Users\Admin\Desktop\prodva\Akinator
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x75853F79 в функции ungetwc(). Попытка записать данные по адресу NULL в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-03 17:59:06 +0400], Instance: 0x0050A1DC (32-bit), Flags: Cmdre0, Thread: 0x3C40 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x75853F79 in C:\WINDOWS\System32\msvcrt.dll: ungetwc()
+# 1 0x758540CC in C:\WINDOWS\System32\msvcrt.dll: ungetwc()
+# 2 0x75854C38 in C:\WINDOWS\System32\msvcrt.dll: ungetwc()
+# 3 0x758487FD in C:\WINDOWS\System32\msvcrt.dll: scanf()
+# 4 0x75848798 in C:\WINDOWS\System32\msvcrt.dll: scanf()
+
+# 5 0x00430E90 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: getDifference() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:91:
+
+     89:     while(1) {
+     90:         nodesDifference = {};
+=>   91:         scanf("%63[^\n]", nodesDifference);
+     92:         bufferCleaner();
+     93: 
+
+# 6 0x00430DCC in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: addNewObject() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:76:
+
+     74:         nodeDescription, *nodeObjectDescription(parentNode));
+     75: 
+=>   76:     getDifference(nodesDifference);
+     77: 
+     78:     printf("So, \"%s\" differs from \"%s\" in that it \"%s\".\n",
+
+# 7 0x00430C06 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: objectSearch() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:29:
+
+     27:             if((*nodeLeft(currentNode) == NULL) && (*nodeRight(currentNode) == NULL)) {
+     28:                 printf("It can't be! Pathetic creature, you've guessed at an object that isn't in my database.\n");
+=>   29:                 addNewObject (tree, currentNode, dumpInfo);
+     30:                 return 0;
+     31:             }
+
+# 8 0x00401551 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: main() at C:/Users/Admin/Desktop/prodva/Akinator/main.cpp:37:
+
+     35:     tree.size = 5;
+     36:     for (int i = 0; i<10; i++)
+=>   37:         objectSearch(&tree, &dumpInfo);
+     38:     treeDump(&tree, &dumpInfo, "review");
+     39: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in void createGraphImageForDump(tree_t*, FILE*, const char*) at treeFunctions.cpp:181:
+
+    179:     system(graphvizCallCommand);
+    180:     fprintf(dumpFile, "Image:\n <img src=DUMPS/graph%d.png width=1000px>\n", graphImageCounter);
+=>  181: $$
+    182: }
+    183: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-03 17:59:06 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\admin\downloads\codeblocks\mingw\include\txlib.h
+Compiled:	Nov  8 2025 18:00:56, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Nov 08 2025 18:01:02
+
+Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
+Directory:	C:\Users\Admin\Desktop\prodva\Akinator
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x75853F79 в функции ungetwc(). Попытка записать данные по адресу NULL в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-03 17:59:06 +0400], Instance: 0x0050A1DC (32-bit), Flags: Cmdre0, Thread: 0x3C40 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x75853F79 in C:\WINDOWS\System32\msvcrt.dll: ungetwc()
+# 1 0x758540CC in C:\WINDOWS\System32\msvcrt.dll: ungetwc()
+# 2 0x75854C38 in C:\WINDOWS\System32\msvcrt.dll: ungetwc()
+# 3 0x758487FD in C:\WINDOWS\System32\msvcrt.dll: scanf()
+# 4 0x75848798 in C:\WINDOWS\System32\msvcrt.dll: scanf()
+
+# 5 0x00430E90 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: getDifference() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:91:
+
+     89:     while(1) {
+     90:         nodesDifference = {};
+=>   91:         scanf("%63[^\n]", nodesDifference);
+     92:         bufferCleaner();
+     93: 
+
+# 6 0x00430DCC in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: addNewObject() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:76:
+
+     74:         nodeDescription, *nodeObjectDescription(parentNode));
+     75: 
+=>   76:     getDifference(nodesDifference);
+     77: 
+     78:     printf("So, \"%s\" differs from \"%s\" in that it \"%s\".\n",
+
+# 7 0x00430C06 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: objectSearch() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:29:
+
+     27:             if((*nodeLeft(currentNode) == NULL) && (*nodeRight(currentNode) == NULL)) {
+     28:                 printf("It can't be! Pathetic creature, you've guessed at an object that isn't in my database.\n");
+=>   29:                 addNewObject (tree, currentNode, dumpInfo);
+     30:                 return 0;
+     31:             }
+
+# 8 0x00401551 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: main() at C:/Users/Admin/Desktop/prodva/Akinator/main.cpp:37:
+
+     35:     tree.size = 5;
+     36:     for (int i = 0; i<10; i++)
+=>   37:         objectSearch(&tree, &dumpInfo);
+     38:     treeDump(&tree, &dumpInfo, "review");
+     39: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in void createGraphImageForDump(tree_t*, FILE*, const char*) at treeFunctions.cpp:181:
+
+    179:     system(graphvizCallCommand);
+    180:     fprintf(dumpFile, "Image:\n <img src=DUMPS/graph%d.png width=1000px>\n", graphImageCounter);
+=>  181: $$
+    182: }
+    183: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-03 17:59:06 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\admin\downloads\codeblocks\mingw\include\txlib.h
+Compiled:	Nov  8 2025 18:00:56, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Nov 08 2025 18:01:02
+
+Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
+Directory:	C:\Users\Admin\Desktop\prodva\Akinator
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x75853F79 в функции ungetwc(). Попытка записать данные по адресу NULL в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-03 17:59:06 +0400], Instance: 0x0050A1DC (32-bit), Flags: Cmdre0, Thread: 0x3844 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x75853F79 in C:\WINDOWS\System32\msvcrt.dll: ungetwc()
+# 1 0x758540CC in C:\WINDOWS\System32\msvcrt.dll: ungetwc()
+# 2 0x75854C38 in C:\WINDOWS\System32\msvcrt.dll: ungetwc()
+# 3 0x758487FD in C:\WINDOWS\System32\msvcrt.dll: scanf()
+# 4 0x75848798 in C:\WINDOWS\System32\msvcrt.dll: scanf()
+
+# 5 0x00430E89 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: getDifference() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:91:
+
+     89:     while(1) {
+     90:         //nodesDifference = {};
+=>   91:         scanf("%63[^\n]", nodesDifference);
+     92:         bufferCleaner();
+     93: 
+
+# 6 0x00430DCC in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: addNewObject() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:76:
+
+     74:         nodeDescription, *nodeObjectDescription(parentNode));
+     75: 
+=>   76:     getDifference(nodesDifference);
+     77: 
+     78:     printf("So, \"%s\" differs from \"%s\" in that it \"%s\".\n",
+
+# 7 0x00430C06 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: objectSearch() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:29:
+
+     27:             if((*nodeLeft(currentNode) == NULL) && (*nodeRight(currentNode) == NULL)) {
+     28:                 printf("It can't be! Pathetic creature, you've guessed at an object that isn't in my database.\n");
+=>   29:                 addNewObject (tree, currentNode, dumpInfo);
+     30:                 return 0;
+     31:             }
+
+# 8 0x00401551 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: main() at C:/Users/Admin/Desktop/prodva/Akinator/main.cpp:37:
+
+     35:     tree.size = 5;
+     36:     for (int i = 0; i<10; i++)
+=>   37:         objectSearch(&tree, &dumpInfo);
+     38:     treeDump(&tree, &dumpInfo, "review");
+     39: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in void createGraphImageForDump(tree_t*, FILE*, const char*) at treeFunctions.cpp:181:
+
+    179:     system(graphvizCallCommand);
+    180:     fprintf(dumpFile, "Image:\n <img src=DUMPS/graph%d.png width=1000px>\n", graphImageCounter);
+=>  181: $$
+    182: }
+    183: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-03 17:59:06 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\admin\downloads\codeblocks\mingw\include\txlib.h
+Compiled:	Nov  8 2025 18:05:50, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Nov 08 2025 18:05:55
+
+Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
+Directory:	C:\Users\Admin\Desktop\prodva\Akinator
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x75853F79 в функции ungetwc(). Попытка записать данные по адресу NULL в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-03 17:59:06 +0400], Instance: 0x0050A1DC (32-bit), Flags: Cmdre0, Thread: 0x3844 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x75853F79 in C:\WINDOWS\System32\msvcrt.dll: ungetwc()
+# 1 0x758540CC in C:\WINDOWS\System32\msvcrt.dll: ungetwc()
+# 2 0x75854C38 in C:\WINDOWS\System32\msvcrt.dll: ungetwc()
+# 3 0x758487FD in C:\WINDOWS\System32\msvcrt.dll: scanf()
+# 4 0x75848798 in C:\WINDOWS\System32\msvcrt.dll: scanf()
+
+# 5 0x00430E89 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: getDifference() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:91:
+
+     89:     while(1) {
+     90:         //nodesDifference = {};
+=>   91:         scanf("%63[^\n]", nodesDifference);
+     92:         bufferCleaner();
+     93: 
+
+# 6 0x00430DCC in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: addNewObject() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:76:
+
+     74:         nodeDescription, *nodeObjectDescription(parentNode));
+     75: 
+=>   76:     getDifference(nodesDifference);
+     77: 
+     78:     printf("So, \"%s\" differs from \"%s\" in that it \"%s\".\n",
+
+# 7 0x00430C06 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: objectSearch() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:29:
+
+     27:             if((*nodeLeft(currentNode) == NULL) && (*nodeRight(currentNode) == NULL)) {
+     28:                 printf("It can't be! Pathetic creature, you've guessed at an object that isn't in my database.\n");
+=>   29:                 addNewObject (tree, currentNode, dumpInfo);
+     30:                 return 0;
+     31:             }
+
+# 8 0x00401551 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: main() at C:/Users/Admin/Desktop/prodva/Akinator/main.cpp:37:
+
+     35:     tree.size = 5;
+     36:     for (int i = 0; i<10; i++)
+=>   37:         objectSearch(&tree, &dumpInfo);
+     38:     treeDump(&tree, &dumpInfo, "review");
+     39: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in void createGraphImageForDump(tree_t*, FILE*, const char*) at treeFunctions.cpp:181:
+
+    179:     system(graphvizCallCommand);
+    180:     fprintf(dumpFile, "Image:\n <img src=DUMPS/graph%d.png width=1000px>\n", graphImageCounter);
+=>  181: $$
+    182: }
+    183: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-03 17:59:06 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\admin\downloads\codeblocks\mingw\include\txlib.h
+Compiled:	Nov  8 2025 18:05:50, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Nov 08 2025 18:05:55
+
+Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
+Directory:	C:\Users\Admin\Desktop\prodva\Akinator
+
+--------------------------------------------------
