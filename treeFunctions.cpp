@@ -73,17 +73,12 @@ int fprintfNodeGraph (node_t* node, int rank, FILE* graphFile, size_t* nodesPass
                 node, rank, node, *nodeObjectDescription(node), *nodeParent(node), leftPtr, rightPtr);
 
     node_t** left = nodeLeft(node);
-    if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left))) {
-    $$
+    if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
-    $$
-    }
+
     node_t** right = nodeRight(node);
-    if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right))) {
-    $$
+    if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
-    $$
-    }
 
     return 0;
 }

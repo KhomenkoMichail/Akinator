@@ -13,12 +13,17 @@ void bufferCleaner (void);
 
 void speak (const char* phrase);
 
-void speakEnglishFast(const char* text);
-
 int defineTheObject (tree_t* tree, dump* dumpInfo);
 
 int findTheObjectPath (node_t* node, size_t rank, const char* objectName, int objectPath[]);
 
 void printfObjectDefinition (tree_t* tree, const char* objectName, int objectPath[]);
+
+int compareObjects (tree_t* tree, dump* dumpInfo);
+
+
+void printfComparing (tree_t* tree, const char* firstObjectName, const char* secondObjectName,
+                      int firstObjectPath[], int secondObjectPath[]);
+
 
 #endif

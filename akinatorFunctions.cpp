@@ -132,18 +132,6 @@ char command[256];
         system(command);
 }
 
-void speakEnglishFast(const char* text) {
-    char command[1000];
-    sprintf(command,
-        "powershell -Command \""
-        "(New-Object System.Speech.Synthesis.SpeechSynthesizer -Property @{"
-        "Rate=6;"
-        "}).Speak('%s');\"",
-        text);
-
-    system(command);
-}
-
 int defineTheObject (tree_t* tree, dump* dumpInfo) {
     assert(tree);
     assert(dumpInfo);
@@ -217,6 +205,113 @@ void printfObjectDefinition (tree_t* tree, const char* objectName, int objectPat
         }
 
         if (objectPath[nodeRank] == findObject) {
+            break;
+        }
+    }
+}
+
+int compareObjects (tree_t* tree, dump* dumpInfo) {
+    assert(tree);
+    assert(dumpInfo);
+
+    char firstObjectName[NODE_DESCRIPTION_SIZE] = {};
+    char secondObjectName[NODE_DESCRIPTION_SIZE] = {};
+
+    int firstObjectPath[MAX_NODE_RANK] = {};
+    int secondObjectPath[MAX_NODE_RANK] = {};
+
+    printf("Enter the first object to be compared...");
+    scanf("%63[^\n]", firstObjectName);
+    bufferCleaner();
+
+    printf("Enter the second object to be compared...");
+    scanf("%63[^\n]", secondObjectName);
+    bufferCleaner();
+
+    if (!findTheObjectPath(*treeRoot(tree), 0, firstObjectName, firstObjectPath)) {
+        printf("There is no object \"%s\" in my database.\n", firstObjectName);
+        return 0;
+    }
+
+    if (!findTheObjectPath(*treeRoot(tree), 0, secondObjectName, secondObjectPath)) {
+        printf("There is no object \"%s\" in my database.\n", secondObjectName);
+        return 0;
+    }
+
+    printfComparing (tree, firstObjectName, secondObjectName, firstObjectPath, secondObjectPath);
+    return 0;
+}
+
+void printfComparing (tree_t* tree, const char* firstObjectName, const char* secondObjectName,
+                      int firstObjectPath[], int secondObjectPath[]) {
+    assert(tree);
+    assert(firstObjectName);
+    assert(secondObjectName);
+    assert(firstObjectPath);
+    assert(secondObjectPath);
+
+    if (firstObjectPath[0] == secondObjectPath[0])
+        printf("\"%s\" and \"%s\" are similar in that they both are",
+               firstObjectName, secondObjectName);
+
+    size_t nodeRank = 0;
+    node_t* currentNode = *treeRoot(tree);
+    for( ; firstObjectPath[nodeRank] == secondObjectPath[nodeRank]; nodeRank++) {
+
+        if (firstObjectPath[nodeRank] == yes) {
+            printf (" %s", *nodeObjectDescription(currentNode));
+            currentNode = *nodeLeft(currentNode);
+            continue;
+        }
+        if (firstObjectPath[nodeRank] == no) {
+            printf (" not %s", *nodeObjectDescription(currentNode));
+            currentNode = *nodeRight(currentNode);
+            continue;
+        }
+        if (firstObjectPath[nodeRank] == findObject)
+            break;
+    }
+    node_t* branchingNode = currentNode;
+
+    printf("\"%s\" and \"%s\" differ in that", firstObjectName, secondObjectName);
+
+    if (firstObjectPath[nodeRank] != findObject)
+        printf("\n\"%s\"", firstObjectName);
+    for(size_t firstObjectRank = nodeRank; firstObjectPath[firstObjectRank] != findObject;
+        firstObjectRank++) {
+        if (firstObjectPath[firstObjectRank] == yes) {
+            printf (" %s", *nodeObjectDescription(currentNode));
+            currentNode = *nodeLeft(currentNode);
+            continue;
+        }
+        if (firstObjectPath[firstObjectRank] == no) {
+            printf (" not %s", *nodeObjectDescription(currentNode));
+            currentNode = *nodeRight(currentNode);
+            continue;
+        }
+        if (firstObjectPath[firstObjectRank] == findObject)
+            break;
+    }
+
+    if (secondObjectPath[nodeRank] != findObject)
+        printf("\n\"%s\"", secondObjectName);
+
+    currentNode = branchingNode;
+    for(size_t secondObjectRank = nodeRank; secondObjectPath[secondObjectRank] != findObject;
+        secondObjectRank++) {
+        if (secondObjectPath[secondObjectRank] == yes) {
+            printf (" %s", *nodeObjectDescription(currentNode));
+            currentNode = *nodeLeft(currentNode);
+            continue;
+        }
+
+        if (secondObjectPath[secondObjectRank] == no) {
+            printf (" not %s", *nodeObjectDescription(currentNode));
+            currentNode = *nodeRight(currentNode);
+            continue;
+        }
+
+        if (secondObjectPath[secondObjectRank] == findObject) {
             break;
         }
     }

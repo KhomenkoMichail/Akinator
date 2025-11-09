@@ -27,10 +27,11 @@ int main (void) {
     *nodeRight(nodeVedetMatan) = nodeDivari;
 
     tree.size = 5;
-    //for (int i = 0; i<5; i++)
-    //    guessTheObject(&tree, &dumpInfo);
+    for (int i = 0; i<5; i++)
+        guessTheObject(&tree, &dumpInfo);
     //treeDump(&tree, &dumpInfo, "review");
     defineTheObject(&tree, &dumpInfo);
+    compareObjects (&tree, &dumpInfo);
 
     return 0;
 }

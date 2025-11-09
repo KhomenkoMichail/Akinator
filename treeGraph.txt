@@ -1,5 +1,33 @@
 digraph Tree {
     rankdir = TB;
     node [shape = Mrecord, color = black];
-    node0x0161B880 [rank = 0, label = "{ <addr>0x0161B880| animal?| PARENT:\n0x00000000|{<left>YES\n NULL| <right>NO\n NULL}}", style = filled, fillcolor = "#c1e0a7ff", color = black];
+    node0x0140B910 [rank = 0, label = "{ <addr>0x0140B910| animal?| PARENT:\n0x00000000|{<left>YES\n 0x0140b748| <right>NO\n 0x0140b778}}", style = filled, fillcolor = "#c1e0a7ff", color = black];
+    node0x0140B748 [rank = 1, label = "{ <addr>0x0140B748| Poltorashka| PARENT:\n0x00000000|{<left>YES\n NULL| <right>NO\n NULL}}", style = filled, fillcolor = "#c1e0a7ff", color = black];
+    node0x0140B778 [rank = 1, label = "{ <addr>0x0140B778| Teaches mathan?| PARENT:\n0x00000000|{<left>YES\n 0x0140b790| <right>NO\n 0x0140b7a8}}", style = filled, fillcolor = "#c1e0a7ff", color = black];
+    node0x0140B790 [rank = 2, label = "{ <addr>0x0140B790| Petrovich?| PARENT:\n0x00000000|{<left>YES\n NULL| <right>NO\n NULL}}", style = filled, fillcolor = "#c1e0a7ff", color = black];
+    node0x0140B7A8 [rank = 2, label = "{ <addr>0x0140B7A8| is cool| PARENT:\n0x00000000|{<left>YES\n 0x0140b7c0| <right>NO\n 0x0140b898}}", style = filled, fillcolor = "#c1e0a7ff", color = black];
+    node0x0140B7C0 [rank = 3, label = "{ <addr>0x0140B7C0| is football ultras| PARENT:\n0x0140B7A8|{<left>YES\n 0x0140b7f0| <right>NO\n 0x0140b868}}", style = filled, fillcolor = "#c1e0a7ff", color = black];
+    node0x0140B7F0 [rank = 4, label = "{ <addr>0x0140B7F0| is fat| PARENT:\n0x0140B7C0|{<left>YES\n 0x0140b850| <right>NO\n 0x0140b808}}", style = filled, fillcolor = "#c1e0a7ff", color = black];
+    node0x0140B850 [rank = 5, label = "{ <addr>0x0140B850| Timur| PARENT:\n0x0140B7F0|{<left>YES\n NULL| <right>NO\n NULL}}", style = filled, fillcolor = "#c1e0a7ff", color = black];
+    node0x0140B808 [rank = 5, label = "{ <addr>0x0140B808| Vladoss| PARENT:\n0x0140B7F0|{<left>YES\n NULL| <right>NO\n NULL}}", style = filled, fillcolor = "#c1e0a7ff", color = black];
+    node0x0140B868 [rank = 4, label = "{ <addr>0x0140B868| is beautiful| PARENT:\n0x0140B7C0|{<left>YES\n 0x0140b880| <right>NO\n 0x0140b820}}", style = filled, fillcolor = "#c1e0a7ff", color = black];
+    node0x0140B880 [rank = 5, label = "{ <addr>0x0140B880| is best| PARENT:\n0x0140B868|{<left>YES\n 0x0140b8b0| <right>NO\n 0x0140b838}}", style = filled, fillcolor = "#c1e0a7ff", color = black];
+    node0x0140B8B0 [rank = 6, label = "{ <addr>0x0140B8B0| my mom| PARENT:\n0x0140B880|{<left>YES\n NULL| <right>NO\n NULL}}", style = filled, fillcolor = "#c1e0a7ff", color = black];
+    node0x0140B838 [rank = 6, label = "{ <addr>0x0140B838| Zlatochka| PARENT:\n0x0140B880|{<left>YES\n NULL| <right>NO\n NULL}}", style = filled, fillcolor = "#c1e0a7ff", color = black];
+    node0x0140B820 [rank = 5, label = "{ <addr>0x0140B820| Ded| PARENT:\n0x0140B868|{<left>YES\n NULL| <right>NO\n NULL}}", style = filled, fillcolor = "#c1e0a7ff", color = black];
+    node0x0140B898 [rank = 3, label = "{ <addr>0x0140B898| Divari| PARENT:\n0x0140B7A8|{<left>YES\n NULL| <right>NO\n NULL}}", style = filled, fillcolor = "#c1e0a7ff", color = black];
+    node0x0140B910:left -> node0x0140B748:addr [color = "#5d510cff"];
+    node0x0140B910:right -> node0x0140B778:addr [color = "#5d510cff"];
+    node0x0140B778:left -> node0x0140B790:addr [color = "#5d510cff"];
+    node0x0140B778:right -> node0x0140B7A8:addr [color = "#5d510cff"];
+    node0x0140B7A8:left -> node0x0140B7C0:addr [color = "#5d510cff"];
+    node0x0140B7C0:left -> node0x0140B7F0:addr [color = "#5d510cff"];
+    node0x0140B7F0:left -> node0x0140B850:addr [color = "#5d510cff"];
+    node0x0140B7F0:right -> node0x0140B808:addr [color = "#5d510cff"];
+    node0x0140B7C0:right -> node0x0140B868:addr [color = "#5d510cff"];
+    node0x0140B868:left -> node0x0140B880:addr [color = "#5d510cff"];
+    node0x0140B880:left -> node0x0140B8B0:addr [color = "#5d510cff"];
+    node0x0140B880:right -> node0x0140B838:addr [color = "#5d510cff"];
+    node0x0140B868:right -> node0x0140B820:addr [color = "#5d510cff"];
+    node0x0140B7A8:right -> node0x0140B898:addr [color = "#5d510cff"];
  }
