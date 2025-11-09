@@ -9,17 +9,13 @@
 #include "akinatorFunctions.h"
 
 
-int objectSearch (tree_t* tree, dump* dumpInfo) {
+int guessTheObject (tree_t* tree, dump* dumpInfo) {
     assert(tree);
 
     for(node_t* currentNode = *treeRoot(tree); ; ) {
         assert(currentNode);
 
-        //speak("You can answer only");
         printf("It %s? (You can answer only \"yes\" or \"no\")\n", *nodeObjectDescription(currentNode));
-
-        //speakEnglishFast("You can answer only");
-
 
 
         if (getAnswer() == yes) {
@@ -89,6 +85,9 @@ int addNewObject (tree_t* tree, node_t* parentNode, dump* dumpInfo) {
     *nodeLeft(parentNode) = treeNodeCtor (nodeDescription);
     strncpy (*(nodeObjectDescription(parentNode)), nodesDifference, NODE_DESCRIPTION_SIZE);
 
+    *nodeParent(*nodeRight(parentNode)) = parentNode;
+    *nodeParent(*nodeLeft(parentNode)) = parentNode;
+
     *treeSize(tree) += 2;
 
     treeDump(tree, dumpInfo, "after adding");
@@ -143,4 +142,82 @@ void speakEnglishFast(const char* text) {
         text);
 
     system(command);
+}
+
+int defineTheObject (tree_t* tree, dump* dumpInfo) {
+    assert(tree);
+    assert(dumpInfo);
+
+    char objectName[NODE_DESCRIPTION_SIZE] = {};
+
+    printf("Definition of what object you want to get?\n");
+    scanf("%63[^\n]", objectName);
+    bufferCleaner();
+
+    int objectPath[MAX_NODE_RANK] = {};
+    if (findTheObjectPath(*treeRoot(tree), 0, objectName, objectPath))
+        printfObjectDefinition(tree, objectName, objectPath);
+    else
+        printf("There is no such object in my database.\n");
+
+
+    return 0;
+}
+
+int findTheObjectPath (node_t* node, size_t rank, const char* objectName, int objectPath[]) {
+    assert(node);
+    assert(objectName);
+    assert(objectPath);
+
+    if (rank >= MAX_NODE_RANK)
+        return 0;
+
+    if((*nodeLeft(node) == NULL) && (*nodeRight(node) == NULL)) {
+        if(strcmp(*nodeObjectDescription(node), objectName) == 0) {
+            objectPath[rank] = findObject;
+            return 1;
+        }
+        else
+            return 0;
+    }
+
+    if(findTheObjectPath(*nodeLeft(node), rank + 1, objectName, objectPath)) {
+        objectPath[rank] = yes;
+        return 1;
+    }
+
+    if(findTheObjectPath(*nodeRight(node), rank + 1, objectName, objectPath)) {
+        objectPath[rank] = no;
+        return 1;
+    }
+
+    return 0;
+}
+
+void printfObjectDefinition (tree_t* tree, const char* objectName, int objectPath[]) {
+    assert(tree);
+    assert(objectName);
+    assert(objectPath);
+
+    int nodeRank = 0;
+
+    printf("%s ", objectName);
+
+    for (node_t* currentNode = *treeRoot(tree); ; nodeRank++) {
+        if (objectPath[nodeRank] == yes) {
+            printf ("is %s ", *nodeObjectDescription(currentNode));
+            currentNode = *nodeLeft(currentNode);
+            continue;
+        }
+
+        if (objectPath[nodeRank] == no) {
+            printf ("is not %s ", *nodeObjectDescription(currentNode));
+            currentNode = *nodeRight(currentNode);
+            continue;
+        }
+
+        if (objectPath[nodeRank] == findObject) {
+            break;
+        }
+    }
 }

@@ -69,7 +69,7 @@ int fprintfNodeGraph (node_t* node, int rank, FILE* graphFile, size_t* nodesPass
     if (*(nodeRight(node)) != NULL)
         snprintf(rightPtr, sizeof(rightPtr), "0x%p", *(nodeRight(node)));
 
-    fprintf(graphFile, "    node0x%p [rank = %d, label = \"{ <addr>0x%p| %s| PARENT:\\n0x%p|{<left>LEFT\\n %s| <right>RIGHT\\n %s}}\", style = filled, fillcolor = \"#c1e0a7ff\", color = black];\n",
+    fprintf(graphFile, "    node0x%p [rank = %d, label = \"{ <addr>0x%p| %s| PARENT:\\n0x%p|{<left>YES\\n %s| <right>NO\\n %s}}\", style = filled, fillcolor = \"#c1e0a7ff\", color = black];\n",
                 node, rank, node, *nodeObjectDescription(node), *nodeParent(node), leftPtr, rightPtr);
 
     node_t** left = nodeLeft(node);

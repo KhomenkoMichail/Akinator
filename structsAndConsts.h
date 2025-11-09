@@ -35,12 +35,16 @@ enum treeErr_t {
 };
 
 enum answers_t {
-    no = 0,
-    yes = 1,
+    no = 7,
+    yes = 8,
 };
 
 const size_t NODE_DESCRIPTION_SIZE = 64;
 
 const size_t STR_SIZE = 64;
+
+const size_t MAX_NODE_RANK = 500;
+
+const int findObject = 333;
 
 #endif
