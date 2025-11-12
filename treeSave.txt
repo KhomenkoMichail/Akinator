@@ -1,0 +1,1 @@
+( "animal" ("Poltorashka"nil   nil   ) ( "Teaches mathan"("Petrovich"nil nil )  ("Divari"nil nil ) )       )

@@ -39,6 +39,12 @@ enum answers_t {
     yes = 8,
 };
 
+enum akinModes {
+    guessObject = 1,
+    defineObject = 2,
+    objectsComparing = 3,
+};
+
 const size_t NODE_DESCRIPTION_SIZE = 64;
 
 const size_t STR_SIZE = 64;
@@ -46,5 +52,7 @@ const size_t STR_SIZE = 64;
 const size_t MAX_NODE_RANK = 500;
 
 const int findObject = 333;
+
+const size_t COMMAND_LENGTH = 512;
 
 #endif

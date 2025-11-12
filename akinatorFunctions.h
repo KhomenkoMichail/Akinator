@@ -11,8 +11,6 @@ answers_t getAnswer (void);
 
 void bufferCleaner (void);
 
-void speak (const char* phrase);
-
 int defineTheObject (tree_t* tree, dump* dumpInfo);
 
 int findTheObjectPath (node_t* node, size_t rank, const char* objectName, int objectPath[]);
@@ -21,9 +19,28 @@ void printfObjectDefinition (tree_t* tree, const char* objectName, int objectPat
 
 int compareObjects (tree_t* tree, dump* dumpInfo);
 
+void printfMenu(void);
+
+void printfWithDelay(const char* str);
 
 void printfComparing (tree_t* tree, const char* firstObjectName, const char* secondObjectName,
                       int firstObjectPath[], int secondObjectPath[]);
 
+
+void runAkinator(tree_t* tree, dump* dumpInfo);
+
+int getModeChoice(void);
+
+void fprintfNode(node_t* node, FILE* file);
+
+node_t* nodeCtorByReadBuffer(char** bufPos, dump* dumpInfo);
+
+void skipSpaces(char** bufPos);
+
+char* copyFileContent (const char* nameOfFile);
+
+unsigned int getSizeOfFile (int fileDescriptor);
+
+int readFileAndCreateTree (tree_t* tree, dump* dumpInfo, const char* nameOfFile);
 
 #endif

@@ -1,7 +1,11 @@
+#include <TXLib.h>
 #include <stdio.h>
 #include <string.h>
 #include <assert.h>
-#include <TXLib.h>
+#include <windows.h>
+#include <sys/stat.h>
+
+#pragma GCC diagnostic ignored "-Wredundant-tags"
 
 #include "structsAndConsts.h"
 #include "structAccessFunctions.h"
@@ -121,15 +125,6 @@ void bufferCleaner (void) {
     int ch = 0;
     while ((ch = getchar()) != '\n')
         continue;
-}
-
-void speak (const char* phrase) {
-    assert(phrase);
-
-char command[256];
-    sprintf(command, "powershell -Command \"Add-Type -AssemblyName System.Speech; "
-        "(New-Object System.Speech.Synthesis.SpeechSynthesizer).Speak('%s')\"", phrase);
-        system(command);
 }
 
 int defineTheObject (tree_t* tree, dump* dumpInfo) {
@@ -315,4 +310,206 @@ void printfComparing (tree_t* tree, const char* firstObjectName, const char* sec
             break;
         }
     }
+}
+
+void printfMenu(void) {
+    printfWithDelay("As usual, you have tree wishes:\n");
+    printfWithDelay("-- 1) Read your mind.\n");
+    printfWithDelay("-- 2) Give a definition of the object.\n");
+    printfWithDelay("-- 3) Compare two objects.\n");
+    printfWithDelay("Choose one...(answer only 1, 2 or 3)\n");
+}
+
+void printfWithDelay(const char* str) {
+    assert(str);
+    char command[COMMAND_LENGTH] = {};
+
+    snprintf(command, COMMAND_LENGTH, "start /min PowerShell -Command \"Add-Type –AssemblyName System.Speech; (New-Object System.Speech.Synthesis.SpeechSynthesizer).Speak('%s');\"", str);
+    for(size_t i = 0; command[i]; i++)
+        if (command[i] == '\n') command[i] = ' ';
+    system(command);
+
+
+    for(size_t numOfChar = 0; str[numOfChar] != '\0'; numOfChar++) {
+        printf("%c", str[numOfChar]);
+        Sleep(35);
+    }
+}
+
+void runAkinator(tree_t* tree, dump* dumpInfo) {
+    assert(tree);
+    assert(dumpInfo);
+
+    printfMenu();
+    int modeChoice = getModeChoice();
+
+    printf("modeChoice == %d\n", modeChoice);
+    if (modeChoice == 1)
+        guessTheObject (tree, dumpInfo);
+
+}
+
+
+/*int getModeChoice(void) {
+    int modeChoice = 0;
+    scanf("%d", modeChoice)
+    bufferCleaner();
+
+    while ((modeChoice != guessObject) && (modeChoice != defineObject) && (modeChoice != objectsComparing)) {
+        printfWithDelay("You can choose only 1, 2 or 3.\n");
+        modeChoice = getchar();
+        bufferCleaner();
+    }
+
+    return modeChoice;
+}*/
+
+int getModeChoice(void) {
+    int ch = 0;
+    int modeChoice = 0;
+    char ch1 = '\0';
+    while ((scanf ("%d%c", &modeChoice, &ch1) != 2) || (ch1 != '\n')
+                                || (modeChoice > 3) || (modeChoice < 1)) {
+
+        putchar(ch1);
+        while ((ch = getchar()) != '\n')
+            putchar (ch);
+
+        printfWithDelay("You can choose only 1, 2 or 3.\n Try again.\n");
+    }
+    return modeChoice;
+}
+
+void fprintfNode(node_t* node, FILE* file) {
+    assert(node);
+    assert(file);
+
+    fprintf(file, "(");
+    fprintf(file, "\"%s\"", *nodeObjectDescription(node));
+
+    if(*nodeLeft(node) != NULL)
+        fprintfNode(*nodeLeft(node), file);
+    else
+        fprintf(file, "nil ");
+
+    if(*nodeRight(node) != NULL)
+        fprintfNode(*nodeRight(node), file);
+    else
+        fprintf(file, "nil ");
+
+    fprintf(file, ")");
+}
+
+node_t* nodeCtorByReadBuffer(char** bufPos, dump* dumpInfo) {
+    assert(bufPos);
+    assert(dumpInfo);
+
+    printf("bufpos == %s, from string %d\n", *bufPos, __LINE__);
+    skipSpaces(bufPos);//
+    if(**bufPos == '(') {
+        (*bufPos)++;
+        skipSpaces(bufPos);//
+        printf("bufpos == %s, from string %d\n", *bufPos, __LINE__);
+
+        node_t* newNode = (node_t*)calloc(1, sizeof(node_t));
+        *nodeObjectDescription(newNode) = (*bufPos) + 1;
+
+
+        int lenOfName = 0;
+
+        sscanf(*bufPos, "\"%*[^\"]\"%n", &lenOfName);
+
+        char* nextQuotes = strchr((*bufPos) + 1, '"');
+        *nextQuotes = '\0';
+        printf("*nodeObjectDescription(newNode) == %s\n", *nodeObjectDescription(newNode));
+
+        printf("bufpos == %s, from string %d\n", *bufPos, __LINE__);
+        (*bufPos) += lenOfName;
+        printf("bufpos == %s, from string %d\n", *bufPos, __LINE__);
+
+
+        *nodeLeft(newNode) = nodeCtorByReadBuffer(bufPos, dumpInfo);
+        printf("bufpos == %s, from string %d\n", *bufPos, __LINE__);
+        *nodeRight(newNode) = nodeCtorByReadBuffer(bufPos, dumpInfo);
+        printf("bufpos == %s, from string %d\n", *bufPos, __LINE__);
+
+        skipSpaces(bufPos);//
+        (*bufPos)++;
+        printf("bufpos == %s, from string %d\n", *bufPos, __LINE__);
+        return newNode;
+    }
+
+    if (strncmp(*bufPos, "nil", 3) == 0) {
+        (*bufPos) += 4;
+        printf("bufpos == %s, from string %d\n", *bufPos, __LINE__);
+        return NULL;
+    }
+
+    return NULL;
+}
+
+void skipSpaces(char** bufPos) {
+    assert(bufPos);
+    assert(*bufPos);
+
+    while(**bufPos == ' ')
+        (*bufPos)++;
+}
+
+int readFileAndCreateTree (tree_t* tree, dump* dumpInfo, const char* nameOfFile) {
+    assert(tree);
+    assert(dumpInfo);
+    assert(nameOfFile);
+
+    printf("nameOfFile == %s\n", nameOfFile);
+    char* bufferStart = copyFileContent(nameOfFile);
+    if (bufferStart == NULL) {
+        printf("Error of copying tree from file\n");
+        return 1;
+    }
+    else
+        *treeRoot(tree) = nodeCtorByReadBuffer(&bufferStart, dumpInfo);
+
+    return 0;
+}
+
+char* copyFileContent (const char* nameOfFile) {
+    assert(nameOfFile);
+
+    int fileDescriptor = open(nameOfFile, O_RDONLY, 0);
+    if (fileDescriptor == -1) {
+
+        fprintf(stderr, "Error of opening file \"%s\"", nameOfFile);
+        perror("");
+        return NULL;
+    }
+
+    unsigned int sizeOfFile = getSizeOfFile(fileDescriptor);
+    if (sizeOfFile == 0) {
+        close(fileDescriptor);
+        return NULL;
+    }
+
+    char* fileCopyBuffer = (char*)calloc(sizeOfFile + 1, sizeof(char));
+
+    size_t numOfReadSymbols = read(fileDescriptor, fileCopyBuffer, sizeOfFile);
+    fileCopyBuffer[numOfReadSymbols] = '\0';
+
+    if(close(fileDescriptor) != 0) {
+        fprintf(stderr, "Error of closing file \"%s\"", nameOfFile);
+        perror("");
+        return NULL;
+    }
+
+    return fileCopyBuffer;
+}
+
+unsigned int getSizeOfFile (int fileDescriptor) {
+    struct stat fileInfo = {};
+
+    if (fstat(fileDescriptor, &fileInfo) == 0)
+        return fileInfo.st_size;
+
+    perror("Error of getting the size of the file");
+    return 0;
 }

@@ -731,3 +731,285 @@ Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
 Directory:	C:\Users\Admin\Desktop\prodva\Akinator
 
 --------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x00007FF7F4C23A91 в функции nodeCtorByReadBuffer() в файле C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp на строке 423. Попытка записать данные по адресу NULL в модуле C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400], Instance: 0x00007FF7F4E06810 (64-bit), Flags: Cmdre0, Thread: 0x672C (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00007FF7F4C23A91 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: nodeCtorByReadBuffer() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:423:
+
+    421: 
+    422:         char* nextQuotes = strchr(bufPos + 1, '"');
+=>  423:         *nextQuotes = '\0';
+    424:         printf("*nodeObjectDescription(newNode) == %s\n", *nodeObjectDescription(newNode));
+    425: 
+
+# 1 0x00007FF7F4C23B06 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: nodeCtorByReadBuffer() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:431:
+
+    429: 
+    430:         *nodeLeft(newNode) = nodeCtorByReadBuffer(bufPos, dumpInfo);
+=>  431:         *nodeRight(newNode) = nodeCtorByReadBuffer(bufPos, dumpInfo);
+    432:         //skipSpaces(bufPos);
+    433:         bufPos++;
+
+# 2 0x00007FF7F4C23D63 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: readFileAndCreateTree() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:465:
+
+    463:     }
+    464:     else
+=>  465:         *treeRoot(tree) = nodeCtorByReadBuffer(bufferStart, dumpInfo);
+    466: $$
+    467:     return 0;
+
+# 3 0x00007FF7F4BC0430 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: main() at C:/Users/Admin/Desktop/prodva/Akinator/main.cpp:18:
+
+     16:     dumpInfo.nameOfDumpFile = "dump.html";
+     17: 
+=>   18:     readFileAndCreateTree (&tree, &dumpInfo, "treeSave.txt");
+     19:     treeDump (&tree, &dumpInfo, "after ctoring tree");
+     20: /*
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in char* copyFileContent(const char*) at akinatorFunctions.cpp:480:
+
+    478:         return NULL;
+    479:     }
+=>  480: $$
+    481:     unsigned int sizeOfFile = getSizeOfFile(fileDescriptor);
+    482:     if (sizeOfFile == 0) {
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h
+Compiled:	Nov 12 2025 20:52:04, GNU g++ 13.2.0, std=201703L, MinGW-W64 Runtime 11.0.1 (alpha - rev. 0) 0000-00-00, 64-bit, DEBUG
+Started:	Nov 12 2025 20:52:08
+
+Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
+Directory:	C:\Users\Admin\Desktop\prodva\Akinator
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x00007FF7F4C23A91 в функции nodeCtorByReadBuffer() в файле C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp на строке 423. Попытка записать данные по адресу NULL в модуле C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400], Instance: 0x00007FF7F4E06810 (64-bit), Flags: Cmdre0, Thread: 0x672C (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00007FF7F4C23A91 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: nodeCtorByReadBuffer() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:423:
+
+    421: 
+    422:         char* nextQuotes = strchr(bufPos + 1, '"');
+=>  423:         *nextQuotes = '\0';
+    424:         printf("*nodeObjectDescription(newNode) == %s\n", *nodeObjectDescription(newNode));
+    425: 
+
+# 1 0x00007FF7F4C23B06 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: nodeCtorByReadBuffer() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:431:
+
+    429: 
+    430:         *nodeLeft(newNode) = nodeCtorByReadBuffer(bufPos, dumpInfo);
+=>  431:         *nodeRight(newNode) = nodeCtorByReadBuffer(bufPos, dumpInfo);
+    432:         //skipSpaces(bufPos);
+    433:         bufPos++;
+
+# 2 0x00007FF7F4C23D63 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: readFileAndCreateTree() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:465:
+
+    463:     }
+    464:     else
+=>  465:         *treeRoot(tree) = nodeCtorByReadBuffer(bufferStart, dumpInfo);
+    466: $$
+    467:     return 0;
+
+# 3 0x00007FF7F4BC0430 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: main() at C:/Users/Admin/Desktop/prodva/Akinator/main.cpp:18:
+
+     16:     dumpInfo.nameOfDumpFile = "dump.html";
+     17: 
+=>   18:     readFileAndCreateTree (&tree, &dumpInfo, "treeSave.txt");
+     19:     treeDump (&tree, &dumpInfo, "after ctoring tree");
+     20: /*
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h
+Compiled:	Nov 12 2025 20:52:04, GNU g++ 13.2.0, std=201703L, MinGW-W64 Runtime 11.0.1 (alpha - rev. 0) 0000-00-00, 64-bit, DEBUG
+Started:	Nov 12 2025 20:52:08
+
+Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
+Directory:	C:\Users\Admin\Desktop\prodva\Akinator
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x00007FF66FFC3A91 в функции nodeCtorByReadBuffer() в файле C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp на строке 423. Попытка записать данные по адресу NULL в модуле C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400], Instance: 0x00007FF6701A6810 (64-bit), Flags: Cmdre0, Thread: 0x1774 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00007FF66FFC3A91 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: nodeCtorByReadBuffer() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:423:
+
+    421: 
+    422:         char* nextQuotes = strchr(bufPos + 1, '"');
+=>  423:         *nextQuotes = '\0';
+    424:         printf("*nodeObjectDescription(newNode) == %s\n", *nodeObjectDescription(newNode));
+    425: 
+
+# 1 0x00007FF66FFC3B32 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: nodeCtorByReadBuffer() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:433:
+
+    431:         *nodeLeft(newNode) = nodeCtorByReadBuffer(bufPos, dumpInfo);
+    432:         printf("bufpos after left == %p", bufPos);
+=>  433:         *nodeRight(newNode) = nodeCtorByReadBuffer(bufPos, dumpInfo);
+    434:         //skipSpaces(bufPos);
+    435:         bufPos++;
+
+# 2 0x00007FF66FFC3D8F in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: readFileAndCreateTree() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:467:
+
+    465:     }
+    466:     else
+=>  467:         *treeRoot(tree) = nodeCtorByReadBuffer(bufferStart, dumpInfo);
+    468: $$
+    469:     return 0;
+
+# 3 0x00007FF66FF60430 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: main() at C:/Users/Admin/Desktop/prodva/Akinator/main.cpp:18:
+
+     16:     dumpInfo.nameOfDumpFile = "dump.html";
+     17: 
+=>   18:     readFileAndCreateTree (&tree, &dumpInfo, "treeSave.txt");
+     19:     treeDump (&tree, &dumpInfo, "after ctoring tree");
+     20: /*
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in char* copyFileContent(const char*) at akinatorFunctions.cpp:482:
+
+    480:         return NULL;
+    481:     }
+=>  482: $$
+    483:     unsigned int sizeOfFile = getSizeOfFile(fileDescriptor);
+    484:     if (sizeOfFile == 0) {
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h
+Compiled:	Nov 12 2025 20:59:13, GNU g++ 13.2.0, std=201703L, MinGW-W64 Runtime 11.0.1 (alpha - rev. 0) 0000-00-00, 64-bit, DEBUG
+Started:	Nov 12 2025 20:59:18
+
+Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
+Directory:	C:\Users\Admin\Desktop\prodva\Akinator
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x00007FF66FFC3A91 в функции nodeCtorByReadBuffer() в файле C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp на строке 423. Попытка записать данные по адресу NULL в модуле C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400], Instance: 0x00007FF6701A6810 (64-bit), Flags: Cmdre0, Thread: 0x1774 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00007FF66FFC3A91 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: nodeCtorByReadBuffer() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:423:
+
+    421: 
+    422:         char* nextQuotes = strchr(bufPos + 1, '"');
+=>  423:         *nextQuotes = '\0';
+    424:         printf("*nodeObjectDescription(newNode) == %s\n", *nodeObjectDescription(newNode));
+    425: 
+
+# 1 0x00007FF66FFC3B32 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: nodeCtorByReadBuffer() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:433:
+
+    431:         *nodeLeft(newNode) = nodeCtorByReadBuffer(bufPos, dumpInfo);
+    432:         printf("bufpos after left == %p", bufPos);
+=>  433:         *nodeRight(newNode) = nodeCtorByReadBuffer(bufPos, dumpInfo);
+    434:         //skipSpaces(bufPos);
+    435:         bufPos++;
+
+# 2 0x00007FF66FFC3D8F in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: readFileAndCreateTree() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:467:
+
+    465:     }
+    466:     else
+=>  467:         *treeRoot(tree) = nodeCtorByReadBuffer(bufferStart, dumpInfo);
+    468: $$
+    469:     return 0;
+
+# 3 0x00007FF66FF60430 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: main() at C:/Users/Admin/Desktop/prodva/Akinator/main.cpp:18:
+
+     16:     dumpInfo.nameOfDumpFile = "dump.html";
+     17: 
+=>   18:     readFileAndCreateTree (&tree, &dumpInfo, "treeSave.txt");
+     19:     treeDump (&tree, &dumpInfo, "after ctoring tree");
+     20: /*
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h
+Compiled:	Nov 12 2025 20:59:13, GNU g++ 13.2.0, std=201703L, MinGW-W64 Runtime 11.0.1 (alpha - rev. 0) 0000-00-00, 64-bit, DEBUG
+Started:	Nov 12 2025 20:59:18
+
+Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
+Directory:	C:\Users\Admin\Desktop\prodva\Akinator
+
+--------------------------------------------------

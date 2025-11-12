@@ -1,7 +1,9 @@
+#include <TXLib.h>
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <TXLib.h>
+
+#pragma GCC diagnostic ignored "-Wredundant-tags"
 
 #include "structsAndConsts.h"
 #include "treeFunctions.h"
@@ -13,8 +15,9 @@ node_t* treeNodeCtor (const char* newObjectDescription) {
 
     node_t* newNode = (node_t*)calloc(1, sizeof(node_t));
 
-    *(nodeObjectDescription(newNode)) = (char*)calloc(NODE_DESCRIPTION_SIZE, sizeof(char));
-    strncpy(*(nodeObjectDescription(newNode)), newObjectDescription, NODE_DESCRIPTION_SIZE - 1);
+    *(nodeObjectDescription(newNode)) = strdup(newObjectDescription);
+    //*(nodeObjectDescription(newNode)) = (char*)calloc(NODE_DESCRIPTION_SIZE, sizeof(char));
+    //strncpy(*(nodeObjectDescription(newNode)), newObjectDescription, NODE_DESCRIPTION_SIZE - 1);
 
     *(nodeLeft(newNode)) = NULL;
     *(nodeRight(newNode)) = NULL;
@@ -57,9 +60,9 @@ int fprintfNodeGraph (node_t* node, int rank, FILE* graphFile, size_t* nodesPass
     assert(node);
     assert(graphFile);
 
-    (*nodesPassed) += 1;
-    if (*nodesPassed > treeSize)
-        return tooManyRecursiveCalls;
+    //(*nodesPassed) += 1;
+    //if (*nodesPassed > treeSize)
+    //    return tooManyRecursiveCalls;
 
     char leftPtr[STR_SIZE] = "NULL";
     if (*(nodeLeft(node)) != NULL)
@@ -87,9 +90,9 @@ int fprintfNodeLinksForGraph (node_t* node, FILE* graphFile, size_t* nodesPassed
     assert(node);
     assert(graphFile);
 
-    (*nodesPassed) += 1;
-    if (*nodesPassed > treeSize)
-        return tooManyRecursiveCalls;
+    //(*nodesPassed) += 1;
+    //if (*nodesPassed > treeSize)
+    //    return tooManyRecursiveCalls;
 
     node_t** left = nodeLeft(node);
     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left))) {
@@ -140,14 +143,14 @@ void treeDump (struct tree_t* tree, struct dump* dumpInfo, const char* message) 
     }
 
     fprintf(dumpFile, "<pre>\n");
-    fprintf(dumpFile, "<h3>treeDump() <font color=red>from %s at %s:%d</font></h3>\n",
+    fprintf(dumpFile, "<h3>treeDump() <font color=red>from %s at %s:%ud</font></h3>\n",
     dumpInfo->nameOfFunc, dumpInfo->nameOfFile, dumpInfo->numOfLine);
 
     fprintf(dumpFile, "<h2><font color=blue>%s</font></h2>\n", message);
     fprintfTreeErrorsForDump (tree, dumpFile, dumpInfo);
 
     fprintf(dumpFile, "Root Node == 0x%p\n", *treeRoot(tree));
-    fprintf(dumpFile, "Tree size == %d\n", *treeSize(tree));
+    fprintf(dumpFile, "Tree size == %llu\n", *treeSize(tree));
     fprintf(dumpFile, "ErrorCode == %d\n", tree->errorCode);
 
     createGraphImageForDump (tree, dumpFile, nameOfTextGraphFile);
@@ -181,7 +184,7 @@ tree_t* akinatorTreeCtor(tree_t* tree, dump* dumpInfo) {
     assert(tree);
     assert(dumpInfo);
 
-    *treeRoot(tree) = treeNodeCtor("animal?");
+    *treeRoot(tree) = treeNodeCtor("animal");
     *treeSize(tree) = 1;
     tree->errorCode = noErrors;
 
@@ -220,19 +223,19 @@ void fprintfTreeErrorsForDump (struct tree_t* tree, FILE* dumpFile, struct dump*
 
     if (tree->errorCode & badLeft) {
         fprintf(dumpFile, "<h2><font color=red>ERROR! BAD LEFT NODE LINK! errorcode = %d</font></h2>\n", badLeft);
-        printf("ERROR! BAD LEFT NODE LINK! errorcode = %d; In func %s from %s:%d\n",
+        printf("ERROR! BAD LEFT NODE LINK! errorcode = %d; In func %s from %s:%ud\n",
         badLeft, dumpInfo->nameOfFunc, dumpInfo->nameOfFile, dumpInfo->numOfLine);
     }
 
     if (tree->errorCode & badRight) {
         fprintf(dumpFile, "<h2><font color=red>ERROR! RIGHT LEFT NODE LINK! errorcode = %d</font></h2>\n", badRight);
-        printf("ERROR! BAD RIGHT NODE LINK! errorcode = %d; In func %s from %s:%d\n",
+        printf("ERROR! BAD RIGHT NODE LINK! errorcode = %d; In func %s from %s:%ud\n",
         badRight, dumpInfo->nameOfFunc, dumpInfo->nameOfFile, dumpInfo->numOfLine);
     }
 
     if (tree->errorCode & tooManyRecursiveCalls) {
         fprintf(dumpFile, "<h2><font color=red>ERROR! TOO MANY RECURSIVE CALLS! errorcode = %d</font></h2>\n", tooManyRecursiveCalls);
-        printf("ERROR!TOO MANY RECURSIVE CALLS! errorcode = %d; In func %s from %s:%d\n",
+        printf("ERROR!TOO MANY RECURSIVE CALLS! errorcode = %d; In func %s from %s:%ud\n",
         tooManyRecursiveCalls, dumpInfo->nameOfFunc, dumpInfo->nameOfFile, dumpInfo->numOfLine);
     }
 }
