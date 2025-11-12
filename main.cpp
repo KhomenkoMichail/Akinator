@@ -2,6 +2,8 @@
 #include <stdio.h>
 #pragma GCC diagnostic ignored "-Wredundant-tags"
 
+#include "stackStructsAndEnums.h"
+#include "stackFunctions.h"
 #include "structsAndConsts.h"
 #include "structAccessFunctions.h"
 #include "treeFunctions.h"
@@ -17,6 +19,13 @@ int main (void) {
 
     readFileAndCreateTree (&tree, &dumpInfo, "treeSave.txt");
     treeDump (&tree, &dumpInfo, "after ctoring tree");
+
+    //defineTheObject(&tree, &dumpInfo);
+   //defineTheObject2(&tree, &dumpInfo);
+
+    //compareObjects(&tree, &dumpInfo);
+    defineTheObject(&tree, &dumpInfo);
+    compareObjects(&tree, &dumpInfo);
 /*
     int runProgram = 1;
 

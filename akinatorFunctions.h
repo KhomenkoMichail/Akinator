@@ -11,31 +11,24 @@ answers_t getAnswer (void);
 
 void bufferCleaner (void);
 
-int defineTheObject (tree_t* tree, dump* dumpInfo);
+void printfMenu(void);
 
-int findTheObjectPath (node_t* node, size_t rank, const char* objectName, int objectPath[]);
+void printfWithDelay (const char* str);
 
-void printfObjectDefinition (tree_t* tree, const char* objectName, int objectPath[]);
+void printfComparing (tree_t* tree, const char* firstObjectName, const char* secondObjectName,
+                      stack_t* firstObjectRetStack, stack_t* secondObjectRetStack);
 
 int compareObjects (tree_t* tree, dump* dumpInfo);
 
-void printfMenu(void);
+void runAkinator (tree_t* tree, dump* dumpInfo);
 
-void printfWithDelay(const char* str);
+int getModeChoice (void);
 
-void printfComparing (tree_t* tree, const char* firstObjectName, const char* secondObjectName,
-                      int firstObjectPath[], int secondObjectPath[]);
+void fprintfNode (node_t* node, FILE* file);
 
+node_t* nodeCtorByReadBuffer (char** bufPos, dump* dumpInfo);
 
-void runAkinator(tree_t* tree, dump* dumpInfo);
-
-int getModeChoice(void);
-
-void fprintfNode(node_t* node, FILE* file);
-
-node_t* nodeCtorByReadBuffer(char** bufPos, dump* dumpInfo);
-
-void skipSpaces(char** bufPos);
+void skipSpaces (char** bufPos);
 
 char* copyFileContent (const char* nameOfFile);
 
@@ -43,4 +36,9 @@ unsigned int getSizeOfFile (int fileDescriptor);
 
 int readFileAndCreateTree (tree_t* tree, dump* dumpInfo, const char* nameOfFile);
 
+int defineTheObject (tree_t* tree, dump* dumpInfo);
+
+void printfObjectDefinition (tree_t* tree, const char* objectName, stack_t* stack);
+
+int findTheObjectPath (node_t* node, const char* objectName, stack_t* stack);
 #endif

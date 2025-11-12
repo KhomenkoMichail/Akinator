@@ -7,6 +7,8 @@
 
 #pragma GCC diagnostic ignored "-Wredundant-tags"
 
+#include "stackStructsAndEnums.h"
+#include "stackFunctions.h"
 #include "structsAndConsts.h"
 #include "structAccessFunctions.h"
 #include "treeFunctions.h"
@@ -127,7 +129,64 @@ void bufferCleaner (void) {
         continue;
 }
 
-int defineTheObject (tree_t* tree, dump* dumpInfo) {
+int findTheObjectPath (node_t* node, const char* objectName, stack_t* stack) {
+    assert(node);
+    assert(objectName);
+    assert(stack);
+
+    if((*nodeLeft(node) == NULL) && (*nodeRight(node) == NULL)) {
+        if(strcmp(*nodeObjectDescription(node), objectName) == 0) {
+            stackPush(stack, findObject);
+            return 1;
+        }
+        else
+            return 0;
+    }
+
+    if(findTheObjectPath(*nodeLeft(node), objectName, stack)) {
+        stackPush(stack, yes);
+        return 1;
+    }
+
+    if(findTheObjectPath(*nodeRight(node), objectName, stack)) {
+        stackPush(stack, no);
+        return 1;
+    }
+
+    return 0;
+}
+
+void printfObjectDefinition (tree_t* tree, const char* objectName, stack_t* stack) {
+    assert(tree);
+    assert(objectName);
+    assert(stack);
+
+    int nodeInfo = 0;
+
+    printf("%s ", objectName);
+
+    for (node_t* currentNode = *treeRoot(tree); ; ) {
+        stackPop(stack, &nodeInfo);
+        if (nodeInfo == yes) {
+            printf ("is %s ", *nodeObjectDescription(currentNode));
+            currentNode = *nodeLeft(currentNode);
+            continue;
+        }
+
+        if (nodeInfo == no) {
+            printf ("is not %s ", *nodeObjectDescription(currentNode));
+            currentNode = *nodeRight(currentNode);
+            continue;
+        }
+
+        if (nodeInfo == findObject) {
+            break;
+        }
+    }
+    printf("\n");
+}
+
+int defineTheObject(tree_t* tree, dump* dumpInfo) {
     assert(tree);
     assert(dumpInfo);
 
@@ -137,83 +196,34 @@ int defineTheObject (tree_t* tree, dump* dumpInfo) {
     scanf("%63[^\n]", objectName);
     bufferCleaner();
 
-    int objectPath[MAX_NODE_RANK] = {};
-    if (findTheObjectPath(*treeRoot(tree), 0, objectName, objectPath))
-        printfObjectDefinition(tree, objectName, objectPath);
+    struct stack retStack = {};
+    struct info stackInfo = {};
+    STACK_CTOR(retStack, stackInfo, 25);
+
+    if (findTheObjectPath(*treeRoot(tree), objectName, &retStack))
+        printfObjectDefinition(tree, objectName, &retStack);
     else
         printf("There is no such object in my database.\n");
 
+    stackDtor (&retStack);
 
     return 0;
 }
 
-int findTheObjectPath (node_t* node, size_t rank, const char* objectName, int objectPath[]) {
-    assert(node);
-    assert(objectName);
-    assert(objectPath);
-
-    if (rank >= MAX_NODE_RANK)
-        return 0;
-
-    if((*nodeLeft(node) == NULL) && (*nodeRight(node) == NULL)) {
-        if(strcmp(*nodeObjectDescription(node), objectName) == 0) {
-            objectPath[rank] = findObject;
-            return 1;
-        }
-        else
-            return 0;
-    }
-
-    if(findTheObjectPath(*nodeLeft(node), rank + 1, objectName, objectPath)) {
-        objectPath[rank] = yes;
-        return 1;
-    }
-
-    if(findTheObjectPath(*nodeRight(node), rank + 1, objectName, objectPath)) {
-        objectPath[rank] = no;
-        return 1;
-    }
-
-    return 0;
-}
-
-void printfObjectDefinition (tree_t* tree, const char* objectName, int objectPath[]) {
-    assert(tree);
-    assert(objectName);
-    assert(objectPath);
-
-    int nodeRank = 0;
-
-    printf("%s ", objectName);
-
-    for (node_t* currentNode = *treeRoot(tree); ; nodeRank++) {
-        if (objectPath[nodeRank] == yes) {
-            printf ("is %s ", *nodeObjectDescription(currentNode));
-            currentNode = *nodeLeft(currentNode);
-            continue;
-        }
-
-        if (objectPath[nodeRank] == no) {
-            printf ("is not %s ", *nodeObjectDescription(currentNode));
-            currentNode = *nodeRight(currentNode);
-            continue;
-        }
-
-        if (objectPath[nodeRank] == findObject) {
-            break;
-        }
-    }
-}
-
-int compareObjects (tree_t* tree, dump* dumpInfo) {
+int compareObjects(tree_t* tree, dump* dumpInfo) {
     assert(tree);
     assert(dumpInfo);
 
     char firstObjectName[NODE_DESCRIPTION_SIZE] = {};
     char secondObjectName[NODE_DESCRIPTION_SIZE] = {};
 
-    int firstObjectPath[MAX_NODE_RANK] = {};
-    int secondObjectPath[MAX_NODE_RANK] = {};
+    struct stack firstObjectRetStack = {};
+    struct info firstStackInfo = {};
+    STACK_CTOR(firstObjectRetStack, firstStackInfo, 25);
+
+    struct stack secondObjectRetStack = {};
+    struct info secondStackInfo = {};
+    STACK_CTOR(secondObjectRetStack, secondStackInfo, 25);
 
     printf("Enter the first object to be compared...");
     scanf("%63[^\n]", firstObjectName);
@@ -223,94 +233,104 @@ int compareObjects (tree_t* tree, dump* dumpInfo) {
     scanf("%63[^\n]", secondObjectName);
     bufferCleaner();
 
-    if (!findTheObjectPath(*treeRoot(tree), 0, firstObjectName, firstObjectPath)) {
+    if (!findTheObjectPath(*treeRoot(tree), firstObjectName, &firstObjectRetStack)) {
         printf("There is no object \"%s\" in my database.\n", firstObjectName);
         return 0;
     }
 
-    if (!findTheObjectPath(*treeRoot(tree), 0, secondObjectName, secondObjectPath)) {
+    if (!findTheObjectPath(*treeRoot(tree), secondObjectName, &secondObjectRetStack)) {
         printf("There is no object \"%s\" in my database.\n", secondObjectName);
         return 0;
     }
 
-    printfComparing (tree, firstObjectName, secondObjectName, firstObjectPath, secondObjectPath);
+    printfComparing (tree, firstObjectName, secondObjectName, &firstObjectRetStack, &secondObjectRetStack);
+
+    stackDtor (&firstObjectRetStack);
+    stackDtor (&secondObjectRetStack);
     return 0;
 }
 
-void printfComparing (tree_t* tree, const char* firstObjectName, const char* secondObjectName,
-                      int firstObjectPath[], int secondObjectPath[]) {
+void printfComparing(tree_t* tree, const char* firstObjectName, const char* secondObjectName,
+                      stack_t* firstObjectRetStack, stack_t* secondObjectRetStack) {
     assert(tree);
     assert(firstObjectName);
     assert(secondObjectName);
-    assert(firstObjectPath);
-    assert(secondObjectPath);
+    assert(firstObjectRetStack);
+    assert(secondObjectRetStack);
 
-    if (firstObjectPath[0] == secondObjectPath[0])
+    int firstObjectStep = 0;
+    int secondObjectStep = 0;
+
+    stackPop(firstObjectRetStack, &firstObjectStep);
+    stackPop(secondObjectRetStack, &secondObjectStep);
+
+    if (firstObjectStep == secondObjectStep)
         printf("\"%s\" and \"%s\" are similar in that they both are",
                firstObjectName, secondObjectName);
 
-    size_t nodeRank = 0;
     node_t* currentNode = *treeRoot(tree);
-    for( ; firstObjectPath[nodeRank] == secondObjectPath[nodeRank]; nodeRank++) {
+    for( ; firstObjectStep == secondObjectStep; ) {
 
-        if (firstObjectPath[nodeRank] == yes) {
+        if (firstObjectStep == yes) {
             printf (" %s", *nodeObjectDescription(currentNode));
             currentNode = *nodeLeft(currentNode);
-            continue;
         }
-        if (firstObjectPath[nodeRank] == no) {
+        if (firstObjectStep == no) {
             printf (" not %s", *nodeObjectDescription(currentNode));
             currentNode = *nodeRight(currentNode);
-            continue;
         }
-        if (firstObjectPath[nodeRank] == findObject)
+        if (firstObjectStep == findObject)
             break;
+
+        stackPop(firstObjectRetStack, &firstObjectStep);
+        stackPop(secondObjectRetStack, &secondObjectStep);
     }
     node_t* branchingNode = currentNode;
+    printf("\n");
 
     printf("\"%s\" and \"%s\" differ in that", firstObjectName, secondObjectName);
 
-    if (firstObjectPath[nodeRank] != findObject)
+    if (firstObjectStep != findObject)
         printf("\n\"%s\"", firstObjectName);
-    for(size_t firstObjectRank = nodeRank; firstObjectPath[firstObjectRank] != findObject;
-        firstObjectRank++) {
-        if (firstObjectPath[firstObjectRank] == yes) {
+    for( ; firstObjectStep != findObject; ) {
+        if (firstObjectStep == yes) {
             printf (" %s", *nodeObjectDescription(currentNode));
             currentNode = *nodeLeft(currentNode);
-            continue;
         }
-        if (firstObjectPath[firstObjectRank] == no) {
+        if (firstObjectStep == no) {
             printf (" not %s", *nodeObjectDescription(currentNode));
             currentNode = *nodeRight(currentNode);
-            continue;
         }
-        if (firstObjectPath[firstObjectRank] == findObject)
+        if (firstObjectStep == findObject)
             break;
+
+        stackPop(firstObjectRetStack, &firstObjectStep);
     }
 
-    if (secondObjectPath[nodeRank] != findObject)
+    if (secondObjectStep != findObject)
         printf("\n\"%s\"", secondObjectName);
 
     currentNode = branchingNode;
-    for(size_t secondObjectRank = nodeRank; secondObjectPath[secondObjectRank] != findObject;
-        secondObjectRank++) {
-        if (secondObjectPath[secondObjectRank] == yes) {
+    for( ; secondObjectStep != findObject; ) {
+        if (secondObjectStep == yes) {
             printf (" %s", *nodeObjectDescription(currentNode));
             currentNode = *nodeLeft(currentNode);
-            continue;
         }
 
-        if (secondObjectPath[secondObjectRank] == no) {
+        if (secondObjectStep == no) {
             printf (" not %s", *nodeObjectDescription(currentNode));
             currentNode = *nodeRight(currentNode);
-            continue;
         }
 
-        if (secondObjectPath[secondObjectRank] == findObject) {
+        if (secondObjectStep == findObject) {
             break;
         }
+
+        stackPop(secondObjectRetStack, &secondObjectStep);
     }
+    printf("\n");
 }
+
 
 void printfMenu(void) {
     printfWithDelay("As usual, you have tree wishes:\n");
@@ -348,21 +368,6 @@ void runAkinator(tree_t* tree, dump* dumpInfo) {
         guessTheObject (tree, dumpInfo);
 
 }
-
-
-/*int getModeChoice(void) {
-    int modeChoice = 0;
-    scanf("%d", modeChoice)
-    bufferCleaner();
-
-    while ((modeChoice != guessObject) && (modeChoice != defineObject) && (modeChoice != objectsComparing)) {
-        printfWithDelay("You can choose only 1, 2 or 3.\n");
-        modeChoice = getchar();
-        bufferCleaner();
-    }
-
-    return modeChoice;
-}*/
 
 int getModeChoice(void) {
     int ch = 0;

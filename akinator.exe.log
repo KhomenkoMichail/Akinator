@@ -1013,3 +1013,556 @@ Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
 Directory:	C:\Users\Admin\Desktop\prodva\Akinator
 
 --------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x00007FF75CD152D9 в функции stackPush() в файле C:/Users/Admin/Desktop/prodva/Akinator/stackFunctions.cpp на строке 51. Попытка записать данные по адресу NULL в модуле C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400], Instance: 0x00007FF75CF3C030 (64-bit), Flags: Cmdre0, Thread: 0x448C (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00007FF75CD152D9 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: stackPush() at C:/Users/Admin/Desktop/prodva/Akinator/stackFunctions.cpp:51:
+
+     49:     assert(stack);
+     50: 
+=>   51:     stack->data[stack->size] = value;
+     52:     stack->size++;
+     53: 
+
+# 1 0x00007FF75CCE2D6B in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: findTheObjectPath2() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:189:
+
+    187:     if((*nodeLeft(node) == NULL) && (*nodeRight(node) == NULL)) {
+    188:         if(strcmp(*nodeObjectDescription(node), objectName) == 0) {
+=>  189:             stackPush(stack, findObject);
+    190:             return 1;
+    191:         }
+
+# 2 0x00007FF75CCE2DE4 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: findTheObjectPath2() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:201:
+
+    199:     }
+    200: 
+=>  201:     if(findTheObjectPath2(*nodeRight(node), objectName, stack)) {
+    202:         stackPush(stack, no);
+    203:         return 1;
+
+# 3 0x00007FF75CCE2DE4 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: findTheObjectPath2() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:201:
+
+    199:     }
+    200: 
+=>  201:     if(findTheObjectPath2(*nodeRight(node), objectName, stack)) {
+    202:         stackPush(stack, no);
+    203:         return 1;
+
+# 4 0x00007FF75CCE3895 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: compareObjects2() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:351:
+
+    349:     }
+    350: 
+=>  351:     if (!findTheObjectPath2(*treeRoot(tree), secondObjectName, &secondObjectRetStack)) {
+    352:         printf("There is no object \"%s\" in my database.\n", secondObjectName);
+    353:         return 0;
+
+# 5 0x00007FF75CC80487 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: main() at C:/Users/Admin/Desktop/prodva/Akinator/main.cpp:27:
+
+     25: 
+     26:     compareObjects(&tree, &dumpInfo);
+=>   27:     compareObjects2(&tree, &dumpInfo);
+     28: /*
+     29:     int runProgram = 1;
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in int stackCtor(stack_t*, ssize_t, const char*, info) at stackFunctions.cpp:28:
+
+     26:     stack->nameOfStack = nameOfStack;
+     27:     stack->errorCode = 0;
+=>   28:     stack->nameOfType = txDemangle(typeid(stackElement_t).name()).c_str();
+     29: 
+     30:     stack->stackInfo.nameOfFunct = creationInfo.nameOfFunct;
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h
+Compiled:	Nov 12 2025 23:21:48, GNU g++ 13.2.0, std=201703L, MinGW-W64 Runtime 11.0.1 (alpha - rev. 0) 0000-00-00, 64-bit, DEBUG
+Started:	Nov 12 2025 23:21:55
+
+Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
+Directory:	C:\Users\Admin\Desktop\prodva\Akinator
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x00007FF75CD152D9 в функции stackPush() в файле C:/Users/Admin/Desktop/prodva/Akinator/stackFunctions.cpp на строке 51. Попытка записать данные по адресу NULL в модуле C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400], Instance: 0x00007FF75CF3C030 (64-bit), Flags: Cmdre0, Thread: 0x448C (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00007FF75CD152D9 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: stackPush() at C:/Users/Admin/Desktop/prodva/Akinator/stackFunctions.cpp:51:
+
+     49:     assert(stack);
+     50: 
+=>   51:     stack->data[stack->size] = value;
+     52:     stack->size++;
+     53: 
+
+# 1 0x00007FF75CCE2D6B in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: findTheObjectPath2() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:189:
+
+    187:     if((*nodeLeft(node) == NULL) && (*nodeRight(node) == NULL)) {
+    188:         if(strcmp(*nodeObjectDescription(node), objectName) == 0) {
+=>  189:             stackPush(stack, findObject);
+    190:             return 1;
+    191:         }
+
+# 2 0x00007FF75CCE2DE4 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: findTheObjectPath2() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:201:
+
+    199:     }
+    200: 
+=>  201:     if(findTheObjectPath2(*nodeRight(node), objectName, stack)) {
+    202:         stackPush(stack, no);
+    203:         return 1;
+
+# 3 0x00007FF75CCE2DE4 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: findTheObjectPath2() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:201:
+
+    199:     }
+    200: 
+=>  201:     if(findTheObjectPath2(*nodeRight(node), objectName, stack)) {
+    202:         stackPush(stack, no);
+    203:         return 1;
+
+# 4 0x00007FF75CCE3895 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: compareObjects2() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:351:
+
+    349:     }
+    350: 
+=>  351:     if (!findTheObjectPath2(*treeRoot(tree), secondObjectName, &secondObjectRetStack)) {
+    352:         printf("There is no object \"%s\" in my database.\n", secondObjectName);
+    353:         return 0;
+
+# 5 0x00007FF75CC80487 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: main() at C:/Users/Admin/Desktop/prodva/Akinator/main.cpp:27:
+
+     25: 
+     26:     compareObjects(&tree, &dumpInfo);
+=>   27:     compareObjects2(&tree, &dumpInfo);
+     28: /*
+     29:     int runProgram = 1;
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h
+Compiled:	Nov 12 2025 23:21:48, GNU g++ 13.2.0, std=201703L, MinGW-W64 Runtime 11.0.1 (alpha - rev. 0) 0000-00-00, 64-bit, DEBUG
+Started:	Nov 12 2025 23:21:55
+
+Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
+Directory:	C:\Users\Admin\Desktop\prodva\Akinator
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x00007FF6C5CF52B9 в функции stackPush() в файле C:/Users/Admin/Desktop/prodva/Akinator/stackFunctions.cpp на строке 51. Попытка записать данные по адресу NULL в модуле C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400], Instance: 0x00007FF6C5F1C030 (64-bit), Flags: Cmdre0, Thread: 0xBA8 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00007FF6C5CF52B9 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: stackPush() at C:/Users/Admin/Desktop/prodva/Akinator/stackFunctions.cpp:51:
+
+     49:     assert(stack);
+     50: 
+=>   51:     stack->data[stack->size] = value;
+     52:     stack->size++;
+     53: 
+
+# 1 0x00007FF6C5CC2D4B in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: findTheObjectPath2() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:189:
+
+    187:     if((*nodeLeft(node) == NULL) && (*nodeRight(node) == NULL)) {
+    188:         if(strcmp(*nodeObjectDescription(node), objectName) == 0) {
+=>  189:             stackPush(stack, findObject);
+    190:             return 1;
+    191:         }
+
+# 2 0x00007FF6C5CC2DC4 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: findTheObjectPath2() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:201:
+
+    199:     }
+    200: 
+=>  201:     if(findTheObjectPath2(*nodeRight(node), objectName, stack)) {
+    202:         stackPush(stack, no);
+    203:         return 1;
+
+# 3 0x00007FF6C5CC2DC4 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: findTheObjectPath2() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:201:
+
+    199:     }
+    200: 
+=>  201:     if(findTheObjectPath2(*nodeRight(node), objectName, stack)) {
+    202:         stackPush(stack, no);
+    203:         return 1;
+
+# 4 0x00007FF6C5CC3875 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: compareObjects2() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:351:
+
+    349:     }
+    350: 
+=>  351:     if (!findTheObjectPath2(*treeRoot(tree), secondObjectName, &secondObjectRetStack)) {
+    352:         printf("There is no object \"%s\" in my database.\n", secondObjectName);
+    353:         return 0;
+
+# 5 0x00007FF6C5C60467 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: main() at C:/Users/Admin/Desktop/prodva/Akinator/main.cpp:27:
+
+     25: 
+     26:     compareObjects(&tree, &dumpInfo);
+=>   27:     compareObjects2(&tree, &dumpInfo);
+     28: /*
+     29:     int runProgram = 1;
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in int stackCtor(stack_t*, ssize_t, const char*, info) at stackFunctions.cpp:28:
+
+     26:     stack->nameOfStack = nameOfStack;
+     27:     stack->errorCode = 0;
+=>   28:     stack->nameOfType = txDemangle(typeid(stackElement_t).name()).c_str();
+     29: 
+     30:     stack->stackInfo.nameOfFunct = creationInfo.nameOfFunct;
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h
+Compiled:	Nov 12 2025 23:26:22, GNU g++ 13.2.0, std=201703L, MinGW-W64 Runtime 11.0.1 (alpha - rev. 0) 0000-00-00, 64-bit, DEBUG
+Started:	Nov 12 2025 23:26:26
+
+Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
+Directory:	C:\Users\Admin\Desktop\prodva\Akinator
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x00007FF6C5CF52B9 в функции stackPush() в файле C:/Users/Admin/Desktop/prodva/Akinator/stackFunctions.cpp на строке 51. Попытка записать данные по адресу NULL в модуле C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400], Instance: 0x00007FF6C5F1C030 (64-bit), Flags: Cmdre0, Thread: 0xBA8 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00007FF6C5CF52B9 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: stackPush() at C:/Users/Admin/Desktop/prodva/Akinator/stackFunctions.cpp:51:
+
+     49:     assert(stack);
+     50: 
+=>   51:     stack->data[stack->size] = value;
+     52:     stack->size++;
+     53: 
+
+# 1 0x00007FF6C5CC2D4B in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: findTheObjectPath2() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:189:
+
+    187:     if((*nodeLeft(node) == NULL) && (*nodeRight(node) == NULL)) {
+    188:         if(strcmp(*nodeObjectDescription(node), objectName) == 0) {
+=>  189:             stackPush(stack, findObject);
+    190:             return 1;
+    191:         }
+
+# 2 0x00007FF6C5CC2DC4 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: findTheObjectPath2() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:201:
+
+    199:     }
+    200: 
+=>  201:     if(findTheObjectPath2(*nodeRight(node), objectName, stack)) {
+    202:         stackPush(stack, no);
+    203:         return 1;
+
+# 3 0x00007FF6C5CC2DC4 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: findTheObjectPath2() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:201:
+
+    199:     }
+    200: 
+=>  201:     if(findTheObjectPath2(*nodeRight(node), objectName, stack)) {
+    202:         stackPush(stack, no);
+    203:         return 1;
+
+# 4 0x00007FF6C5CC3875 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: compareObjects2() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:351:
+
+    349:     }
+    350: 
+=>  351:     if (!findTheObjectPath2(*treeRoot(tree), secondObjectName, &secondObjectRetStack)) {
+    352:         printf("There is no object \"%s\" in my database.\n", secondObjectName);
+    353:         return 0;
+
+# 5 0x00007FF6C5C60467 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: main() at C:/Users/Admin/Desktop/prodva/Akinator/main.cpp:27:
+
+     25: 
+     26:     compareObjects(&tree, &dumpInfo);
+=>   27:     compareObjects2(&tree, &dumpInfo);
+     28: /*
+     29:     int runProgram = 1;
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h
+Compiled:	Nov 12 2025 23:26:22, GNU g++ 13.2.0, std=201703L, MinGW-W64 Runtime 11.0.1 (alpha - rev. 0) 0000-00-00, 64-bit, DEBUG
+Started:	Nov 12 2025 23:26:27
+
+Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
+Directory:	C:\Users\Admin\Desktop\prodva\Akinator
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe,
+
+ВНЕЗАПНО: signal (22, 0x00): SIGABRT: Аварийное завершение программы, вызвана функция abort(). 
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400], Instance: 0x00007FF6C729C030 (64-bit), Flags: Cmdre0, Thread: 0x382C (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00007FF6C7057B24 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: (anonymous namespace)::TX::_txError() at C:/Users/Admin/Downloads/CodeBlocks/TX/TXLib.h:11090
+# 1 0x00007FF6C705808C in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: (anonymous namespace)::TX::_txOnSignal() at C:/Users/Admin/Downloads/CodeBlocks/TX/TXLib.h:11171
+# 2 0x00007FFB0140EC01 in C:\WINDOWS\System32\msvcrt.dll: raise()
+# 3 0x00007FFB0141305B in C:\WINDOWS\System32\msvcrt.dll: abort()
+# 4 0x00007FFB0140F9DD in C:\WINDOWS\System32\msvcrt.dll: assert()
+
+# 5 0x00007FF6C70131D6 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: nodeObjectDescription() at C:/Users/Admin/Desktop/prodva/Akinator/structAccessFunctions.cpp:8:
+
+      6: 
+      7: char** nodeObjectDescription (node_t* node) {
+=>    8:     assert (node);
+      9: 
+     10:     return &(node->objectDescription);
+
+# 6 0x00007FF6C7043F3E in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: printfComparing2() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:465:
+
+    463:         }
+    464:         if (firstObjectStep == no) {
+=>  465:             printf (" not %s", *nodeObjectDescription(currentNode));
+    466:             currentNode = *nodeRight(currentNode);
+    467:             continue;
+
+# 7 0x00007FF6C70438C8 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: compareObjects2() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:356:
+
+    354:     }
+    355: 
+=>  356:     printfComparing2 (tree, firstObjectName, secondObjectName, &firstObjectRetStack, &secondObjectRetStack);
+    357: 
+    358:     stackDtor (&firstObjectRetStack);
+
+# 8 0x00007FF6C6FE0467 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: main() at C:/Users/Admin/Desktop/prodva/Akinator/main.cpp:27:
+
+     25: 
+     26:     compareObjects(&tree, &dumpInfo);
+=>   27:     compareObjects2(&tree, &dumpInfo);
+     28: /*
+     29:     int runProgram = 1;
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h
+Compiled:	Nov 12 2025 23:27:45, GNU g++ 13.2.0, std=201703L, MinGW-W64 Runtime 11.0.1 (alpha - rev. 0) 0000-00-00, 64-bit, DEBUG
+Started:	Nov 12 2025 23:27:49
+
+Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
+Directory:	C:\Users\Admin\Desktop\prodva\Akinator
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe,
+
+ВНЕЗАПНО: signal (22, 0x00): SIGABRT: Аварийное завершение программы, вызвана функция abort(). 
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400], Instance: 0x00007FF682BCC030 (64-bit), Flags: Cmdre0, Thread: 0x388C (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00007FF682987B24 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: (anonymous namespace)::TX::_txError() at C:/Users/Admin/Downloads/CodeBlocks/TX/TXLib.h:11090
+# 1 0x00007FF68298808C in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: (anonymous namespace)::TX::_txOnSignal() at C:/Users/Admin/Downloads/CodeBlocks/TX/TXLib.h:11171
+# 2 0x00007FFB0140EC01 in C:\WINDOWS\System32\msvcrt.dll: raise()
+# 3 0x00007FFB0141305B in C:\WINDOWS\System32\msvcrt.dll: abort()
+# 4 0x00007FFB0140F9DD in C:\WINDOWS\System32\msvcrt.dll: assert()
+
+# 5 0x00007FF6829431D6 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: nodeObjectDescription() at C:/Users/Admin/Desktop/prodva/Akinator/structAccessFunctions.cpp:8:
+
+      6: 
+      7: char** nodeObjectDescription (node_t* node) {
+=>    8:     assert (node);
+      9: 
+     10:     return &(node->objectDescription);
+
+# 6 0x00007FF682973F3E in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: printfComparing2() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:465:
+
+    463:         }
+    464:         if (firstObjectStep == no) {
+=>  465:             printf (" not %s", *nodeObjectDescription(currentNode));
+    466:             currentNode = *nodeRight(currentNode);
+    467:             continue;
+
+# 7 0x00007FF6829738C8 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: compareObjects2() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:356:
+
+    354:     }
+    355: 
+=>  356:     printfComparing2 (tree, firstObjectName, secondObjectName, &firstObjectRetStack, &secondObjectRetStack);
+    357: 
+    358:     stackDtor (&firstObjectRetStack);
+
+# 8 0x00007FF682910467 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: main() at C:/Users/Admin/Desktop/prodva/Akinator/main.cpp:27:
+
+     25: 
+     26:     compareObjects(&tree, &dumpInfo);
+=>   27:     compareObjects2(&tree, &dumpInfo);
+     28: /*
+     29:     int runProgram = 1;
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h
+Compiled:	Nov 12 2025 23:30:10, GNU g++ 13.2.0, std=201703L, MinGW-W64 Runtime 11.0.1 (alpha - rev. 0) 0000-00-00, 64-bit, DEBUG
+Started:	Nov 12 2025 23:30:20
+
+Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
+Directory:	C:\Users\Admin\Desktop\prodva\Akinator
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe,
+
+ВНЕЗАПНО: signal (22, 0x00): SIGABRT: Аварийное завершение программы, вызвана функция abort(). 
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400], Instance: 0x00007FF7D9F4C030 (64-bit), Flags: Cmdre0, Thread: 0x6134 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00007FF7D9D07B64 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: (anonymous namespace)::TX::_txError() at C:/Users/Admin/Downloads/CodeBlocks/TX/TXLib.h:11090
+# 1 0x00007FF7D9D080CC in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: (anonymous namespace)::TX::_txOnSignal() at C:/Users/Admin/Downloads/CodeBlocks/TX/TXLib.h:11171
+# 2 0x00007FFB0140EC01 in C:\WINDOWS\System32\msvcrt.dll: raise()
+# 3 0x00007FFB0141305B in C:\WINDOWS\System32\msvcrt.dll: abort()
+# 4 0x00007FFB0140F9DD in C:\WINDOWS\System32\msvcrt.dll: assert()
+
+# 5 0x00007FF7D9CC31C6 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: nodeObjectDescription() at C:/Users/Admin/Desktop/prodva/Akinator/structAccessFunctions.cpp:8:
+
+      6: 
+      7: char** nodeObjectDescription (node_t* node) {
+=>    8:     assert (node);
+      9: 
+     10:     return &(node->objectDescription);
+
+# 6 0x00007FF7D9CF3F59 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: printfComparing2() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:468:
+
+    466:         }
+    467:         if (firstObjectStep == no) {
+=>  468:             printf (" not %s", *nodeObjectDescription(currentNode));
+    469:             currentNode = *nodeRight(currentNode);
+    470:             continue;
+
+# 7 0x00007FF7D9CF38B8 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: compareObjects2() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:356:
+
+    354:     }
+    355: 
+=>  356:     printfComparing2 (tree, firstObjectName, secondObjectName, &firstObjectRetStack, &secondObjectRetStack);
+    357: 
+    358:     stackDtor (&firstObjectRetStack);
+
+# 8 0x00007FF7D9C90457 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: main() at C:/Users/Admin/Desktop/prodva/Akinator/main.cpp:27:
+
+     25: 
+     26:     //compareObjects(&tree, &dumpInfo);
+=>   27:     compareObjects2(&tree, &dumpInfo);
+     28: /*
+     29:     int runProgram = 1;
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h
+Compiled:	Nov 12 2025 23:43:24, GNU g++ 13.2.0, std=201703L, MinGW-W64 Runtime 11.0.1 (alpha - rev. 0) 0000-00-00, 64-bit, DEBUG
+Started:	Nov 12 2025 23:43:28
+
+Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
+Directory:	C:\Users\Admin\Desktop\prodva\Akinator
+
+--------------------------------------------------
