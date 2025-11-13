@@ -3312,3 +3312,295 @@ Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
 Directory:	C:\Users\Admin\Desktop\prodva\Akinator
 
 --------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe,
+
+ВНЕЗАПНО: #1: РљСѓС‡Р° Р±С‹Р»Р° РїРѕРІСЂРµР¶РґРµРЅР°. (0xC0000374) при выполнении кода по адресу 0x00007FFB01AD7885 в функции RtlpMuiRegCreateRegistryInfo() в модуле C:\WINDOWS\SYSTEM32\ntdll.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+Ой, всё (EXCEPTION_NONCONTINUABLE).
+
+#1: TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400], Instance: 0x00007FF63E41A030 (64-bit), Flags: Cmdre0, Thread: 0x2E5C (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00007FFB01AD7885 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlpMuiRegCreateRegistryInfo()
+# 2 0x00007FFB019E6742 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlSetProcessPreferredUILanguages()
+# 3 0x00007FFB01ADD9AA in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlLengthCurrentClearRunForwardEx()
+# 4 0x00007FFB019DED2B in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlAllocateHeap()
+# 5 0x00007FFB01A38F9A in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlFreeHeap()
+# 6 0x00007FFB013FD60C in C:\WINDOWS\System32\msvcrt.dll: free()
+
+# 7 0x00007FF63E1C3D30 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: readFileAndCreateTree() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:480:
+
+    478: 
+    479: 
+=>  480:     free(bufferStart);
+    481:     treeDump(tree, dumpInfo, "after Creating a tree");
+    482: 
+
+# 8 0x00007FF63E160430 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: main() at C:/Users/Admin/Desktop/prodva/Akinator/main.cpp:20:
+
+     18:     dumpInfo.nameOfDumpFile = "dump.html";
+     19: 
+=>   20:     if (readFileAndCreateTree(&tree, &dumpInfo, "treeSave.txt"))
+     21:         return 1;
+     22: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h
+Compiled:	Nov 13 2025 19:33:13, GNU g++ 13.2.0, std=201703L, MinGW-W64 Runtime 11.0.1 (alpha - rev. 0) 0000-00-00, 64-bit, DEBUG
+Started:	Nov 13 2025 19:33:21
+
+Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
+Directory:	C:\Users\Admin\Desktop\prodva\Akinator
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe,
+
+ВНЕЗАПНО: #1: РљСѓС‡Р° Р±С‹Р»Р° РїРѕРІСЂРµР¶РґРµРЅР°. (0xC0000374) при выполнении кода по адресу 0x00007FFB01AD7885 в функции RtlpMuiRegCreateRegistryInfo() в модуле C:\WINDOWS\SYSTEM32\ntdll.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+Ой, всё (EXCEPTION_NONCONTINUABLE).
+
+С помощью функции _set_se_translator() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400], Instance: 0x00007FF63E41A030 (64-bit), Flags: Cmdre0, Thread: 0x2E5C (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00007FFB01AD7885 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlpMuiRegCreateRegistryInfo()
+# 2 0x00007FFB019E6742 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlSetProcessPreferredUILanguages()
+# 3 0x00007FFB01ADD9AA in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlLengthCurrentClearRunForwardEx()
+# 4 0x00007FFB019DED2B in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlAllocateHeap()
+# 5 0x00007FFB01A38F9A in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlFreeHeap()
+# 6 0x00007FFB013FD60C in C:\WINDOWS\System32\msvcrt.dll: free()
+
+# 7 0x00007FF63E1C3D30 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: readFileAndCreateTree() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:480:
+
+    478: 
+    479: 
+=>  480:     free(bufferStart);
+    481:     treeDump(tree, dumpInfo, "after Creating a tree");
+    482: 
+
+# 8 0x00007FF63E160430 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: main() at C:/Users/Admin/Desktop/prodva/Akinator/main.cpp:20:
+
+     18:     dumpInfo.nameOfDumpFile = "dump.html";
+     19: 
+=>   20:     if (readFileAndCreateTree(&tree, &dumpInfo, "treeSave.txt"))
+     21:         return 1;
+     22: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h
+Compiled:	Nov 13 2025 19:33:13, GNU g++ 13.2.0, std=201703L, MinGW-W64 Runtime 11.0.1 (alpha - rev. 0) 0000-00-00, 64-bit, DEBUG
+Started:	Nov 13 2025 19:33:21
+
+Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
+Directory:	C:\Users\Admin\Desktop\prodva\Akinator
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe,
+
+ВНЕЗАПНО: #1: РљСѓС‡Р° Р±С‹Р»Р° РїРѕРІСЂРµР¶РґРµРЅР°. (0xC0000374) при выполнении кода по адресу 0x00007FFB01AD7885 в функции RtlpMuiRegCreateRegistryInfo() в модуле C:\WINDOWS\SYSTEM32\ntdll.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+Ой, всё (EXCEPTION_NONCONTINUABLE).
+
+#1: TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400], Instance: 0x00007FF7907AA030 (64-bit), Flags: Cmdre0, Thread: 0x6CFC (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00007FFB01AD7885 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlpMuiRegCreateRegistryInfo()
+# 2 0x00007FFB019E6742 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlSetProcessPreferredUILanguages()
+# 3 0x00007FFB01ADD9AA in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlLengthCurrentClearRunForwardEx()
+# 4 0x00007FFB019DED2B in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlAllocateHeap()
+# 5 0x00007FFB01A38F65 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlFreeHeap()
+# 6 0x00007FFB013FD60C in C:\WINDOWS\System32\msvcrt.dll: free()
+# 7 0x00007FF79058176E in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: (anonymous namespace)::TX::txDemangle() at C:/Users/Admin/Downloads/CodeBlocks/TX/TXLib.h:14974
+
+# 8 0x00007FF7905849FF in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: stackCtor() at C:/Users/Admin/Desktop/prodva/Akinator/stackFunctions.cpp:28:
+
+     26:     stack->nameOfStack = nameOfStack;
+     27:     stack->errorCode = 0;
+=>   28:     stack->nameOfType = txDemangle(typeid(stackElement_t).name()).c_str();
+     29: 
+     30:     stack->stackInfo.nameOfFunct = creationInfo.nameOfFunct;
+
+# 9 0x00007FF790552E57 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: defineTheObject() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:211:
+
+    209:     struct stack retStack = {};
+    210:     struct info stackInfo = {};
+=>  211:     STACK_CTOR(retStack, stackInfo, 25);
+    212: 
+    213:     if (findTheObjectPath(*treeRoot(tree), objectName, &retStack))
+
+#10 0x00007FF790553ACB in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: runAkinator() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:423:
+
+    421: 
+    422:         case defineObject:
+=>  423:             defineTheObject (tree, dumpInfo);
+    424:             break;
+    425: 
+
+#11 0x00007FF7904F0468 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: main() at C:/Users/Admin/Desktop/prodva/Akinator/main.cpp:28:
+
+     26:     while (runProgram) {
+     27: 
+=>   28:     if (runAkinator(&tree, &dumpInfo))
+     29:         break;
+     30:     requestToContinue (&runProgram);
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in std::string {anonymous}::TX::txDemangle(const char*) at C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h:14974:
+
+  14972: $1  char* typeName = txDemangle (mangledName, std::nomeow);
+  14973: $   std::string name (typeName? typeName : "");
+=>14974: $   free (typeName);
+  14975: 
+  14976: $   return name;
+
+# 1 in int stackCtor(stack_t*, ssize_t, const char*, info) at stackFunctions.cpp:28:
+
+     26:     stack->nameOfStack = nameOfStack;
+     27:     stack->errorCode = 0;
+=>   28:     stack->nameOfType = txDemangle(typeid(stackElement_t).name()).c_str();
+     29: 
+     30:     stack->stackInfo.nameOfFunct = creationInfo.nameOfFunct;
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h
+Compiled:	Nov 13 2025 22:24:38, GNU g++ 13.2.0, std=201703L, MinGW-W64 Runtime 11.0.1 (alpha - rev. 0) 0000-00-00, 64-bit, DEBUG
+Started:	Nov 13 2025 22:24:43
+
+Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
+Directory:	C:\Users\Admin\Desktop\prodva\Akinator
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe,
+
+ВНЕЗАПНО: #1: РљСѓС‡Р° Р±С‹Р»Р° РїРѕРІСЂРµР¶РґРµРЅР°. (0xC0000374) при выполнении кода по адресу 0x00007FFB01AD7885 в функции RtlpMuiRegCreateRegistryInfo() в модуле C:\WINDOWS\SYSTEM32\ntdll.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+Ой, всё (EXCEPTION_NONCONTINUABLE).
+
+С помощью функции _set_se_translator() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400], Instance: 0x00007FF7907AA030 (64-bit), Flags: Cmdre0, Thread: 0x6CFC (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00007FFB01AD7885 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlpMuiRegCreateRegistryInfo()
+# 2 0x00007FFB019E6742 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlSetProcessPreferredUILanguages()
+# 3 0x00007FFB01ADD9AA in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlLengthCurrentClearRunForwardEx()
+# 4 0x00007FFB019DED2B in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlAllocateHeap()
+# 5 0x00007FFB01A38F65 in C:\WINDOWS\SYSTEM32\ntdll.dll: RtlFreeHeap()
+# 6 0x00007FFB013FD60C in C:\WINDOWS\System32\msvcrt.dll: free()
+# 7 0x00007FF79058176E in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: (anonymous namespace)::TX::txDemangle() at C:/Users/Admin/Downloads/CodeBlocks/TX/TXLib.h:14974
+
+# 8 0x00007FF7905849FF in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: stackCtor() at C:/Users/Admin/Desktop/prodva/Akinator/stackFunctions.cpp:28:
+
+     26:     stack->nameOfStack = nameOfStack;
+     27:     stack->errorCode = 0;
+=>   28:     stack->nameOfType = txDemangle(typeid(stackElement_t).name()).c_str();
+     29: 
+     30:     stack->stackInfo.nameOfFunct = creationInfo.nameOfFunct;
+
+# 9 0x00007FF790552E57 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: defineTheObject() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:211:
+
+    209:     struct stack retStack = {};
+    210:     struct info stackInfo = {};
+=>  211:     STACK_CTOR(retStack, stackInfo, 25);
+    212: 
+    213:     if (findTheObjectPath(*treeRoot(tree), objectName, &retStack))
+
+#10 0x00007FF790553ACB in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: runAkinator() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:423:
+
+    421: 
+    422:         case defineObject:
+=>  423:             defineTheObject (tree, dumpInfo);
+    424:             break;
+    425: 
+
+#11 0x00007FF7904F0468 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: main() at C:/Users/Admin/Desktop/prodva/Akinator/main.cpp:28:
+
+     26:     while (runProgram) {
+     27: 
+=>   28:     if (runAkinator(&tree, &dumpInfo))
+     29:         break;
+     30:     requestToContinue (&runProgram);
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in std::string {anonymous}::TX::txDemangle(const char*) at C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h:14974:
+
+  14972: $1  char* typeName = txDemangle (mangledName, std::nomeow);
+  14973: $   std::string name (typeName? typeName : "");
+=>14974: $   free (typeName);
+  14975: 
+  14976: $   return name;
+
+# 1 in int stackCtor(stack_t*, ssize_t, const char*, info) at stackFunctions.cpp:28:
+
+     26:     stack->nameOfStack = nameOfStack;
+     27:     stack->errorCode = 0;
+=>   28:     stack->nameOfType = txDemangle(typeid(stackElement_t).name()).c_str();
+     29: 
+     30:     stack->stackInfo.nameOfFunct = creationInfo.nameOfFunct;
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h
+Compiled:	Nov 13 2025 22:24:38, GNU g++ 13.2.0, std=201703L, MinGW-W64 Runtime 11.0.1 (alpha - rev. 0) 0000-00-00, 64-bit, DEBUG
+Started:	Nov 13 2025 22:24:44
+
+Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
+Directory:	C:\Users\Admin\Desktop\prodva\Akinator
+
+--------------------------------------------------

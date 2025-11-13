@@ -4,8 +4,6 @@
 struct node_t {
     char* objectDescription;
 
-    node_t* parent;
-
     node_t* left;
     node_t* right;
 };

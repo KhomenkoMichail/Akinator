@@ -1,1 +1,1 @@
-("animal"("is my cat"("is gray"("tish"nil nil )("fish"nil nil ))("Poltorashka"nil nil ))("Teaches mathan"("Petrovich"nil nil )("is my bro"("is albinos"("Timur"nil nil )("Vladoss"nil nil ))("Divari"nil nil ))))
+("animal"("Poltorashka"nil nil )("Teaches mathan"("Petrovich"nil nil )("Divari"nil nil )))

@@ -15,9 +15,9 @@ node_t* treeNodeCtor (const char* newObjectDescription) {
 
     node_t* newNode = (node_t*)calloc(1, sizeof(node_t));
 
-    //*(nodeObjectDescription(newNode)) = strdup(newObjectDescription);
-    *(nodeObjectDescription(newNode)) = (char*)calloc(NODE_DESCRIPTION_SIZE, sizeof(char));
-    strncpy(*(nodeObjectDescription(newNode)), newObjectDescription, NODE_DESCRIPTION_SIZE - 1);
+    *(nodeObjectDescription(newNode)) = strdup(newObjectDescription);
+    //*(nodeObjectDescription(newNode)) = (char*)calloc(NODE_DESCRIPTION_SIZE, sizeof(char));
+    //strncpy(*(nodeObjectDescription(newNode)), newObjectDescription, NODE_DESCRIPTION_SIZE - 1);
 
     *(nodeLeft(newNode)) = NULL;
     *(nodeRight(newNode)) = NULL;
@@ -60,9 +60,9 @@ int fprintfNodeGraph (node_t* node, int rank, FILE* graphFile, size_t* nodesPass
     assert(node);
     assert(graphFile);
 
-    //(*nodesPassed) += 1;
-    //if (*nodesPassed > treeSize)
-    //    return tooManyRecursiveCalls;
+    (*nodesPassed) += 1;
+    if (*nodesPassed > treeSize)
+        return tooManyRecursiveCalls;
 
     char leftPtr[STR_SIZE] = "NULL";
     if (*(nodeLeft(node)) != NULL)
@@ -72,8 +72,8 @@ int fprintfNodeGraph (node_t* node, int rank, FILE* graphFile, size_t* nodesPass
     if (*(nodeRight(node)) != NULL)
         snprintf(rightPtr, sizeof(rightPtr), "0x%p", *(nodeRight(node)));
 
-    fprintf(graphFile, "    node0x%p [rank = %d, label = \"{ <addr>0x%p| %s| PARENT:\\n0x%p|{<left>YES\\n %s| <right>NO\\n %s}}\", style = filled, fillcolor = \"#c1e0a7ff\", color = black];\n",
-                node, rank, node, *nodeObjectDescription(node), *nodeParent(node), leftPtr, rightPtr);
+    fprintf(graphFile, "    node0x%p [rank = %d, label = \"{ <addr>0x%p| %s|{<left>YES\\n %s| <right>NO\\n %s}}\", style = filled, fillcolor = \"#c1e0a7ff\", color = black];\n",
+                node, rank, node, *nodeObjectDescription(node), leftPtr, rightPtr);
 
     node_t** left = nodeLeft(node);
     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
@@ -90,9 +90,9 @@ int fprintfNodeLinksForGraph (node_t* node, FILE* graphFile, size_t* nodesPassed
     assert(node);
     assert(graphFile);
 
-    //(*nodesPassed) += 1;
-    //if (*nodesPassed > treeSize)
-    //    return tooManyRecursiveCalls;
+    (*nodesPassed) += 1;
+    if (*nodesPassed > treeSize)
+        return tooManyRecursiveCalls;
 
     node_t** left = nodeLeft(node);
     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left))) {
@@ -271,6 +271,7 @@ int deleteNode(node_t* node , size_t* nodesPassed, size_t treeSize) {
         && !(_txIsBadReadPtr(*right)))
         deleteNode(*nodeRight(node), nodesPassed, treeSize);
 
+    free(node->objectDescription);
     free(node);
     return 0;
 }

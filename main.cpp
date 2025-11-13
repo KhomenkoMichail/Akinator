@@ -25,7 +25,8 @@ int main (void) {
     printfWithDelay("Hi, my name is akinator\n");
     while (runProgram) {
 
-    runAkinator(&tree, &dumpInfo);
+    if (runAkinator(&tree, &dumpInfo))
+        break;
     requestToContinue (&runProgram);
     }
 

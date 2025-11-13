@@ -20,13 +20,13 @@ void printfComparing (tree_t* tree, const char* firstObjectName, const char* sec
 
 int compareObjects (tree_t* tree, dump* dumpInfo);
 
-void runAkinator (tree_t* tree, dump* dumpInfo);
+int runAkinator (tree_t* tree, dump* dumpInfo);
 
 int getModeChoice (void);
 
 void fprintfNode (node_t* node, FILE* file);
 
-node_t* nodeCtorByReadBuffer (char** bufPos, dump* dumpInfo);
+node_t* nodeCtorByReadBuffer(char** bufPos, tree_t* tree, dump* dumpInfo);
 
 void skipSpaces (char** bufPos);
 
