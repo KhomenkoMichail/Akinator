@@ -41,4 +41,9 @@ int defineTheObject (tree_t* tree, dump* dumpInfo);
 void printfObjectDefinition (tree_t* tree, const char* objectName, stack_t* stack);
 
 int findTheObjectPath (node_t* node, const char* objectName, stack_t* stack);
+
+void requestToContinue (int* continueFlag);
+
+int saveTreeInFile (tree_t* tree, const char* nameOfSaveFile);
+
 #endif

@@ -15,9 +15,9 @@ node_t* treeNodeCtor (const char* newObjectDescription) {
 
     node_t* newNode = (node_t*)calloc(1, sizeof(node_t));
 
-    *(nodeObjectDescription(newNode)) = strdup(newObjectDescription);
-    //*(nodeObjectDescription(newNode)) = (char*)calloc(NODE_DESCRIPTION_SIZE, sizeof(char));
-    //strncpy(*(nodeObjectDescription(newNode)), newObjectDescription, NODE_DESCRIPTION_SIZE - 1);
+    //*(nodeObjectDescription(newNode)) = strdup(newObjectDescription);
+    *(nodeObjectDescription(newNode)) = (char*)calloc(NODE_DESCRIPTION_SIZE, sizeof(char));
+    strncpy(*(nodeObjectDescription(newNode)), newObjectDescription, NODE_DESCRIPTION_SIZE - 1);
 
     *(nodeLeft(newNode)) = NULL;
     *(nodeRight(newNode)) = NULL;

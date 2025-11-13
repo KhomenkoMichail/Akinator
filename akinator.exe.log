@@ -1566,3 +1566,1749 @@ Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
 Directory:	C:\Users\Admin\Desktop\prodva\Akinator
 
 --------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe,
+
+ВНЕЗАПНО: Ю-ху! Переполнение стека!
+
+#1: Исключение EXCEPTION_STACK_OVERFLOW (0xC00000FD) при выполнении кода по адресу 0x00007FFB0145AE67 в функции setjmpex() в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400], Instance: 0x00007FF63B9FA030 (64-bit), Flags: Cmdre0, Thread: 0x5E1C (Main), GetLastError(): 183 (РќРµРІРѕР·РјРѕР¶РЅРѕ СЃРѕР·РґР°С‚СЊ С„Р°Р№Р», С‚Р°Рє РєР°Рє РѕРЅ СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓРµС‚), errno: 34 (Result too large), _doserrno: 3 (No such process). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00007FFB0145AE67 in C:\WINDOWS\System32\msvcrt.dll: setjmpex()
+# 1 0x00007FFB0140383E in C:\WINDOWS\System32\msvcrt.dll: write()
+# 2 0x00007FFB014037EE in C:\WINDOWS\System32\msvcrt.dll: write()
+# 3 0x00007FFB0142B7F1 in C:\WINDOWS\System32\msvcrt.dll: flsbuf()
+# 4 0x00007FFB01431DD3 in C:\WINDOWS\System32\msvcrt.dll: fputc()
+# 5 0x00007FF63B7F4E00 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: __mingw_pformat() at E:/temp/gcc/build-mingw-w64/mingw-w64-crt/../../src/mingw-w64-crt/stdio/mingw_pformat.c:402
+# 6 0x00007FF63B7EC99D in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: __mingw_vfprintf() at E:/temp/gcc/build-mingw-w64/mingw-w64-crt/../../src/mingw-w64-crt/stdio/mingw_vfprintf.c:54
+
+# 7 0x00007FF63B803227 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintf() at C:/Users/Admin/Downloads/CodeBlocks/MinGW/x86_64-w64-mingw32/include/stdio.h:364:
+
+    362:   int __retval;
+    363:   __builtin_va_list __local_argv; __builtin_va_start( __local_argv, __format );
+=>  364:   __retval = __mingw_vfprintf( __stream, __format, __local_argv );
+    365:   __builtin_va_end( __local_argv );
+    366:   return __retval;
+
+# 8 0x00007FF63B770DF9 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:75:
+
+     73:         snprintf(rightPtr, sizeof(rightPtr), "0x%p", *(nodeRight(node)));
+     74: 
+=>   75:     fprintf(graphFile, "    node0x%p [rank = %d, label = \"{ <addr>0x%p| %s| PARENT:\\n0x%p|{<left>YES\\n %s| <right>NO\\n %s}}\", style = filled, fillcolor = \"#c1e0a7ff\", color = black];\n",
+     76:                 node, rank, node, *nodeObjectDescription(node), *nodeParent(node), leftPtr, rightPtr);
+     77: 
+
+# 9 0x00007FF63B770EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#10 0x00007FF63B770E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#11 0x00007FF63B770EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#12 0x00007FF63B770E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#13 0x00007FF63B770EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#14 0x00007FF63B770E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#15 0x00007FF63B770EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#16 0x00007FF63B770E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#17 0x00007FF63B770EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#18 0x00007FF63B770E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#19 0x00007FF63B770EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#20 0x00007FF63B770E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#21 0x00007FF63B770EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#22 0x00007FF63B770E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#23 0x00007FF63B770EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#24 0x00007FF63B770E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#25 0x00007FF63B770EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#26 0x00007FF63B770E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#27 0x00007FF63B770EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#28 0x00007FF63B770E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#29 0x00007FF63B770EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#30 0x00007FF63B770E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#31 0x00007FF63B770EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#32 0x00007FF63B770E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#33 0x00007FF63B770EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#34 0x00007FF63B770E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#35 0x00007FF63B770EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#36 0x00007FF63B770E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#37 0x00007FF63B770EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#38 0x00007FF63B770E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#39 0x00007FF63B770EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#40 0x00007FF63B770E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#41 0x00007FF63B770EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#42 0x00007FF63B770E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#43 0x00007FF63B770EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#44 0x00007FF63B770E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#45 0x00007FF63B770EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#46 0x00007FF63B770E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#47 0x00007FF63B770EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#48 0x00007FF63B770E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#49 0x00007FF63B770EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#50 0x00007FF63B770E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#51 0x00007FF63B770EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#52 0x00007FF63B770E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/p...
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h
+Compiled:	Nov 13 2025 18:13:09, GNU g++ 13.2.0, std=201703L, MinGW-W64 Runtime 11.0.1 (alpha - rev. 0) 0000-00-00, 64-bit, DEBUG
+Started:	Nov 13 2025 18:13:16
+
+Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
+Directory:	C:\Users\Admin\Desktop\prodva\Akinator
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe,
+
+ВНЕЗАПНО: Ю-ху! Переполнение стека!
+
+#1: Исключение EXCEPTION_STACK_OVERFLOW (0xC00000FD) при выполнении кода по адресу 0x00007FFB0145AE67 в функции setjmpex() в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции _set_se_translator() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400], Instance: 0x00007FF63B9FA030 (64-bit), Flags: Cmdre0, Thread: 0x5E1C (Main), GetLastError(): 183 (РќРµРІРѕР·РјРѕР¶РЅРѕ СЃРѕР·РґР°С‚СЊ С„Р°Р№Р», С‚Р°Рє РєР°Рє РѕРЅ СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓРµС‚), errno: 34 (Result too large), _doserrno: 3 (No such process). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00007FFB0145AE67 in C:\WINDOWS\System32\msvcrt.dll: setjmpex()
+# 1 0x00007FFB0140383E in C:\WINDOWS\System32\msvcrt.dll: write()
+# 2 0x00007FFB014037EE in C:\WINDOWS\System32\msvcrt.dll: write()
+# 3 0x00007FFB0142B7F1 in C:\WINDOWS\System32\msvcrt.dll: flsbuf()
+# 4 0x00007FFB01431DD3 in C:\WINDOWS\System32\msvcrt.dll: fputc()
+# 5 0x00007FF63B7F4E00 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: __mingw_pformat() at E:/temp/gcc/build-mingw-w64/mingw-w64-crt/../../src/mingw-w64-crt/stdio/mingw_pformat.c:402
+# 6 0x00007FF63B7EC99D in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: __mingw_vfprintf() at E:/temp/gcc/build-mingw-w64/mingw-w64-crt/../../src/mingw-w64-crt/stdio/mingw_vfprintf.c:54
+
+# 7 0x00007FF63B803227 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintf() at C:/Users/Admin/Downloads/CodeBlocks/MinGW/x86_64-w64-mingw32/include/stdio.h:364:
+
+    362:   int __retval;
+    363:   __builtin_va_list __local_argv; __builtin_va_start( __local_argv, __format );
+=>  364:   __retval = __mingw_vfprintf( __stream, __format, __local_argv );
+    365:   __builtin_va_end( __local_argv );
+    366:   return __retval;
+
+# 8 0x00007FF63B770DF9 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:75:
+
+     73:         snprintf(rightPtr, sizeof(rightPtr), "0x%p", *(nodeRight(node)));
+     74: 
+=>   75:     fprintf(graphFile, "    node0x%p [rank = %d, label = \"{ <addr>0x%p| %s| PARENT:\\n0x%p|{<left>YES\\n %s| <right>NO\\n %s}}\", style = filled, fillcolor = \"#c1e0a7ff\", color = black];\n",
+     76:                 node, rank, node, *nodeObjectDescription(node), *nodeParent(node), leftPtr, rightPtr);
+     77: 
+
+# 9 0x00007FF63B770EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#10 0x00007FF63B770E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#11 0x00007FF63B770EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#12 0x00007FF63B770E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#13 0x00007FF63B770EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#14 0x00007FF63B770E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#15 0x00007FF63B770EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#16 0x00007FF63B770E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#17 0x00007FF63B770EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#18 0x00007FF63B770E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#19 0x00007FF63B770EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#20 0x00007FF63B770E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#21 0x00007FF63B770EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#22 0x00007FF63B770E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#23 0x00007FF63B770EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#24 0x00007FF63B770E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#25 0x00007FF63B770EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#26 0x00007FF63B770E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#27 0x00007FF63B770EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#28 0x00007FF63B770E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#29 0x00007FF63B770EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#30 0x00007FF63B770E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#31 0x00007FF63B770EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#32 0x00007FF63B770E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#33 0x00007FF63B770EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#34 0x00007FF63B770E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#35 0x00007FF63B770EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#36 0x00007FF63B770E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#37 0x00007FF63B770EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#38 0x00007FF63B770E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#39 0x00007FF63B770EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#40 0x00007FF63B770E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#41 0x00007FF63B770EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#42 0x00007FF63B770E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#43 0x00007FF63B770EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#44 0x00007FF63B770E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#45 0x00007FF63B770EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#46 0x00007FF63B770E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#47 0x00007FF63B770EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#48 0x00007FF63B770E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#49 0x00007FF63B770EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#50 0x00007FF63B770E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#51 0x00007FF63B770EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#52 0x00007FF63B770E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/p...
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h
+Compiled:	Nov 13 2025 18:13:09, GNU g++ 13.2.0, std=201703L, MinGW-W64 Runtime 11.0.1 (alpha - rev. 0) 0000-00-00, 64-bit, DEBUG
+Started:	Nov 13 2025 18:13:16
+
+Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
+Directory:	C:\Users\Admin\Desktop\prodva\Akinator
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe,
+
+ВНЕЗАПНО: Ю-ху! Переполнение стека!
+
+#1: Исключение EXCEPTION_STACK_OVERFLOW (0xC00000FD) при выполнении кода по адресу 0x00007FFB0145AE67 в функции setjmpex() в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400], Instance: 0x00007FF6AA33A030 (64-bit), Flags: Cmdre0, Thread: 0x5D9C (Main), GetLastError(): 183 (РќРµРІРѕР·РјРѕР¶РЅРѕ СЃРѕР·РґР°С‚СЊ С„Р°Р№Р», С‚Р°Рє РєР°Рє РѕРЅ СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓРµС‚), errno: 34 (Result too large), _doserrno: 3 (No such process). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00007FFB0145AE67 in C:\WINDOWS\System32\msvcrt.dll: setjmpex()
+# 1 0x00007FFB0140383E in C:\WINDOWS\System32\msvcrt.dll: write()
+# 2 0x00007FFB014037EE in C:\WINDOWS\System32\msvcrt.dll: write()
+# 3 0x00007FFB0142B7F1 in C:\WINDOWS\System32\msvcrt.dll: flsbuf()
+# 4 0x00007FFB01431DD3 in C:\WINDOWS\System32\msvcrt.dll: fputc()
+# 5 0x00007FF6AA134E00 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: __mingw_pformat() at E:/temp/gcc/build-mingw-w64/mingw-w64-crt/../../src/mingw-w64-crt/stdio/mingw_pformat.c:402
+# 6 0x00007FF6AA12C99D in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: __mingw_vfprintf() at E:/temp/gcc/build-mingw-w64/mingw-w64-crt/../../src/mingw-w64-crt/stdio/mingw_vfprintf.c:54
+
+# 7 0x00007FF6AA143227 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintf() at C:/Users/Admin/Downloads/CodeBlocks/MinGW/x86_64-w64-mingw32/include/stdio.h:364:
+
+    362:   int __retval;
+    363:   __builtin_va_list __local_argv; __builtin_va_start( __local_argv, __format );
+=>  364:   __retval = __mingw_vfprintf( __stream, __format, __local_argv );
+    365:   __builtin_va_end( __local_argv );
+    366:   return __retval;
+
+# 8 0x00007FF6AA0B0DF9 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:75:
+
+     73:         snprintf(rightPtr, sizeof(rightPtr), "0x%p", *(nodeRight(node)));
+     74: 
+=>   75:     fprintf(graphFile, "    node0x%p [rank = %d, label = \"{ <addr>0x%p| %s| PARENT:\\n0x%p|{<left>YES\\n %s| <right>NO\\n %s}}\", style = filled, fillcolor = \"#c1e0a7ff\", color = black];\n",
+     76:                 node, rank, node, *nodeObjectDescription(node), *nodeParent(node), leftPtr, rightPtr);
+     77: 
+
+# 9 0x00007FF6AA0B0E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#10 0x00007FF6AA0B0EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#11 0x00007FF6AA0B0E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#12 0x00007FF6AA0B0EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#13 0x00007FF6AA0B0E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#14 0x00007FF6AA0B0EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#15 0x00007FF6AA0B0E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#16 0x00007FF6AA0B0EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#17 0x00007FF6AA0B0E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#18 0x00007FF6AA0B0EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#19 0x00007FF6AA0B0E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#20 0x00007FF6AA0B0EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#21 0x00007FF6AA0B0E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#22 0x00007FF6AA0B0EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#23 0x00007FF6AA0B0E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#24 0x00007FF6AA0B0EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#25 0x00007FF6AA0B0E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#26 0x00007FF6AA0B0EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#27 0x00007FF6AA0B0E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#28 0x00007FF6AA0B0EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#29 0x00007FF6AA0B0E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#30 0x00007FF6AA0B0EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#31 0x00007FF6AA0B0E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#32 0x00007FF6AA0B0EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#33 0x00007FF6AA0B0E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#34 0x00007FF6AA0B0EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#35 0x00007FF6AA0B0E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#36 0x00007FF6AA0B0EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#37 0x00007FF6AA0B0E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#38 0x00007FF6AA0B0EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#39 0x00007FF6AA0B0E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#40 0x00007FF6AA0B0EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#41 0x00007FF6AA0B0E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#42 0x00007FF6AA0B0EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#43 0x00007FF6AA0B0E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#44 0x00007FF6AA0B0EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#45 0x00007FF6AA0B0E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#46 0x00007FF6AA0B0EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#47 0x00007FF6AA0B0E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#48 0x00007FF6AA0B0EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#49 0x00007FF6AA0B0E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#50 0x00007FF6AA0B0EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#51 0x00007FF6AA0B0E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#52 0x00007FF6AA0B0EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Use...
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h
+Compiled:	Nov 13 2025 18:18:22, GNU g++ 13.2.0, std=201703L, MinGW-W64 Runtime 11.0.1 (alpha - rev. 0) 0000-00-00, 64-bit, DEBUG
+Started:	Nov 13 2025 18:18:27
+
+Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
+Directory:	C:\Users\Admin\Desktop\prodva\Akinator
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe,
+
+ВНЕЗАПНО: Ю-ху! Переполнение стека!
+
+#1: Исключение EXCEPTION_STACK_OVERFLOW (0xC00000FD) при выполнении кода по адресу 0x00007FFB0145AE67 в функции setjmpex() в модуле C:\WINDOWS\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции _set_se_translator() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400], Instance: 0x00007FF6AA33A030 (64-bit), Flags: Cmdre0, Thread: 0x5D9C (Main), GetLastError(): 183 (РќРµРІРѕР·РјРѕР¶РЅРѕ СЃРѕР·РґР°С‚СЊ С„Р°Р№Р», С‚Р°Рє РєР°Рє РѕРЅ СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓРµС‚), errno: 34 (Result too large), _doserrno: 3 (No such process). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00007FFB0145AE67 in C:\WINDOWS\System32\msvcrt.dll: setjmpex()
+# 1 0x00007FFB0140383E in C:\WINDOWS\System32\msvcrt.dll: write()
+# 2 0x00007FFB014037EE in C:\WINDOWS\System32\msvcrt.dll: write()
+# 3 0x00007FFB0142B7F1 in C:\WINDOWS\System32\msvcrt.dll: flsbuf()
+# 4 0x00007FFB01431DD3 in C:\WINDOWS\System32\msvcrt.dll: fputc()
+# 5 0x00007FF6AA134E00 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: __mingw_pformat() at E:/temp/gcc/build-mingw-w64/mingw-w64-crt/../../src/mingw-w64-crt/stdio/mingw_pformat.c:402
+# 6 0x00007FF6AA12C99D in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: __mingw_vfprintf() at E:/temp/gcc/build-mingw-w64/mingw-w64-crt/../../src/mingw-w64-crt/stdio/mingw_vfprintf.c:54
+
+# 7 0x00007FF6AA143227 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintf() at C:/Users/Admin/Downloads/CodeBlocks/MinGW/x86_64-w64-mingw32/include/stdio.h:364:
+
+    362:   int __retval;
+    363:   __builtin_va_list __local_argv; __builtin_va_start( __local_argv, __format );
+=>  364:   __retval = __mingw_vfprintf( __stream, __format, __local_argv );
+    365:   __builtin_va_end( __local_argv );
+    366:   return __retval;
+
+# 8 0x00007FF6AA0B0DF9 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:75:
+
+     73:         snprintf(rightPtr, sizeof(rightPtr), "0x%p", *(nodeRight(node)));
+     74: 
+=>   75:     fprintf(graphFile, "    node0x%p [rank = %d, label = \"{ <addr>0x%p| %s| PARENT:\\n0x%p|{<left>YES\\n %s| <right>NO\\n %s}}\", style = filled, fillcolor = \"#c1e0a7ff\", color = black];\n",
+     76:                 node, rank, node, *nodeObjectDescription(node), *nodeParent(node), leftPtr, rightPtr);
+     77: 
+
+# 9 0x00007FF6AA0B0E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#10 0x00007FF6AA0B0EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#11 0x00007FF6AA0B0E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#12 0x00007FF6AA0B0EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#13 0x00007FF6AA0B0E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#14 0x00007FF6AA0B0EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#15 0x00007FF6AA0B0E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#16 0x00007FF6AA0B0EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#17 0x00007FF6AA0B0E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#18 0x00007FF6AA0B0EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#19 0x00007FF6AA0B0E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#20 0x00007FF6AA0B0EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#21 0x00007FF6AA0B0E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#22 0x00007FF6AA0B0EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#23 0x00007FF6AA0B0E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#24 0x00007FF6AA0B0EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#25 0x00007FF6AA0B0E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#26 0x00007FF6AA0B0EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#27 0x00007FF6AA0B0E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#28 0x00007FF6AA0B0EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#29 0x00007FF6AA0B0E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#30 0x00007FF6AA0B0EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#31 0x00007FF6AA0B0E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#32 0x00007FF6AA0B0EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#33 0x00007FF6AA0B0E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#34 0x00007FF6AA0B0EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#35 0x00007FF6AA0B0E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#36 0x00007FF6AA0B0EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#37 0x00007FF6AA0B0E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#38 0x00007FF6AA0B0EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#39 0x00007FF6AA0B0E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#40 0x00007FF6AA0B0EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#41 0x00007FF6AA0B0E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#42 0x00007FF6AA0B0EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#43 0x00007FF6AA0B0E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#44 0x00007FF6AA0B0EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#45 0x00007FF6AA0B0E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#46 0x00007FF6AA0B0EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#47 0x00007FF6AA0B0E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#48 0x00007FF6AA0B0EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#49 0x00007FF6AA0B0E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#50 0x00007FF6AA0B0EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:84:
+
+     82:     node_t** right = nodeRight(node);
+     83:     if((right != NULL) && (*right != NULL) && !(_txIsBadReadPtr(*right)))
+=>   84:         fprintfNodeGraph(*nodeRight(node), rank + 1, graphFile, nodesPassed, treeSize);
+     85: 
+     86:     return 0;
+
+#51 0x00007FF6AA0B0E78 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:80:
+
+     78:     node_t** left = nodeLeft(node);
+     79:     if((left != NULL) && (*left != NULL) && !(_txIsBadReadPtr(*left)))
+=>   80:         fprintfNodeGraph(*nodeLeft(node), rank + 1, graphFile, nodesPassed, treeSize);
+     81: 
+     82:     node_t** right = nodeRight(node);
+
+#52 0x00007FF6AA0B0EF7 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Use...
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h
+Compiled:	Nov 13 2025 18:18:22, GNU g++ 13.2.0, std=201703L, MinGW-W64 Runtime 11.0.1 (alpha - rev. 0) 0000-00-00, 64-bit, DEBUG
+Started:	Nov 13 2025 18:18:27
+
+Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
+Directory:	C:\Users\Admin\Desktop\prodva\Akinator
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe,
+
+ВНЕЗАПНО: signal (22, 0x00): SIGABRT: Аварийное завершение программы, вызвана функция abort(). 
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400], Instance: 0x00007FF6B5ABA030 (64-bit), Flags: Cmdre0, Thread: 0x2C6C (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00007FF6B58770F4 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: (anonymous namespace)::TX::_txError() at C:/Users/Admin/Downloads/CodeBlocks/TX/TXLib.h:11090
+# 1 0x00007FF6B587765C in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: (anonymous namespace)::TX::_txOnSignal() at C:/Users/Admin/Downloads/CodeBlocks/TX/TXLib.h:11171
+# 2 0x00007FFB0140EC01 in C:\WINDOWS\System32\msvcrt.dll: raise()
+# 3 0x00007FFB0141305B in C:\WINDOWS\System32\msvcrt.dll: abort()
+# 4 0x00007FFB0140F9DD in C:\WINDOWS\System32\msvcrt.dll: assert()
+
+# 5 0x00007FF6B5862360 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: guessTheObject() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:22:
+
+     20: 
+     21:     for(node_t* currentNode = *treeRoot(tree); ; ) {
+=>   22:         assert(currentNode);
+     23: 
+     24:         printf("It %s? (You can answer only \"yes\" or \"no\")\n", *nodeObjectDescription(currentNode));
+
+# 6 0x00007FF6B58637B6 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: runAkinator() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:370:
+
+    368:     switch (modeChoice) {
+    369:         case guessObject:
+=>  370:             guessTheObject (tree, dumpInfo);
+    371:             break;
+    372: 
+
+# 7 0x00007FF6B580046F in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: main() at C:/Users/Admin/Desktop/prodva/Akinator/main.cpp:35:
+
+     33:     while (runProgram) {
+     34: 
+=>   35:     runAkinator(&tree, &dumpInfo);
+     36:     requestToContinue (&runProgram);
+     37: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h
+Compiled:	Nov 13 2025 18:23:22, GNU g++ 13.2.0, std=201703L, MinGW-W64 Runtime 11.0.1 (alpha - rev. 0) 0000-00-00, 64-bit, DEBUG
+Started:	Nov 13 2025 18:23:27
+
+Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
+Directory:	C:\Users\Admin\Desktop\prodva\Akinator
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe,
+
+ВНЕЗАПНО: signal (22, 0x00): SIGABRT: Аварийное завершение программы, вызвана функция abort(). 
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400], Instance: 0x00007FF771D1A030 (64-bit), Flags: Cmdre0, Thread: 0x38E4 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00007FF771AD7124 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: (anonymous namespace)::TX::_txError() at C:/Users/Admin/Downloads/CodeBlocks/TX/TXLib.h:11090
+# 1 0x00007FF771AD768C in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: (anonymous namespace)::TX::_txOnSignal() at C:/Users/Admin/Downloads/CodeBlocks/TX/TXLib.h:11171
+# 2 0x00007FFB0140EC01 in C:\WINDOWS\System32\msvcrt.dll: raise()
+# 3 0x00007FFB0141305B in C:\WINDOWS\System32\msvcrt.dll: abort()
+# 4 0x00007FFB0140F9DD in C:\WINDOWS\System32\msvcrt.dll: assert()
+
+# 5 0x00007FF771AC296E in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: findTheObjectPath() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:133:
+
+    131: 
+    132: int findTheObjectPath (node_t* node, const char* objectName, stack_t* stack) {
+=>  133:     assert(node);
+    134:     assert(objectName);
+    135:     assert(stack);
+
+# 6 0x00007FF771AC2A65 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: findTheObjectPath() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:146:
+
+    144:     }
+    145: 
+=>  146:     if(findTheObjectPath(*nodeLeft(node), objectName, stack)) {
+    147:         stackPush(stack, yes);
+    148:         return 1;
+
+# 7 0x00007FF771AC2DE2 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: defineTheObject() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:203:
+
+    201:     STACK_CTOR(retStack, stackInfo, 25);
+    202: 
+=>  203:     if (findTheObjectPath(*treeRoot(tree), objectName, &retStack))
+    204:         printfObjectDefinition(tree, objectName, &retStack);
+    205:     else
+
+# 8 0x00007FF771AC37F8 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: runAkinator() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:374:
+
+    372: 
+    373:         case defineObject:
+=>  374:             defineTheObject (tree, dumpInfo);
+    375:             break;
+    376: 
+
+# 9 0x00007FF771A6046F in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: main() at C:/Users/Admin/Desktop/prodva/Akinator/main.cpp:35:
+
+     33:     while (runProgram) {
+     34: 
+=>   35:     runAkinator(&tree, &dumpInfo);
+     36:     requestToContinue (&runProgram);
+     37: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h
+Compiled:	Nov 13 2025 18:38:44, GNU g++ 13.2.0, std=201703L, MinGW-W64 Runtime 11.0.1 (alpha - rev. 0) 0000-00-00, 64-bit, DEBUG
+Started:	Nov 13 2025 18:38:49
+
+Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
+Directory:	C:\Users\Admin\Desktop\prodva\Akinator
+
+--------------------------------------------------

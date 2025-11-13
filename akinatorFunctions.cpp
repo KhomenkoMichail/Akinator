@@ -91,12 +91,12 @@ int addNewObject (tree_t* tree, node_t* parentNode, dump* dumpInfo) {
     *nodeLeft(parentNode) = treeNodeCtor (nodeDescription);
     strncpy (*(nodeObjectDescription(parentNode)), nodesDifference, NODE_DESCRIPTION_SIZE);
 
-    *nodeParent(*nodeRight(parentNode)) = parentNode;
-    *nodeParent(*nodeLeft(parentNode)) = parentNode;
+    //*nodeParent(*nodeRight(parentNode)) = parentNode;
+    //*nodeParent(*nodeLeft(parentNode)) = parentNode;
 
     *treeSize(tree) += 2;
 
-    treeDump(tree, dumpInfo, "after adding");
+    treeDump(tree, dumpInfo, "after adding new node");
 
     return 0;
 }
@@ -109,11 +109,11 @@ void getDifference (char nodesDifference[NODE_DESCRIPTION_SIZE]) {
 
         if ((strncmp(nodesDifference, "is not", 6) == 0) ||
             (strncmp(nodesDifference, "does not", 8) == 0) ||
-            (strncmp(nodesDifference, "donot", 5) == 0) ||
+            (strncmp(nodesDifference, "not", 3) == 0) ||
             (strncmp(nodesDifference, "do not", 6) == 0)) {
 
             printf("Don't use the negative form. I don't like negativity.\n");
-            printf("Try again. It...");
+            printf("Try again. It is...");
 
             for (size_t numOfChar = 0; numOfChar < NODE_DESCRIPTION_SIZE; numOfChar++)
                 nodesDifference[numOfChar] = '\0';
@@ -364,9 +364,24 @@ void runAkinator(tree_t* tree, dump* dumpInfo) {
     int modeChoice = getModeChoice();
 
     printf("modeChoice == %d\n", modeChoice);
-    if (modeChoice == 1)
-        guessTheObject (tree, dumpInfo);
 
+    switch (modeChoice) {
+        case guessObject:
+            guessTheObject (tree, dumpInfo);
+            break;
+
+        case defineObject:
+            defineTheObject (tree, dumpInfo);
+            break;
+
+        case objectsComparing:
+            compareObjects (tree, dumpInfo);
+            break;
+
+        default:
+            printf("Error! Bad modeChoice == %d\n", modeChoice);
+            break;
+    }
 }
 
 int getModeChoice(void) {
@@ -409,38 +424,33 @@ node_t* nodeCtorByReadBuffer(char** bufPos, dump* dumpInfo) {
     assert(bufPos);
     assert(dumpInfo);
 
-    printf("bufpos == %s, from string %d\n", *bufPos, __LINE__);
     skipSpaces(bufPos);//
     if(**bufPos == '(') {
         (*bufPos)++;
         skipSpaces(bufPos);//
-        printf("bufpos == %s, from string %d\n", *bufPos, __LINE__);
 
-        node_t* newNode = (node_t*)calloc(1, sizeof(node_t));
-        *nodeObjectDescription(newNode) = (*bufPos) + 1;
+        //node_t* newNode = (node_t*)calloc(1, sizeof(node_t));
+        //*nodeObjectDescription(newNode) = (*bufPos) + 1;
 
 
         int lenOfName = 0;
 
-        sscanf(*bufPos, "\"%*[^\"]\"%n", &lenOfName);
+        char nodeName[NODE_DESCRIPTION_SIZE] = {};
+        sscanf(*bufPos, "\"%[^\"]\"%n", name, &lenOfName);
 
-        char* nextQuotes = strchr((*bufPos) + 1, '"');
-        *nextQuotes = '\0';
-        printf("*nodeObjectDescription(newNode) == %s\n", *nodeObjectDescription(newNode));
+        node_t* newNode = treeNodeCtor(name);
 
-        printf("bufpos == %s, from string %d\n", *bufPos, __LINE__);
+        //char* nextQuotes = strchr((*bufPos) + 1, '"');
+        //*nextQuotes = '\0';
+
         (*bufPos) += lenOfName;
-        printf("bufpos == %s, from string %d\n", *bufPos, __LINE__);
-
 
         *nodeLeft(newNode) = nodeCtorByReadBuffer(bufPos, dumpInfo);
-        printf("bufpos == %s, from string %d\n", *bufPos, __LINE__);
         *nodeRight(newNode) = nodeCtorByReadBuffer(bufPos, dumpInfo);
-        printf("bufpos == %s, from string %d\n", *bufPos, __LINE__);
 
         skipSpaces(bufPos);//
         (*bufPos)++;
-        printf("bufpos == %s, from string %d\n", *bufPos, __LINE__);
+
         return newNode;
     }
 
@@ -466,7 +476,6 @@ int readFileAndCreateTree (tree_t* tree, dump* dumpInfo, const char* nameOfFile)
     assert(dumpInfo);
     assert(nameOfFile);
 
-    printf("nameOfFile == %s\n", nameOfFile);
     char* bufferStart = copyFileContent(nameOfFile);
     if (bufferStart == NULL) {
         printf("Error of copying tree from file\n");
@@ -474,6 +483,8 @@ int readFileAndCreateTree (tree_t* tree, dump* dumpInfo, const char* nameOfFile)
     }
     else
         *treeRoot(tree) = nodeCtorByReadBuffer(&bufferStart, dumpInfo);
+
+    treeDump(tree, dumpInfo, "after Creating a tree");
 
     return 0;
 }
@@ -516,5 +527,39 @@ unsigned int getSizeOfFile (int fileDescriptor) {
         return fileInfo.st_size;
 
     perror("Error of getting the size of the file");
+    return 0;
+}
+
+void requestToContinue (int* continueFlag) {
+    assert (continueFlag);
+    int ch = 0;
+
+    printf ("Enter any character to continue or click [Enter] to end program.\n");
+
+    if ((ch = getchar()) == '\n')
+        *continueFlag = 0;
+    else bufferCleaner();
+}
+
+int saveTreeInFile (tree_t* tree, const char* nameOfSaveFile) {
+    assert(tree);
+    assert(nameOfSaveFile);
+
+    FILE* saveFile = fopen(nameOfSaveFile, "w");
+
+    if (saveFile == NULL) {
+        fprintf(stderr, "Error of opening file \"%s\"", nameOfSaveFile);
+        perror("");
+        return 1;
+    }
+
+    fprintfNode(*treeRoot(tree), saveFile);
+
+    if (fclose(saveFile) != 0) {
+        fprintf(stderr, "Error of closing file \"%s\"", nameOfSaveFile);
+        perror("");
+        return 1;
+    }
+
     return 0;
 }
