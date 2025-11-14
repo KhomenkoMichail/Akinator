@@ -1,13 +1,29 @@
 digraph Tree {
     rankdir = TB;
     node [shape = Mrecord, color = black];
-    node0x0000016aa6229df0 [rank = 0, label = "{ <addr>0x0000016aa6229df0| animal|{<left>YES\n 0x0000016aa6229f50| <right>NO\n 0x0000016aa622a130}}", style = filled, fillcolor = "#c1e0a7ff", color = black];
-    node0x0000016aa6229f50 [rank = 1, label = "{ <addr>0x0000016aa6229f50| Poltorashka|{<left>YES\n NULL| <right>NO\n NULL}}", style = filled, fillcolor = "#c1e0a7ff", color = black];
-    node0x0000016aa622a130 [rank = 1, label = "{ <addr>0x0000016aa622a130| Teaches mathan|{<left>YES\n 0x0000016aa6229b30| <right>NO\n 0x0000016aa6229e10}}", style = filled, fillcolor = "#c1e0a7ff", color = black];
-    node0x0000016aa6229b30 [rank = 2, label = "{ <addr>0x0000016aa6229b30| Petrovich|{<left>YES\n NULL| <right>NO\n NULL}}", style = filled, fillcolor = "#c1e0a7ff", color = black];
-    node0x0000016aa6229e10 [rank = 2, label = "{ <addr>0x0000016aa6229e10| Divari|{<left>YES\n NULL| <right>NO\n NULL}}", style = filled, fillcolor = "#c1e0a7ff", color = black];
-    node0x0000016aa6229df0:left -> node0x0000016aa6229f50:addr [color = "#5d510cff"];
-    node0x0000016aa6229df0:right -> node0x0000016aa622a130:addr [color = "#5d510cff"];
-    node0x0000016aa622a130:left -> node0x0000016aa6229b30:addr [color = "#5d510cff"];
-    node0x0000016aa622a130:right -> node0x0000016aa6229e10:addr [color = "#5d510cff"];
+    node0x000002012d9b64b0 [rank = 0, label = "{ <addr>0x000002012d9b64b0| animal|{<left>YES\n 0x000002012f1886b0| <right>NO\n 0x000002012f188740}}", style = filled, fillcolor = "#c1e0a7ff", color = black];
+    node0x000002012f1886b0 [rank = 1, label = "{ <addr>0x000002012f1886b0| mishas cat|{<left>YES\n 0x000002012f1886e0| <right>NO\n 0x000002012f188710}}", style = filled, fillcolor = "#c1e0a7ff", color = black];
+    node0x000002012f1886e0 [rank = 2, label = "{ <addr>0x000002012f1886e0| Fish|{<left>YES\n NULL| <right>NO\n NULL}}", style = filled, fillcolor = "#c1e0a7ff", color = black];
+    node0x000002012f188710 [rank = 2, label = "{ <addr>0x000002012f188710| Poltorashka|{<left>YES\n NULL| <right>NO\n NULL}}", style = filled, fillcolor = "#c1e0a7ff", color = black];
+    node0x000002012f188740 [rank = 1, label = "{ <addr>0x000002012f188740| teaching mathan|{<left>YES\n 0x000002012f188770| <right>NO\n 0x000002012f1887a0}}", style = filled, fillcolor = "#c1e0a7ff", color = black];
+    node0x000002012f188770 [rank = 2, label = "{ <addr>0x000002012f188770| Petrovich AU|{<left>YES\n NULL| <right>NO\n NULL}}", style = filled, fillcolor = "#c1e0a7ff", color = black];
+    node0x000002012f1887a0 [rank = 2, label = "{ <addr>0x000002012f1887a0| cool|{<left>YES\n 0x000002012f1887d0| <right>NO\n 0x000002012f1888c0}}", style = filled, fillcolor = "#c1e0a7ff", color = black];
+    node0x000002012f1887d0 [rank = 3, label = "{ <addr>0x000002012f1887d0| albinos|{<left>YES\n 0x000002012f188800| <right>NO\n 0x000002012f188830}}", style = filled, fillcolor = "#c1e0a7ff", color = black];
+    node0x000002012f188800 [rank = 4, label = "{ <addr>0x000002012f188800| Timur|{<left>YES\n NULL| <right>NO\n NULL}}", style = filled, fillcolor = "#c1e0a7ff", color = black];
+    node0x000002012f188830 [rank = 4, label = "{ <addr>0x000002012f188830| chat GPT fan|{<left>YES\n 0x000002012f188860| <right>NO\n 0x000002012f188890}}", style = filled, fillcolor = "#c1e0a7ff", color = black];
+    node0x000002012f188860 [rank = 5, label = "{ <addr>0x000002012f188860| Colyan|{<left>YES\n NULL| <right>NO\n NULL}}", style = filled, fillcolor = "#c1e0a7ff", color = black];
+    node0x000002012f188890 [rank = 5, label = "{ <addr>0x000002012f188890| Vladoss|{<left>YES\n NULL| <right>NO\n NULL}}", style = filled, fillcolor = "#c1e0a7ff", color = black];
+    node0x000002012f1888c0 [rank = 3, label = "{ <addr>0x000002012f1888c0| Divari IN|{<left>YES\n NULL| <right>NO\n NULL}}", style = filled, fillcolor = "#c1e0a7ff", color = black];
+    node0x000002012d9b64b0:left -> node0x000002012f1886b0:addr [color = "#5d510cff"];
+    node0x000002012f1886b0:left -> node0x000002012f1886e0:addr [color = "#5d510cff"];
+    node0x000002012f1886b0:right -> node0x000002012f188710:addr [color = "#5d510cff"];
+    node0x000002012d9b64b0:right -> node0x000002012f188740:addr [color = "#5d510cff"];
+    node0x000002012f188740:left -> node0x000002012f188770:addr [color = "#5d510cff"];
+    node0x000002012f188740:right -> node0x000002012f1887a0:addr [color = "#5d510cff"];
+    node0x000002012f1887a0:left -> node0x000002012f1887d0:addr [color = "#5d510cff"];
+    node0x000002012f1887d0:left -> node0x000002012f188800:addr [color = "#5d510cff"];
+    node0x000002012f1887d0:right -> node0x000002012f188830:addr [color = "#5d510cff"];
+    node0x000002012f188830:left -> node0x000002012f188860:addr [color = "#5d510cff"];
+    node0x000002012f188830:right -> node0x000002012f188890:addr [color = "#5d510cff"];
+    node0x000002012f1887a0:right -> node0x000002012f1888c0:addr [color = "#5d510cff"];
  }

@@ -84,9 +84,6 @@ int addNewObject (tree_t* tree, node_t* parentNode, dump* dumpInfo) {
     printfWithDelay(nodeDescription);
     printfWithDelay(" how interesting!\n");
 
-    //printf("And how is this \"%s\" different from my \"%s\"?\n",
-    //    nodeDescription, *nodeObjectDescription(parentNode));
-
     char speech[COMMAND_LENGTH] = {};
     snprintf(speech, COMMAND_LENGTH, "And how is this \"%s\" different from my \"%s\"?\n",
         nodeDescription, *nodeObjectDescription(parentNode));
@@ -98,7 +95,11 @@ int addNewObject (tree_t* tree, node_t* parentNode, dump* dumpInfo) {
 
     *nodeRight(parentNode) = treeNodeCtor(*nodeObjectDescription(parentNode));
     *nodeLeft(parentNode) = treeNodeCtor (nodeDescription);
-    strncpy (*(nodeObjectDescription(parentNode)), nodesDifference, NODE_DESCRIPTION_SIZE);
+    //strncpy (*(nodeObjectDescription(parentNode)), nodesDifference, NODE_DESCRIPTION_SIZE);
+    if(parentNode->ownsMemory)
+        free(*(nodeObjectDescription(parentNode)));
+    *(nodeObjectDescription(parentNode)) = strdup(nodesDifference);
+    parentNode->ownsMemory = 1;
 
     *treeSize(tree) += 2;
 
@@ -480,6 +481,7 @@ void fprintfNode(node_t* node, FILE* file) {
 node_t* nodeCtorByReadBuffer(char** bufPos, tree_t* tree, dump* dumpInfo) {
     assert(bufPos);
     assert(dumpInfo);
+    assert(tree);
 
     skipSpaces(bufPos);//
     if(**bufPos == '(') {
@@ -515,6 +517,55 @@ node_t* nodeCtorByReadBuffer(char** bufPos, tree_t* tree, dump* dumpInfo) {
     return NULL;
 }
 
+node_t* nodeCtorByReadBuffer2(char** bufPos, tree_t* tree, dump* dumpInfo) {
+    assert(bufPos);
+    assert(dumpInfo);
+
+    printf("bufpos == %s, from string %d\n", *bufPos, __LINE__);
+    skipSpaces(bufPos);//
+    if(**bufPos == '(') {
+        *treeSize(tree) += 1;
+        (*bufPos)++;
+        skipSpaces(bufPos);//
+        printf("bufpos == %s, from string %d\n", *bufPos, __LINE__);
+
+        node_t* newNode = (node_t*)calloc(1, sizeof(node_t));
+        *nodeObjectDescription(newNode) = (*bufPos) + 1;
+
+
+        int lenOfName = 0;
+
+        sscanf(*bufPos, "\"%*[^\"]\"%n", &lenOfName);
+
+        char* nextQuotes = strchr((*bufPos) + 1, '"');
+        *nextQuotes = '\0';
+        printf("*nodeObjectDescription(newNode) == %s\n", *nodeObjectDescription(newNode));
+
+        printf("bufpos == %s, from string %d\n", *bufPos, __LINE__);
+        (*bufPos) += lenOfName;
+        printf("bufpos == %s, from string %d\n", *bufPos, __LINE__);
+
+
+        *nodeLeft(newNode) = nodeCtorByReadBuffer2(bufPos, tree, dumpInfo);
+        printf("bufpos == %s, from string %d\n", *bufPos, __LINE__);
+        *nodeRight(newNode) = nodeCtorByReadBuffer2(bufPos, tree, dumpInfo);
+        printf("bufpos == %s, from string %d\n", *bufPos, __LINE__);
+
+        skipSpaces(bufPos);//
+        (*bufPos)++;
+        printf("bufpos == %s, from string %d\n", *bufPos, __LINE__);
+        return newNode;
+    }
+
+    if (strncmp(*bufPos, "nil", 3) == 0) {
+        (*bufPos) += 4;
+        printf("bufpos == %s, from string %d\n", *bufPos, __LINE__);
+        return NULL;
+    }
+
+    return NULL;
+}
+
 void skipSpaces(char** bufPos) {
     assert(bufPos);
     assert(*bufPos);
@@ -534,7 +585,7 @@ int readFileAndCreateTree (tree_t* tree, dump* dumpInfo, const char* nameOfFile)
         return 1;
     }
     else
-        *treeRoot(tree) = nodeCtorByReadBuffer(&bufferStart, tree, dumpInfo);
+        *treeRoot(tree) = nodeCtorByReadBuffer2(&bufferStart, tree, dumpInfo);
 
 
     treeDump(tree, dumpInfo, "after Creating a tree");

@@ -12,8 +12,8 @@
 
 int main (void) {
 
-    startAnimation();
-/*
+    //startAnimation();
+
     tree_t tree = {};
     struct dump dumpInfo = {};
 
@@ -35,6 +35,6 @@ int main (void) {
 
     saveTreeInFile (&tree, "treeSave.txt");
     deleteTree(&tree);
-*/
+
     return 0;
 }

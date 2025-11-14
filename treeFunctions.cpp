@@ -16,8 +16,7 @@ node_t* treeNodeCtor (const char* newObjectDescription) {
     node_t* newNode = (node_t*)calloc(1, sizeof(node_t));
 
     *(nodeObjectDescription(newNode)) = strdup(newObjectDescription);
-    //*(nodeObjectDescription(newNode)) = (char*)calloc(NODE_DESCRIPTION_SIZE, sizeof(char));
-    //strncpy(*(nodeObjectDescription(newNode)), newObjectDescription, NODE_DESCRIPTION_SIZE - 1);
+    newNode->ownsMemory = 1;
 
     *(nodeLeft(newNode)) = NULL;
     *(nodeRight(newNode)) = NULL;
@@ -271,7 +270,8 @@ int deleteNode(node_t* node , size_t* nodesPassed, size_t treeSize) {
         && !(_txIsBadReadPtr(*right)))
         deleteNode(*nodeRight(node), nodesPassed, treeSize);
 
-    free(node->objectDescription);
+    if(node->ownsMemory)
+        free(node->objectDescription);
     free(node);
     return 0;
 }

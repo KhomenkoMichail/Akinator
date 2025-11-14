@@ -3,6 +3,7 @@
 
 struct node_t {
     char* objectDescription;
+    int ownsMemory;
 
     node_t* left;
     node_t* right;

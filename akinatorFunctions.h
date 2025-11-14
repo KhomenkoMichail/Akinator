@@ -1,6 +1,10 @@
 #ifndef AKINATOR_FUNCTIONS_H
 #define AKINATOR_FUNCTIONS_H
 
+#define dumpMessage(file, string, bufPos)\
+    fprintf(file, string);\
+    fprintf(file, "bufPos == %s\n", bufPos);
+
 int guessTheObject (tree_t* tree, dump* dumpInfo);
 
 void getDifference (char nodesDifference[NODE_DESCRIPTION_SIZE]);
@@ -27,6 +31,8 @@ int getModeChoice (void);
 void fprintfNode (node_t* node, FILE* file);
 
 node_t* nodeCtorByReadBuffer(char** bufPos, tree_t* tree, dump* dumpInfo);
+
+node_t* nodeCtorByReadBuffer2(char** bufPos, tree_t* tree, dump* dumpInfo);
 
 void skipSpaces (char** bufPos);
 
