@@ -22,12 +22,6 @@ node_t** nodeRight (node_t* node) {
     return &(node->right);
 }
 
-//node_t** nodeParent (node_t* node) {
-//    assert(node);
-//
-//    return &(node->parent);
-//}
-
 node_t** treeRoot (tree_t* treePtr) {
     assert(treePtr);
 

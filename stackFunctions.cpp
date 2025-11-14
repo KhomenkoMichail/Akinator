@@ -25,7 +25,6 @@ int stackCtor (stack_t* stack, ssize_t capacity, const char* nameOfStack, struct
     stack->capacity = capacity;
     stack->nameOfStack = nameOfStack;
     stack->errorCode = 0;
-    //stack->nameOfType = txDemangle(typeid(stackElement_t).name()).c_str();
 
     stack->stackInfo.nameOfFunct = creationInfo.nameOfFunct;
     stack->stackInfo.nameOfFile = creationInfo.nameOfFile;

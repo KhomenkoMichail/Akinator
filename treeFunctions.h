@@ -1,6 +1,13 @@
 #ifndef TREE_FUNCTIONS_H
 #define TREE_FUNCTIONS_H
 
+#define SUBTREE_DUMP(subtreeRoot, dumpInfo, message) ({\
+    tree_t subtree = {};\
+    *treeRoot(&subtree) = subtreeRoot;\
+    *treeSize(&subtree) = MAX_TREE_SIZE;\
+    treeDump (&subtree, dumpInfo, message);\
+})
+
 node_t* treeNodeCtor (const char* newObjectDescription);
 
 int fprintfTreeGraphDump (tree_t* tree, const char* textGraphFileName);

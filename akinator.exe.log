@@ -3840,3 +3840,330 @@ Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
 Directory:	C:\Users\Admin\Desktop\prodva\Akinator
 
 --------------------------------------------------
+
+--------------------------------------------------
+TXLib ñîáîëåçíóåò...
+
+Ïðîãðàììà: C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe,
+
+ÂÍÅÇÀÏÍÎ: signal (22, 0x00): SIGABRT: Àâàðèéíîå çàâåðøåíèå ïðîãðàììû, âûçâàíà ôóíêöèÿ abort(). 
+
+Ñ ïîìîùüþ ôóíêöèè signal() âû ìîæåòå ñàìè îáðàáîòàòü ýòó îøèáêó.
+
+#1: TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400], Instance: 0x00007FF7CA571850 (64-bit), Flags: Cmdre0, Thread: 0x6BF4 (Main), GetLastError(): 183 (ÐÐµÐ²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾ ÑÐ¾Ð·Ð´Ð°Ñ‚ÑŒ Ñ„Ð°Ð¹Ð», Ñ‚Ð°Ðº ÐºÐ°Ðº Ð¾Ð½ ÑƒÐ¶Ðµ ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÐµÑ‚). 
+
+--------------------------------------------------
+Ñòåê âûçîâîâ:
+
+# 0 0x00007FF7CA2E8364 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: (anonymous namespace)::TX::_txError() at C:/Users/Admin/Downloads/CodeBlocks/TX/TXLib.h:11090
+# 1 0x00007FF7CA2E88CC in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: (anonymous namespace)::TX::_txOnSignal() at C:/Users/Admin/Downloads/CodeBlocks/TX/TXLib.h:11171
+# 2 0x00007FFB0140EC01 in C:\WINDOWS\System32\msvcrt.dll: raise()
+# 3 0x00007FFB0141305B in C:\WINDOWS\System32\msvcrt.dll: abort()
+# 4 0x00007FFB0140F9DD in C:\WINDOWS\System32\msvcrt.dll: assert()
+
+# 5 0x00007FF7CA270C7A in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:59:
+
+     57: 
+     58: int fprintfNodeGraph (node_t* node, int rank, FILE* graphFile, size_t* nodesPassed, size_t treeSize) {
+=>   59:     assert(node);
+     60:     assert(graphFile);
+     61: 
+
+# 6 0x00007FF7CA270B83 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfTreeGraphDump() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:44:
+
+     42: 
+     43:     size_t graphNodesMade = 0;
+=>   44:     fprintfNodeGraph(*treeRoot(tree), 0, graphFile, &graphNodesMade, *treeSize(tree));
+     45:     size_t graphLinksMade = 0;
+     46:     fprintfNodeLinksForGraph(*treeRoot(tree), graphFile, &graphLinksMade, *treeSize(tree));
+
+# 7 0x00007FF7CA27154E in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: createGraphImageForDump() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:172:
+
+    170:     graphImageCounter++;
+    171: 
+=>  172:     fprintfTreeGraphDump(tree, nameOfTextGraphFile);
+    173: 
+    174:     char graphvizCallCommand[STR_SIZE] = {};
+
+# 8 0x00007FF7CA271446 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: treeDump() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:155:
+
+    153:     fprintf(dumpFile, "ErrorCode == %d\n", tree->errorCode);
+    154: 
+=>  155:     createGraphImageForDump (tree, dumpFile, nameOfTextGraphFile);
+    156: 
+    157:     if (fclose(dumpFile) != 0) {
+
+# 9 0x00007FF7CA2A431B in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: nodeCtorByReadBuffer() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:531:
+
+    529:         DUMP_MESSAGE(dumpFile, "Ð¡ÐµÐ¹Ñ‡Ð°Ñ Ð·Ð°Ð¹Ð´Ñƒ Ð² Ð»ÐµÐ²Ð¾Ðµ Ð¿Ð¾Ð´Ð´ÐµÑ€ÐµÐ²Ð¾.\n", *bufPos);
+    530:         *nodeLeft(newNode) = nodeCtorByReadBuffer(bufPos, tree, dumpInfo, dumpFile);
+=>  531:         SUBTREE_DUMP(*nodeLeft(newNode), dumpInfo, "Ð’Ð¾Ñ‚ ÑÐ¾Ð·Ð´Ð°Ð½Ð½Ð¾Ðµ Ð›Ð•Ð’ÐžÐ• Ð¿Ð¾Ð´Ð´ÐµÑ€ÐµÐ²Ð¾.\n");
+    532: 
+    533:         DUMP_MESSAGE(dumpFile, "Ð¡ÐµÐ¹Ñ‡Ð°Ñ Ð·Ð°Ð¹Ð´Ñƒ Ð² Ð¿Ñ€Ð°Ð²Ð¾Ðµ Ð¿Ð¾Ð´Ð´ÐµÑ€ÐµÐ²Ð¾.\n", *bufPos);
+
+#10 0x00007FF7CA2A42B4 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: nodeCtorByReadBuffer() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:530:
+
+    528: 
+    529:         DUMP_MESSAGE(dumpFile, "Ð¡ÐµÐ¹Ñ‡Ð°Ñ Ð·Ð°Ð¹Ð´Ñƒ Ð² Ð»ÐµÐ²Ð¾Ðµ Ð¿Ð¾Ð´Ð´ÐµÑ€ÐµÐ²Ð¾.\n", *bufPos);
+=>  530:         *nodeLeft(newNode) = nodeCtorByReadBuffer(bufPos, tree, dumpInfo, dumpFile);
+    531:         SUBTREE_DUMP(*nodeLeft(newNode), dumpInfo, "Ð’Ð¾Ñ‚ ÑÐ¾Ð·Ð´Ð°Ð½Ð½Ð¾Ðµ Ð›Ð•Ð’ÐžÐ• Ð¿Ð¾Ð´Ð´ÐµÑ€ÐµÐ²Ð¾.\n");
+    532: 
+
+#11 0x00007FF7CA2A42B4 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: nodeCtorByReadBuffer() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:530:
+
+    528: 
+    529:         DUMP_MESSAGE(dumpFile, "Ð¡ÐµÐ¹Ñ‡Ð°Ñ Ð·Ð°Ð¹Ð´Ñƒ Ð² Ð»ÐµÐ²Ð¾Ðµ Ð¿Ð¾Ð´Ð´ÐµÑ€ÐµÐ²Ð¾.\n", *bufPos);
+=>  530:         *nodeLeft(newNode) = nodeCtorByReadBuffer(bufPos, tree, dumpInfo, dumpFile);
+    531:         SUBTREE_DUMP(*nodeLeft(newNode), dumpInfo, "Ð’Ð¾Ñ‚ ÑÐ¾Ð·Ð´Ð°Ð½Ð½Ð¾Ðµ Ð›Ð•Ð’ÐžÐ• Ð¿Ð¾Ð´Ð´ÐµÑ€ÐµÐ²Ð¾.\n");
+    532: 
+
+#12 0x00007FF7CA2A477B in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: readFileAndCreateTree() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:588:
+
+    586:     }
+    587:     else
+=>  588:         *treeRoot(tree) = nodeCtorByReadBuffer(&bufferStart, tree, dumpInfo, dumpFile);
+    589: 
+    590:     if (fclose(dumpFile) != 0) {
+
+#13 0x00007FF7CA240430 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: main() at C:/Users/Admin/Desktop/prodva/Akinator/main.cpp:27:
+
+     25:     dumpInfo.nameOfDumpFile = "dump.html";
+     26: 
+=>   27:     if (readFileAndCreateTree(&tree, &dumpInfo, "treeSave.txt"))
+     28:         return 1;
+     29: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h
+Compiled:	Nov 14 2025 13:05:47, GNU g++ 13.2.0, std=201703L, MinGW-W64 Runtime 11.0.1 (alpha - rev. 0) 0000-00-00, 64-bit, DEBUG
+Started:	Nov 14 2025 13:05:52
+
+Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
+Directory:	C:\Users\Admin\Desktop\prodva\Akinator
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib ñîáîëåçíóåò...
+
+Ïðîãðàììà: C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe,
+
+ÂÍÅÇÀÏÍÎ: signal (22, 0x00): SIGABRT: Àâàðèéíîå çàâåðøåíèå ïðîãðàììû, âûçâàíà ôóíêöèÿ abort(). 
+
+Ñ ïîìîùüþ ôóíêöèè signal() âû ìîæåòå ñàìè îáðàáîòàòü ýòó îøèáêó.
+
+#1: TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400], Instance: 0x00007FF78B781850 (64-bit), Flags: Cmdre0, Thread: 0x61D0 (Main), GetLastError(): 183 (ÐÐµÐ²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾ ÑÐ¾Ð·Ð´Ð°Ñ‚ÑŒ Ñ„Ð°Ð¹Ð», Ñ‚Ð°Ðº ÐºÐ°Ðº Ð¾Ð½ ÑƒÐ¶Ðµ ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÐµÑ‚). 
+
+--------------------------------------------------
+Ñòåê âûçîâîâ:
+
+# 0 0x00007FF78B4F8364 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: (anonymous namespace)::TX::_txError() at C:/Users/Admin/Downloads/CodeBlocks/TX/TXLib.h:11090
+# 1 0x00007FF78B4F88CC in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: (anonymous namespace)::TX::_txOnSignal() at C:/Users/Admin/Downloads/CodeBlocks/TX/TXLib.h:11171
+# 2 0x00007FFB0140EC01 in C:\WINDOWS\System32\msvcrt.dll: raise()
+# 3 0x00007FFB0141305B in C:\WINDOWS\System32\msvcrt.dll: abort()
+# 4 0x00007FFB0140F9DD in C:\WINDOWS\System32\msvcrt.dll: assert()
+
+# 5 0x00007FF78B480C7A in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:59:
+
+     57: 
+     58: int fprintfNodeGraph (node_t* node, int rank, FILE* graphFile, size_t* nodesPassed, size_t treeSize) {
+=>   59:     assert(node);
+     60:     assert(graphFile);
+     61: 
+
+# 6 0x00007FF78B480B83 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfTreeGraphDump() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:44:
+
+     42: 
+     43:     size_t graphNodesMade = 0;
+=>   44:     fprintfNodeGraph(*treeRoot(tree), 0, graphFile, &graphNodesMade, *treeSize(tree));
+     45:     size_t graphLinksMade = 0;
+     46:     fprintfNodeLinksForGraph(*treeRoot(tree), graphFile, &graphLinksMade, *treeSize(tree));
+
+# 7 0x00007FF78B48154E in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: createGraphImageForDump() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:172:
+
+    170:     graphImageCounter++;
+    171: 
+=>  172:     fprintfTreeGraphDump(tree, nameOfTextGraphFile);
+    173: 
+    174:     char graphvizCallCommand[STR_SIZE] = {};
+
+# 8 0x00007FF78B481446 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: treeDump() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:155:
+
+    153:     fprintf(dumpFile, "ErrorCode == %d\n", tree->errorCode);
+    154: 
+=>  155:     createGraphImageForDump (tree, dumpFile, nameOfTextGraphFile);
+    156: 
+    157:     if (fclose(dumpFile) != 0) {
+
+# 9 0x00007FF78B4B431B in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: nodeCtorByReadBuffer() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:531:
+
+    529:         DUMP_MESSAGE(dumpFile, "Ð¡ÐµÐ¹Ñ‡Ð°Ñ Ð·Ð°Ð¹Ð´Ñƒ Ð² Ð»ÐµÐ²Ð¾Ðµ Ð¿Ð¾Ð´Ð´ÐµÑ€ÐµÐ²Ð¾.\n", *bufPos);
+    530:         *nodeLeft(newNode) = nodeCtorByReadBuffer(bufPos, tree, dumpInfo, dumpFile);
+=>  531:         SUBTREE_DUMP((*nodeLeft(newNode)), dumpInfo, "Ð’Ð¾Ñ‚ ÑÐ¾Ð·Ð´Ð°Ð½Ð½Ð¾Ðµ Ð›Ð•Ð’ÐžÐ• Ð¿Ð¾Ð´Ð´ÐµÑ€ÐµÐ²Ð¾.\n");
+    532: 
+    533:         DUMP_MESSAGE(dumpFile, "Ð¡ÐµÐ¹Ñ‡Ð°Ñ Ð·Ð°Ð¹Ð´Ñƒ Ð² Ð¿Ñ€Ð°Ð²Ð¾Ðµ Ð¿Ð¾Ð´Ð´ÐµÑ€ÐµÐ²Ð¾.\n", *bufPos);
+
+#10 0x00007FF78B4B42B4 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: nodeCtorByReadBuffer() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:530:
+
+    528: 
+    529:         DUMP_MESSAGE(dumpFile, "Ð¡ÐµÐ¹Ñ‡Ð°Ñ Ð·Ð°Ð¹Ð´Ñƒ Ð² Ð»ÐµÐ²Ð¾Ðµ Ð¿Ð¾Ð´Ð´ÐµÑ€ÐµÐ²Ð¾.\n", *bufPos);
+=>  530:         *nodeLeft(newNode) = nodeCtorByReadBuffer(bufPos, tree, dumpInfo, dumpFile);
+    531:         SUBTREE_DUMP((*nodeLeft(newNode)), dumpInfo, "Ð’Ð¾Ñ‚ ÑÐ¾Ð·Ð´Ð°Ð½Ð½Ð¾Ðµ Ð›Ð•Ð’ÐžÐ• Ð¿Ð¾Ð´Ð´ÐµÑ€ÐµÐ²Ð¾.\n");
+    532: 
+
+#11 0x00007FF78B4B42B4 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: nodeCtorByReadBuffer() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:530:
+
+    528: 
+    529:         DUMP_MESSAGE(dumpFile, "Ð¡ÐµÐ¹Ñ‡Ð°Ñ Ð·Ð°Ð¹Ð´Ñƒ Ð² Ð»ÐµÐ²Ð¾Ðµ Ð¿Ð¾Ð´Ð´ÐµÑ€ÐµÐ²Ð¾.\n", *bufPos);
+=>  530:         *nodeLeft(newNode) = nodeCtorByReadBuffer(bufPos, tree, dumpInfo, dumpFile);
+    531:         SUBTREE_DUMP((*nodeLeft(newNode)), dumpInfo, "Ð’Ð¾Ñ‚ ÑÐ¾Ð·Ð´Ð°Ð½Ð½Ð¾Ðµ Ð›Ð•Ð’ÐžÐ• Ð¿Ð¾Ð´Ð´ÐµÑ€ÐµÐ²Ð¾.\n");
+    532: 
+
+#12 0x00007FF78B4B477B in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: readFileAndCreateTree() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:588:
+
+    586:     }
+    587:     else
+=>  588:         *treeRoot(tree) = nodeCtorByReadBuffer(&bufferStart, tree, dumpInfo, dumpFile);
+    589: 
+    590:     if (fclose(dumpFile) != 0) {
+
+#13 0x00007FF78B450430 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: main() at C:/Users/Admin/Desktop/prodva/Akinator/main.cpp:27:
+
+     25:     dumpInfo.nameOfDumpFile = "dump.html";
+     26: 
+=>   27:     if (readFileAndCreateTree(&tree, &dumpInfo, "treeSave.txt"))
+     28:         return 1;
+     29: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h
+Compiled:	Nov 14 2025 13:08:55, GNU g++ 13.2.0, std=201703L, MinGW-W64 Runtime 11.0.1 (alpha - rev. 0) 0000-00-00, 64-bit, DEBUG
+Started:	Nov 14 2025 13:09:01
+
+Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
+Directory:	C:\Users\Admin\Desktop\prodva\Akinator
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib ñîáîëåçíóåò...
+
+Ïðîãðàììà: C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe,
+
+ÂÍÅÇÀÏÍÎ: signal (22, 0x00): SIGABRT: Àâàðèéíîå çàâåðøåíèå ïðîãðàììû, âûçâàíà ôóíêöèÿ abort(). 
+
+Ñ ïîìîùüþ ôóíêöèè signal() âû ìîæåòå ñàìè îáðàáîòàòü ýòó îøèáêó.
+
+#1: TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400], Instance: 0x00007FF6CEC91850 (64-bit), Flags: Cmdre0, Thread: 0x65B8 (Main), GetLastError(): 183 (ÐÐµÐ²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾ ÑÐ¾Ð·Ð´Ð°Ñ‚ÑŒ Ñ„Ð°Ð¹Ð», Ñ‚Ð°Ðº ÐºÐ°Ðº Ð¾Ð½ ÑƒÐ¶Ðµ ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÐµÑ‚). 
+
+--------------------------------------------------
+Ñòåê âûçîâîâ:
+
+# 0 0x00007FF6CEA083B4 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: (anonymous namespace)::TX::_txError() at C:/Users/Admin/Downloads/CodeBlocks/TX/TXLib.h:11090
+# 1 0x00007FF6CEA0891C in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: (anonymous namespace)::TX::_txOnSignal() at C:/Users/Admin/Downloads/CodeBlocks/TX/TXLib.h:11171
+# 2 0x00007FFB0140EC01 in C:\WINDOWS\System32\msvcrt.dll: raise()
+# 3 0x00007FFB0141305B in C:\WINDOWS\System32\msvcrt.dll: abort()
+# 4 0x00007FFB0140F9DD in C:\WINDOWS\System32\msvcrt.dll: assert()
+
+# 5 0x00007FF6CE990C7A in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfNodeGraph() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:59:
+
+     57: 
+     58: int fprintfNodeGraph (node_t* node, int rank, FILE* graphFile, size_t* nodesPassed, size_t treeSize) {
+=>   59:     assert(node);
+     60:     assert(graphFile);
+     61: 
+
+# 6 0x00007FF6CE990B83 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: fprintfTreeGraphDump() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:44:
+
+     42: 
+     43:     size_t graphNodesMade = 0;
+=>   44:     fprintfNodeGraph(*treeRoot(tree), 0, graphFile, &graphNodesMade, *treeSize(tree));
+     45:     size_t graphLinksMade = 0;
+     46:     fprintfNodeLinksForGraph(*treeRoot(tree), graphFile, &graphLinksMade, *treeSize(tree));
+
+# 7 0x00007FF6CE99154E in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: createGraphImageForDump() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:172:
+
+    170:     graphImageCounter++;
+    171: 
+=>  172:     fprintfTreeGraphDump(tree, nameOfTextGraphFile);
+    173: 
+    174:     char graphvizCallCommand[STR_SIZE] = {};
+
+# 8 0x00007FF6CE991446 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: treeDump() at C:/Users/Admin/Desktop/prodva/Akinator/treeFunctions.cpp:155:
+
+    153:     fprintf(dumpFile, "ErrorCode == %d\n", tree->errorCode);
+    154: 
+=>  155:     createGraphImageForDump (tree, dumpFile, nameOfTextGraphFile);
+    156: 
+    157:     if (fclose(dumpFile) != 0) {
+
+# 9 0x00007FF6CE9C4352 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: nodeCtorByReadBuffer() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:532:
+
+    530:         *nodeLeft(newNode) = nodeCtorByReadBuffer(bufPos, tree, dumpInfo, dumpFile);
+    531:         printf("*nodeLeft(newNode) == %p", *nodeLeft(newNode));
+=>  532:         SUBTREE_DUMP((*nodeLeft(newNode)), dumpInfo, "Ð’Ð¾Ñ‚ ÑÐ¾Ð·Ð´Ð°Ð½Ð½Ð¾Ðµ Ð›Ð•Ð’ÐžÐ• Ð¿Ð¾Ð´Ð´ÐµÑ€ÐµÐ²Ð¾.\n");
+    533: 
+    534:         DUMP_MESSAGE(dumpFile, "Ð¡ÐµÐ¹Ñ‡Ð°Ñ Ð·Ð°Ð¹Ð´Ñƒ Ð² Ð¿Ñ€Ð°Ð²Ð¾Ðµ Ð¿Ð¾Ð´Ð´ÐµÑ€ÐµÐ²Ð¾.\n", *bufPos);
+
+#10 0x00007FF6CE9C42B4 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: nodeCtorByReadBuffer() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:530:
+
+    528: 
+    529:         DUMP_MESSAGE(dumpFile, "Ð¡ÐµÐ¹Ñ‡Ð°Ñ Ð·Ð°Ð¹Ð´Ñƒ Ð² Ð»ÐµÐ²Ð¾Ðµ Ð¿Ð¾Ð´Ð´ÐµÑ€ÐµÐ²Ð¾.\n", *bufPos);
+=>  530:         *nodeLeft(newNode) = nodeCtorByReadBuffer(bufPos, tree, dumpInfo, dumpFile);
+    531:         printf("*nodeLeft(newNode) == %p", *nodeLeft(newNode));
+    532:         SUBTREE_DUMP((*nodeLeft(newNode)), dumpInfo, "Ð’Ð¾Ñ‚ ÑÐ¾Ð·Ð´Ð°Ð½Ð½Ð¾Ðµ Ð›Ð•Ð’ÐžÐ• Ð¿Ð¾Ð´Ð´ÐµÑ€ÐµÐ²Ð¾.\n");
+
+#11 0x00007FF6CE9C42B4 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: nodeCtorByReadBuffer() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:530:
+
+    528: 
+    529:         DUMP_MESSAGE(dumpFile, "Ð¡ÐµÐ¹Ñ‡Ð°Ñ Ð·Ð°Ð¹Ð´Ñƒ Ð² Ð»ÐµÐ²Ð¾Ðµ Ð¿Ð¾Ð´Ð´ÐµÑ€ÐµÐ²Ð¾.\n", *bufPos);
+=>  530:         *nodeLeft(newNode) = nodeCtorByReadBuffer(bufPos, tree, dumpInfo, dumpFile);
+    531:         printf("*nodeLeft(newNode) == %p", *nodeLeft(newNode));
+    532:         SUBTREE_DUMP((*nodeLeft(newNode)), dumpInfo, "Ð’Ð¾Ñ‚ ÑÐ¾Ð·Ð´Ð°Ð½Ð½Ð¾Ðµ Ð›Ð•Ð’ÐžÐ• Ð¿Ð¾Ð´Ð´ÐµÑ€ÐµÐ²Ð¾.\n");
+
+#12 0x00007FF6CE9C47C8 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: readFileAndCreateTree() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:589:
+
+    587:     }
+    588:     else
+=>  589:         *treeRoot(tree) = nodeCtorByReadBuffer(&bufferStart, tree, dumpInfo, dumpFile);
+    590: 
+    591:     if (fclose(dumpFile) != 0) {
+
+#13 0x00007FF6CE960430 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: main() at C:/Users/Admin/Desktop/prodva/Akinator/main.cpp:27:
+
+     25:     dumpInfo.nameOfDumpFile = "dump.html";
+     26: 
+=>   27:     if (readFileAndCreateTree(&tree, &dumpInfo, "treeSave.txt"))
+     28:         return 1;
+     29: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h
+Compiled:	Nov 14 2025 13:11:43, GNU g++ 13.2.0, std=201703L, MinGW-W64 Runtime 11.0.1 (alpha - rev. 0) 0000-00-00, 64-bit, DEBUG
+Started:	Nov 14 2025 13:11:48
+
+Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
+Directory:	C:\Users\Admin\Desktop\prodva\Akinator
+
+--------------------------------------------------

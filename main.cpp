@@ -12,8 +12,6 @@
 
 int main (void) {
 
-    //startAnimation();
-
     tree_t tree = {};
     struct dump dumpInfo = {};
 
@@ -25,6 +23,7 @@ int main (void) {
 
     int runProgram = 1;
 
+    createWindow();
     printfWithDelay("Hi, my name is akinator\n");
     while (runProgram) {
 

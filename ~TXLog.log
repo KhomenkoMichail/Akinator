@@ -1,0 +1,611 @@
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe, файл: C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h, строка: 13854, функция: bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double, unsigned int),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400], Instance: 0x00007FF6C25BB7D0 (64-bit), Flags: cMdRe0, Thread: 0x5B18 (Main), GetLastError(): 13 (РќРµРґРѕРїСѓСЃС‚РёРјС‹Рµ РґР°РЅРЅС‹Рµ). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00007FF6C2342E34 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: (anonymous namespace)::TX::_txError() at C:/Users/Admin/Downloads/CodeBlocks/TX/TXLib.h:11090
+# 1 0x00007FF6C23562E1 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: (anonymous namespace)::TX::txBitBlt() at C:/Users/Admin/Downloads/CodeBlocks/TX/TXLib.h:13854
+
+# 2 0x00007FF6C23604F8 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: main() at C:/Users/Admin/Desktop/prodva/Akinator/main.cpp:16:
+
+     14:     txCreateWindow(1280, 666);
+     15:     HDC screenShot = txLoadImage("SCREENSHOTS/screen0.bmp");
+=>   16:     txBitBlt(txDC(), 0, 0, 1280, 666, screenShot, 0, 0);
+     17:     txDeleteDC(screenShot);
+     18: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double, unsigned int) at C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h:13854:
+
+  13852:     {
+  13853: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>13854: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  13855: 
+  13856: $   POINT size = txGetExtent (sourceImage);
+
+# 1 in int main() at main.cpp:16:
+
+     14:     txCreateWindow(1280, 666);
+     15:     HDC screenShot = txLoadImage("SCREENSHOTS/screen0.bmp");
+=>   16:     txBitBlt(txDC(), 0, 0, 1280, 666, screenShot, 0, 0);
+     17:     txDeleteDC(screenShot);
+     18: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h
+Compiled:	Nov 14 2025 10:56:28, GNU g++ 13.2.0, std=201703L, MinGW-W64 Runtime 11.0.1 (alpha - rev. 0) 0000-00-00, 64-bit, DEBUG
+Started:	Nov 14 2025 10:56:45
+
+Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
+Directory:	C:\Users\Admin\Desktop\prodva\Akinator
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe, файл: C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h, строка: 13854, функция: bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double, unsigned int),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400], Instance: 0x00007FF7BE5BB7D0 (64-bit), Flags: cMdRe0, Thread: 0x21CC (Main), GetLastError(): 13 (РќРµРґРѕРїСѓСЃС‚РёРјС‹Рµ РґР°РЅРЅС‹Рµ). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00007FF7BE342E34 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: (anonymous namespace)::TX::_txError() at C:/Users/Admin/Downloads/CodeBlocks/TX/TXLib.h:11090
+# 1 0x00007FF7BE3562E1 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: (anonymous namespace)::TX::txBitBlt() at C:/Users/Admin/Downloads/CodeBlocks/TX/TXLib.h:13854
+
+# 2 0x00007FF7BE3604F8 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: main() at C:/Users/Admin/Desktop/prodva/Akinator/main.cpp:16:
+
+     14:     txCreateWindow(1280, 666);
+     15:     HDC screenShot = txLoadImage("screen1.bmp");
+=>   16:     txBitBlt(txDC(), 0, 0, 1280, 666, screenShot, 0, 0);
+     17:     txDeleteDC(screenShot);
+     18: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double, unsigned int) at C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h:13854:
+
+  13852:     {
+  13853: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>13854: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  13855: 
+  13856: $   POINT size = txGetExtent (sourceImage);
+
+# 1 in int main() at main.cpp:16:
+
+     14:     txCreateWindow(1280, 666);
+     15:     HDC screenShot = txLoadImage("screen1.bmp");
+=>   16:     txBitBlt(txDC(), 0, 0, 1280, 666, screenShot, 0, 0);
+     17:     txDeleteDC(screenShot);
+     18: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h
+Compiled:	Nov 14 2025 10:57:59, GNU g++ 13.2.0, std=201703L, MinGW-W64 Runtime 11.0.1 (alpha - rev. 0) 0000-00-00, 64-bit, DEBUG
+Started:	Nov 14 2025 10:58:14
+
+Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
+Directory:	C:\Users\Admin\Desktop\prodva\Akinator
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe, файл: C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h, строка: 13854, функция: bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double, unsigned int),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400], Instance: 0x00007FF6B650B7D0 (64-bit), Flags: cMdRe0, Thread: 0x46E8 (Main), GetLastError(): 13 (РќРµРґРѕРїСѓСЃС‚РёРјС‹Рµ РґР°РЅРЅС‹Рµ). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00007FF6B6292E34 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: (anonymous namespace)::TX::_txError() at C:/Users/Admin/Downloads/CodeBlocks/TX/TXLib.h:11090
+# 1 0x00007FF6B62A62E1 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: (anonymous namespace)::TX::txBitBlt() at C:/Users/Admin/Downloads/CodeBlocks/TX/TXLib.h:13854
+
+# 2 0x00007FF6B62B04F8 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: main() at C:/Users/Admin/Desktop/prodva/Akinator/main.cpp:16:
+
+     14:     txCreateWindow(1280, 666);
+     15:     HDC screenShot = txLoadImage("./screen1.bmp");
+=>   16:     txBitBlt(txDC(), 0, 0, 1280, 666, screenShot);
+     17:     txDeleteDC(screenShot);
+     18: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double, unsigned int) at C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h:13854:
+
+  13852:     {
+  13853: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>13854: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  13855: 
+  13856: $   POINT size = txGetExtent (sourceImage);
+
+# 1 in int main() at main.cpp:16:
+
+     14:     txCreateWindow(1280, 666);
+     15:     HDC screenShot = txLoadImage("./screen1.bmp");
+=>   16:     txBitBlt(txDC(), 0, 0, 1280, 666, screenShot);
+     17:     txDeleteDC(screenShot);
+     18: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h
+Compiled:	Nov 14 2025 11:15:52, GNU g++ 13.2.0, std=201703L, MinGW-W64 Runtime 11.0.1 (alpha - rev. 0) 0000-00-00, 64-bit, DEBUG
+Started:	Nov 14 2025 11:16:06
+
+Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
+Directory:	C:\Users\Admin\Desktop\prodva\Akinator
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe, файл: C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h, строка: 13854, функция: bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double, unsigned int),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400], Instance: 0x00007FF764C1B7D0 (64-bit), Flags: cMdRe0, Thread: 0x4764 (Main), GetLastError(): 13 (РќРµРґРѕРїСѓСЃС‚РёРјС‹Рµ РґР°РЅРЅС‹Рµ). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00007FF7649A2E34 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: (anonymous namespace)::TX::_txError() at C:/Users/Admin/Downloads/CodeBlocks/TX/TXLib.h:11090
+# 1 0x00007FF7649B62E1 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: (anonymous namespace)::TX::txBitBlt() at C:/Users/Admin/Downloads/CodeBlocks/TX/TXLib.h:13854
+
+# 2 0x00007FF7649C04F8 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: main() at C:/Users/Admin/Desktop/prodva/Akinator/main.cpp:16:
+
+     14:     txCreateWindow(1280, 666);
+     15:     HDC screenShot = txLoadImage("../screen1.bmp");
+=>   16:     txBitBlt(txDC(), 0, 0, 1280, 666, screenShot);
+     17:     txDeleteDC(screenShot);
+     18: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double, unsigned int) at C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h:13854:
+
+  13852:     {
+  13853: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>13854: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  13855: 
+  13856: $   POINT size = txGetExtent (sourceImage);
+
+# 1 in int main() at main.cpp:16:
+
+     14:     txCreateWindow(1280, 666);
+     15:     HDC screenShot = txLoadImage("../screen1.bmp");
+=>   16:     txBitBlt(txDC(), 0, 0, 1280, 666, screenShot);
+     17:     txDeleteDC(screenShot);
+     18: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h
+Compiled:	Nov 14 2025 11:16:26, GNU g++ 13.2.0, std=201703L, MinGW-W64 Runtime 11.0.1 (alpha - rev. 0) 0000-00-00, 64-bit, DEBUG
+Started:	Nov 14 2025 11:16:42
+
+Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
+Directory:	C:\Users\Admin\Desktop\prodva\Akinator
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe, файл: C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h, строка: 13854, функция: bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double, unsigned int),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400], Instance: 0x00007FF67A60B7D0 (64-bit), Flags: cMdRe0, Thread: 0x42E0 (Main), GetLastError(): 13 (РќРµРґРѕРїСѓСЃС‚РёРјС‹Рµ РґР°РЅРЅС‹Рµ). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00007FF67A392E34 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: (anonymous namespace)::TX::_txError() at C:/Users/Admin/Downloads/CodeBlocks/TX/TXLib.h:11090
+# 1 0x00007FF67A3A62E1 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: (anonymous namespace)::TX::txBitBlt() at C:/Users/Admin/Downloads/CodeBlocks/TX/TXLib.h:13854
+
+# 2 0x00007FF67A3B04F8 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: main() at C:/Users/Admin/Desktop/prodva/Akinator/main.cpp:16:
+
+     14:     txCreateWindow(1280, 666);
+     15:     HDC screenShot = txLoadImage("screen.bmp");
+=>   16:     txBitBlt(txDC(), 0, 0, 1280, 666, screenShot);
+     17:     txDeleteDC(screenShot);
+     18: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double, unsigned int) at C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h:13854:
+
+  13852:     {
+  13853: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>13854: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  13855: 
+  13856: $   POINT size = txGetExtent (sourceImage);
+
+# 1 in int main() at main.cpp:16:
+
+     14:     txCreateWindow(1280, 666);
+     15:     HDC screenShot = txLoadImage("screen.bmp");
+=>   16:     txBitBlt(txDC(), 0, 0, 1280, 666, screenShot);
+     17:     txDeleteDC(screenShot);
+     18: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h
+Compiled:	Nov 14 2025 11:17:30, GNU g++ 13.2.0, std=201703L, MinGW-W64 Runtime 11.0.1 (alpha - rev. 0) 0000-00-00, 64-bit, DEBUG
+Started:	Nov 14 2025 11:17:44
+
+Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
+Directory:	C:\Users\Admin\Desktop\prodva\Akinator
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe, файл: C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h, строка: 8800, функция: HWND__* {anonymous}::TX::txCreateWindow(double, double, bool),
+
+Сообщение: Окно рисования уже создано!
+
+#1: TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400], Instance: 0x00007FF7DE3B6810 (64-bit), Flags: cMdRe0, Thread: 0x4AEC (Main), GetLastError(): 13 (РќРµРґРѕРїСѓСЃС‚РёРјС‹Рµ РґР°РЅРЅС‹Рµ). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00007FF7DE134D74 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: (anonymous namespace)::TX::_txError() at C:/Users/Admin/Downloads/CodeBlocks/TX/TXLib.h:11090
+# 1 0x00007FF7DE125939 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: (anonymous namespace)::TX::txCreateWindow() at C:/Users/Admin/Downloads/CodeBlocks/TX/TXLib.h:8800
+
+# 2 0x00007FF7DE153A1C in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: printfWithDelay() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:384:
+
+    382: 
+    383: //
+=>  384:     txCreateWindow(1280, 666);
+    385: 
+    386:     HDC screenShotsArr[25];
+
+# 3 0x00007FF7DE1538B1 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: printfMenu() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:367:
+
+    365: 
+    366: void printfMenu(void) {
+=>  367:     printfWithDelay("As usual, you have 3 wishes:\n");
+    368:     printfWithDelay("-- 1) Read your mind.\n");
+    369:     printfWithDelay("-- 2) Give a definition of the object.\n");
+
+# 4 0x00007FF7DE153D40 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: runAkinator() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:439:
+
+    437: 
+    438: 
+=>  439:     printfMenu();
+    440:     int modeChoice = getModeChoice();
+    441: 
+
+# 5 0x00007FF7DE0F0468 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: main() at C:/Users/Admin/Desktop/prodva/Akinator/main.cpp:35:
+
+     33:     while (runProgram) {
+     34: 
+=>   35:     if (runAkinator(&tree, &dumpInfo))
+     36:         break;
+     37:     requestToContinue (&runProgram);
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in HWND__* {anonymous}::TX::txCreateWindow(double, double, bool) at C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h:8800:
+
+   8798:         {
+   8799: $       SetLastErrorEx (ERROR_INVALID_DATA, 0);
+=> 8800: $       _TX_ON_DEBUG (TX_ERROR ("\a" "Окно рисования уже создано!"));
+   8801: $       return wnd;
+   8802:         }
+
+# 1 in void printfWithDelay(const char*) at akinatorFunctions.cpp:384:
+
+    382: 
+    383: //
+=>  384:     txCreateWindow(1280, 666);
+    385: 
+    386:     HDC screenShotsArr[25];
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h
+Compiled:	Nov 14 2025 11:58:43, GNU g++ 13.2.0, std=201703L, MinGW-W64 Runtime 11.0.1 (alpha - rev. 0) 0000-00-00, 64-bit, DEBUG
+Started:	Nov 14 2025 11:58:54
+
+Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
+Directory:	C:\Users\Admin\Desktop\prodva\Akinator
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe, файл: C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h, строка: 8800, функция: HWND__* {anonymous}::TX::txCreateWindow(double, double, bool),
+
+Сообщение: Окно рисования уже создано!
+
+#1: TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400], Instance: 0x00007FF7AB586810 (64-bit), Flags: cMdRe0, Thread: 0x5258 (Main), GetLastError(): 13 (РќРµРґРѕРїСѓСЃС‚РёРјС‹Рµ РґР°РЅРЅС‹Рµ). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00007FF7AB304D74 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: (anonymous namespace)::TX::_txError() at C:/Users/Admin/Downloads/CodeBlocks/TX/TXLib.h:11090
+# 1 0x00007FF7AB2F5939 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: (anonymous namespace)::TX::txCreateWindow() at C:/Users/Admin/Downloads/CodeBlocks/TX/TXLib.h:8800
+
+# 2 0x00007FF7AB323A1C in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: printfWithDelay() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:384:
+
+    382: 
+    383: //
+=>  384:     txCreateWindow(1280, 666);
+    385: 
+    386:     HDC screenShotsArr[25];
+
+# 3 0x00007FF7AB3238B1 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: printfMenu() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:367:
+
+    365: 
+    366: void printfMenu(void) {
+=>  367:     printfWithDelay("As usual, you have 3 wishes:\n");
+    368:     printfWithDelay("-- 1) Read your mind.\n");
+    369:     printfWithDelay("-- 2) Give a definition of the object.\n");
+
+# 4 0x00007FF7AB323D14 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: runAkinator() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:439:
+
+    437: 
+    438: 
+=>  439:     printfMenu();
+    440:     int modeChoice = getModeChoice();
+    441: 
+
+# 5 0x00007FF7AB2C0468 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: main() at C:/Users/Admin/Desktop/prodva/Akinator/main.cpp:35:
+
+     33:     while (runProgram) {
+     34: 
+=>   35:     if (runAkinator(&tree, &dumpInfo))
+     36:         break;
+     37:     requestToContinue (&runProgram);
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in HWND__* {anonymous}::TX::txCreateWindow(double, double, bool) at C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h:8800:
+
+   8798:         {
+   8799: $       SetLastErrorEx (ERROR_INVALID_DATA, 0);
+=> 8800: $       _TX_ON_DEBUG (TX_ERROR ("\a" "Окно рисования уже создано!"));
+   8801: $       return wnd;
+   8802:         }
+
+# 1 in void printfWithDelay(const char*) at akinatorFunctions.cpp:384:
+
+    382: 
+    383: //
+=>  384:     txCreateWindow(1280, 666);
+    385: 
+    386:     HDC screenShotsArr[25];
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h
+Compiled:	Nov 14 2025 11:59:39, GNU g++ 13.2.0, std=201703L, MinGW-W64 Runtime 11.0.1 (alpha - rev. 0) 0000-00-00, 64-bit, DEBUG
+Started:	Nov 14 2025 11:59:48
+
+Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
+Directory:	C:\Users\Admin\Desktop\prodva\Akinator
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe, файл: C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h, строка: 8800, функция: HWND__* {anonymous}::TX::txCreateWindow(double, double, bool),
+
+Сообщение: Окно рисования уже создано!
+
+#1: TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400], Instance: 0x00007FF673086810 (64-bit), Flags: cmdRe0, Thread: 0x2FA4 (Main), GetLastError(): 13 (РќРµРґРѕРїСѓСЃС‚РёРјС‹Рµ РґР°РЅРЅС‹Рµ). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00007FF672E04DB4 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: (anonymous namespace)::TX::_txError() at C:/Users/Admin/Downloads/CodeBlocks/TX/TXLib.h:11090
+# 1 0x00007FF672DF5979 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: (anonymous namespace)::TX::txCreateWindow() at C:/Users/Admin/Downloads/CodeBlocks/TX/TXLib.h:8800
+
+# 2 0x00007FF672E23A5C in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: printfWithDelay() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:384:
+
+    382: 
+    383: //
+=>  384: 
+    385: 
+    386:     HDC screenShotsArr[25];
+
+# 3 0x00007FF672E238F1 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: printfMenu() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:367:
+
+    365: 
+    366: void printfMenu(void) {
+=>  367:     printfWithDelay("As usual, you have 3 wishes:\n");
+    368:     printfWithDelay("-- 1) Read your mind.\n");
+    369:     printfWithDelay("-- 2) Give a definition of the object.\n");
+
+# 4 0x00007FF672E23D54 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: runAkinator() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:439:
+
+    437:     int modeChoice = getModeChoice();
+    438: 
+=>  439: 
+    440:     switch (modeChoice) {
+    441:         case guessObject:
+
+# 5 0x00007FF672DC04A9 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: main() at C:/Users/Admin/Desktop/prodva/Akinator/main.cpp:35:
+
+     33:     while (runProgram) {
+     34: 
+=>   35:     if (runAkinator(&tree, &dumpInfo))
+     36:         break;
+     37:     requestToContinue (&runProgram);
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in HWND__* {anonymous}::TX::txCreateWindow(double, double, bool) at C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h:8800:
+
+   8798:         {
+   8799: $       SetLastErrorEx (ERROR_INVALID_DATA, 0);
+=> 8800: $       _TX_ON_DEBUG (TX_ERROR ("\a" "Окно рисования уже создано!"));
+   8801: $       return wnd;
+   8802:         }
+
+# 1 in void printfWithDelay(const char*) at akinatorFunctions.cpp:384:
+
+    382: 
+    383: //
+=>  384: 
+    385: 
+    386:     HDC screenShotsArr[25];
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h
+Compiled:	Nov 14 2025 12:01:10, GNU g++ 13.2.0, std=201703L, MinGW-W64 Runtime 11.0.1 (alpha - rev. 0) 0000-00-00, 64-bit, DEBUG
+Started:	Nov 14 2025 12:01:19
+
+Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
+Directory:	C:\Users\Admin\Desktop\prodva\Akinator
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe, файл: C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h, строка: 13853, функция: bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double, unsigned int),
+
+Сообщение: Параметр "destImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400], Instance: 0x00007FF755876810 (64-bit), Flags: cmdre0, Thread: 0x407C (Main), GetLastError(): 13 (РќРµРґРѕРїСѓСЃС‚РёРјС‹Рµ РґР°РЅРЅС‹Рµ). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00007FF7555F4DB4 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: (anonymous namespace)::TX::_txError() at C:/Users/Admin/Downloads/CodeBlocks/TX/TXLib.h:11090
+# 1 0x00007FF7556081CC in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: (anonymous namespace)::TX::txBitBlt() at C:/Users/Admin/Downloads/CodeBlocks/TX/TXLib.h:13853
+
+# 2 0x00007FF755613BCD in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: printfWithDelay() at C:/Users/Admin/Desktop/prodva/Akinator/akinatorFunctions.cpp:405:
+
+    403: 
+    404:         if (screenShotsArr[curScreen] != NULL) {
+=>  405:             txBitBlt(txDC(), 0, 0, 1280, 666, screenShotsArr[curScreen], 0, 0);
+    406:         }
+    407: 
+
+# 3 0x00007FF7555B0497 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: main() at C:/Users/Admin/Desktop/prodva/Akinator/main.cpp:32:
+
+     30:     int runProgram = 1;
+     31:     txCreateWindow(1280, 666);
+=>   32:     printfWithDelay("Hi, my name is akinator\n");
+     33:     while (runProgram) {
+     34: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double, unsigned int) at C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h:13853:
+
+  13851:                HDC sourceImage, double xSource /*= 0*/, double ySource /*= 0*/, unsigned operation /*= SRCCOPY*/)
+  13852:     {
+=>13853: $1  if (_TX_HDC_FAILED (destImage))   return false;
+  13854: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  13855: 
+
+# 1 in void printfWithDelay(const char*) at akinatorFunctions.cpp:405:
+
+    403: 
+    404:         if (screenShotsArr[curScreen] != NULL) {
+=>  405:             txBitBlt(txDC(), 0, 0, 1280, 666, screenShotsArr[curScreen], 0, 0);
+    406:         }
+    407: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h
+Compiled:	Nov 14 2025 12:02:05, GNU g++ 13.2.0, std=201703L, MinGW-W64 Runtime 11.0.1 (alpha - rev. 0) 0000-00-00, 64-bit, DEBUG
+Started:	Nov 14 2025 12:02:14
+
+Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
+Directory:	C:\Users\Admin\Desktop\prodva\Akinator
+
+--------------------------------------------------

@@ -21,10 +21,19 @@ int guessTheObject (tree_t* tree, dump* dumpInfo) {
     for(node_t* currentNode = *treeRoot(tree); ; ) {
         assert(currentNode);
 
-        //printf("It is %s? (You can answer only \"yes\" or \"no\")\n", *nodeObjectDescription(currentNode));
+        HDC nodePhoto =  NULL;
+
         char speech[COMMAND_LENGTH] = {};
         snprintf(speech, COMMAND_LENGTH, "It is %s? (You can answer only \"yes\" or \"no\")\n", *nodeObjectDescription(currentNode));
         printfWithDelay(speech);
+
+        if((*nodeLeft(currentNode) == NULL) && (*nodeRight(currentNode) == NULL)) {
+            char fileName[100] = {};
+                sprintf(fileName, "SCREENSHOTS/%s.bmp", *nodeObjectDescription(currentNode));
+                nodePhoto = txLoadImage(fileName);
+                if(nodePhoto != NULL)
+                    txBitBlt(txDC(), 400, 0, 0, 0, nodePhoto, 0, 0);
+        }
 
         if (getAnswer() == yes) {
             if((*nodeLeft(currentNode) == NULL) && (*nodeRight(currentNode) == NULL)) {
@@ -44,6 +53,9 @@ int guessTheObject (tree_t* tree, dump* dumpInfo) {
             else
                 currentNode = *nodeRight(currentNode);
         }
+        if(!nodePhoto)
+            txDeleteDC(nodePhoto);
+
     }
 
     return 0;
@@ -170,13 +182,11 @@ void printfObjectDefinition (tree_t* tree, const char* objectName, stack_t* stac
 
     int nodeInfo = 0;
 
-    //printf("%s ", objectName);
     printfWithDelay(objectName);
 
     for (node_t* currentNode = *treeRoot(tree); ; ) {
         stackPop(stack, &nodeInfo);
         if (nodeInfo == yes) {
-            //printf ("is %s ", *nodeObjectDescription(currentNode));
             printfWithDelay(" is ");
             printfWithDelay(*nodeObjectDescription(currentNode));
             currentNode = *nodeLeft(currentNode);
@@ -184,7 +194,6 @@ void printfObjectDefinition (tree_t* tree, const char* objectName, stack_t* stac
         }
 
         if (nodeInfo == no) {
-            //printf ("is not %s ", *nodeObjectDescription(currentNode));
             printfWithDelay(" is not ");
             printfWithDelay(*nodeObjectDescription(currentNode));
             currentNode = *nodeRight(currentNode);
@@ -380,14 +389,43 @@ void printfWithDelay(const char* str) {
         if (command[i] == '\n') command[i] = ' ';
     system(command);
 
+    HDC screenShotsArr[NUM_OF_SCREENSHOTS];
+    char fileName[100];
+
+    int screenCounter = 0;
+
+    for (int numOfScreenShot = 0; numOfScreenShot < NUM_OF_SCREENSHOTS; numOfScreenShot++) {
+        sprintf(fileName, "SCREENSHOTS/screen%d.bmp", numOfScreenShot);
+
+        screenShotsArr[numOfScreenShot] = txLoadImage(fileName);
+        if (screenShotsArr[numOfScreenShot] == NULL)
+            break;
+        screenCounter++;
+    }
+
+    static int curScreen = 0;
 
     for(size_t numOfChar = 0; str[numOfChar] != '\0'; numOfChar++) {
         printf("%c", str[numOfChar]);
         Sleep(100);
+
+        if (screenShotsArr[curScreen] != NULL) {
+            txBitBlt(txDC(), 0, 0, 1280, 666, screenShotsArr[curScreen], 0, 0);
+        }
+
+        if(numOfChar % 5 == 0)
+            curScreen = (curScreen + 1) % screenCounter;
     }
 
-    //unsigned long lengthOfSpeech = (unsigned long)strlen(str);
-    //Sleep(13*lengthOfSpeech);
+
+
+
+    for (int numOfScreenShot = 0; numOfScreenShot < screenCounter; numOfScreenShot++) {
+        if (screenShotsArr[numOfScreenShot] != NULL) {
+            txDeleteDC(screenShotsArr[numOfScreenShot]);
+        }
+    }
+
 }
 
 int runAkinator(tree_t* tree, dump* dumpInfo) {
@@ -450,8 +488,8 @@ void fprintfNode(node_t* node, FILE* file) {
     assert(node);
     assert(file);
 
-    fprintf(file, "(");
-    fprintf(file, "\"%s\"", *nodeObjectDescription(node));
+    fprintf(file, "( ");
+    fprintf(file, "\"%s\" ", *nodeObjectDescription(node));
 
     if(*nodeLeft(node) != NULL)
         fprintfNode(*nodeLeft(node), file);
@@ -463,7 +501,7 @@ void fprintfNode(node_t* node, FILE* file) {
     else
         fprintf(file, "nil ");
 
-    fprintf(file, ")");
+    fprintf(file, ") ");
 }
 
 node_t* nodeCtorByReadBuffer(char** bufPos, tree_t* tree, dump* dumpInfo, FILE* dumpFile) {
@@ -496,11 +534,23 @@ node_t* nodeCtorByReadBuffer(char** bufPos, tree_t* tree, dump* dumpInfo, FILE* 
 
         DUMP_MESSAGE(dumpFile, "Прочитала имя узла.\n", *bufPos);
 
-        DUMP_MESSAGE(dumpFile, "Сейчас зайду в левое поддерево.\n", *bufPos);
+        DUMP_MESSAGE(dumpFile, "<h3>Сейчас зайду в левое поддерево.\n</font></h3>", *bufPos);
         *nodeLeft(newNode) = nodeCtorByReadBuffer(bufPos, tree, dumpInfo, dumpFile);
 
-        DUMP_MESSAGE(dumpFile, "Сейчас зайду в правое поддерево.\n", *bufPos);
+        if(*nodeLeft(newNode) != NULL) {
+            fclose(dumpFile);
+            SUBTREE_DUMP((*nodeLeft(newNode)), dumpInfo, "Вот созданное ЛЕВОЕ поддерево.\n");
+            dumpFile = fopen(dumpInfo->nameOfDumpFile, "a");
+        }
+
+        DUMP_MESSAGE(dumpFile, "<h3>Сейчас зайду в правое поддерево.\n</font></h3>", *bufPos);
         *nodeRight(newNode) = nodeCtorByReadBuffer(bufPos, tree, dumpInfo, dumpFile);
+
+        if(*nodeRight(newNode) != NULL) {
+            fclose(dumpFile);
+            SUBTREE_DUMP((*nodeRight(newNode)), dumpInfo, "Вот созданное ПРАВОЕ поддерево.\n");
+            dumpFile = fopen(dumpInfo->nameOfDumpFile, "a");
+        }
 
         skipSpaces(bufPos);
         (*bufPos)++;
@@ -561,7 +611,7 @@ int readFileAndCreateTree (tree_t* tree, dump* dumpInfo, const char* nameOfFile)
         return 1;
     }
 
-    treeDump(tree, dumpInfo, "after Creating a tree");
+    treeDump(tree, dumpInfo, "Вот созданное финальное дерево:");
 
     return 0;
 }
@@ -639,4 +689,8 @@ int saveTreeInFile (tree_t* tree, const char* nameOfSaveFile) {
     }
 
     return 0;
+}
+
+void createWindow() {
+    txCreateWindow(1280, 666);
 }

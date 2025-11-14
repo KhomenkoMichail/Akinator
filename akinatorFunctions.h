@@ -3,7 +3,9 @@
 
 #define DUMP_MESSAGE(file, string, bufPos)\
     fprintf(file, string);\
-    fprintf(file, "bufPos == %s\n", bufPos);
+    fprintf(file, "\n");\
+    fprintf(file, "bufPos == %s\n", bufPos);\
+    fprintf(file, "\n");\
 
 int guessTheObject (tree_t* tree, dump* dumpInfo);
 
@@ -49,5 +51,7 @@ int findTheObjectPath (node_t* node, const char* objectName, stack_t* stack);
 void requestToContinue (int* continueFlag);
 
 int saveTreeInFile (tree_t* tree, const char* nameOfSaveFile);
+
+void createWindow();
 
 #endif

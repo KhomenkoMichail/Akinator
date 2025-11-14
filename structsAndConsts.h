@@ -48,10 +48,12 @@ const size_t NODE_DESCRIPTION_SIZE = 64;
 
 const size_t STR_SIZE = 64;
 
-const size_t MAX_NODE_RANK = 500;
+const size_t MAX_TREE_SIZE = 500;
 
 const int findObject = 333;
 
 const size_t COMMAND_LENGTH = 512;
+
+const int NUM_OF_SCREENSHOTS = 25;
 
 #endif
