@@ -8,9 +8,12 @@
 #include "structAccessFunctions.h"
 #include "treeFunctions.h"
 #include "akinatorFunctions.h"
+#include "animation.h"
 
 int main (void) {
 
+    startAnimation();
+/*
     tree_t tree = {};
     struct dump dumpInfo = {};
 
@@ -32,6 +35,6 @@ int main (void) {
 
     saveTreeInFile (&tree, "treeSave.txt");
     deleteTree(&tree);
-
+*/
     return 0;
 }

@@ -3604,3 +3604,239 @@ Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
 Directory:	C:\Users\Admin\Desktop\prodva\Akinator
 
 --------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe,
+
+ВНЕЗАПНО: Целочисленное деление на ноль.
+
+#1: Исключение EXCEPTION_INT_DIVIDE_BY_ZERO (0xC0000094) при выполнении кода по адресу 0x00007FF63DBC5513 в функции startAnimation() в файле C:/Users/Admin/Desktop/prodva/Akinator/animation.cpp на строке 34 в модуле C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400], Instance: 0x00007FF63DE30850 (64-bit), Flags: CMdRe0, Thread: 0x72F4 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00007FF63DBC5513 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: startAnimation() at C:/Users/Admin/Desktop/prodva/Akinator/animation.cpp:34:
+
+     32: 
+     33:         // РџРµСЂРµС…РѕРґ Рє СЃР»РµРґСѓСЋС‰РµРјСѓ РєР°РґСЂСѓ
+=>   34:         curScreen = (curScreen + 1) % screenCounter;
+     35: 
+     36:         // Р—Р°РґРµСЂР¶РєР° РјРµР¶РґСѓ РєР°РґСЂР°РјРё
+
+# 1 0x00007FF63DB003EB in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: main() at C:/Users/Admin/Desktop/prodva/Akinator/main.cpp:15:
+
+     13: int main (void) {
+     14: 
+=>   15:     startAnimation();
+     16:     tree_t tree = {};
+     17:     struct dump dumpInfo = {};
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in int startAnimation() at animation.cpp:31:
+
+     29:         }
+     30: 
+=>   31:         txEnd();
+     32: 
+     33:         // РџРµСЂРµС…РѕРґ Рє СЃР»РµРґСѓСЋС‰РµРјСѓ РєР°РґСЂСѓ
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h
+Compiled:	Nov 14 2025 00:03:28, GNU g++ 13.2.0, std=201703L, MinGW-W64 Runtime 11.0.1 (alpha - rev. 0) 0000-00-00, 64-bit, DEBUG
+Started:	Nov 14 2025 00:03:36
+
+Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
+Directory:	C:\Users\Admin\Desktop\prodva\Akinator
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe,
+
+ВНЕЗАПНО: Целочисленное деление на ноль.
+
+#1: Исключение EXCEPTION_INT_DIVIDE_BY_ZERO (0xC0000094) при выполнении кода по адресу 0x00007FF63DBC5513 в функции startAnimation() в файле C:/Users/Admin/Desktop/prodva/Akinator/animation.cpp на строке 34 в модуле C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции _set_se_translator() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400], Instance: 0x00007FF63DE30850 (64-bit), Flags: CMdRe0, Thread: 0x72F4 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00007FF63DBC5513 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: startAnimation() at C:/Users/Admin/Desktop/prodva/Akinator/animation.cpp:34:
+
+     32: 
+     33:         // РџРµСЂРµС…РѕРґ Рє СЃР»РµРґСѓСЋС‰РµРјСѓ РєР°РґСЂСѓ
+=>   34:         curScreen = (curScreen + 1) % screenCounter;
+     35: 
+     36:         // Р—Р°РґРµСЂР¶РєР° РјРµР¶РґСѓ РєР°РґСЂР°РјРё
+
+# 1 0x00007FF63DB003EB in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: main() at C:/Users/Admin/Desktop/prodva/Akinator/main.cpp:15:
+
+     13: int main (void) {
+     14: 
+=>   15:     startAnimation();
+     16:     tree_t tree = {};
+     17:     struct dump dumpInfo = {};
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in int startAnimation() at animation.cpp:31:
+
+     29:         }
+     30: 
+=>   31:         txEnd();
+     32: 
+     33:         // РџРµСЂРµС…РѕРґ Рє СЃР»РµРґСѓСЋС‰РµРјСѓ РєР°РґСЂСѓ
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h
+Compiled:	Nov 14 2025 00:03:28, GNU g++ 13.2.0, std=201703L, MinGW-W64 Runtime 11.0.1 (alpha - rev. 0) 0000-00-00, 64-bit, DEBUG
+Started:	Nov 14 2025 00:03:36
+
+Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
+Directory:	C:\Users\Admin\Desktop\prodva\Akinator
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe,
+
+ВНЕЗАПНО: Целочисленное деление на ноль.
+
+#1: Исключение EXCEPTION_INT_DIVIDE_BY_ZERO (0xC0000094) при выполнении кода по адресу 0x00007FF7B19F5453 в функции startAnimation() в файле C:/Users/Admin/Desktop/prodva/Akinator/animation.cpp на строке 39 в модуле C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400], Instance: 0x00007FF7B1C60850 (64-bit), Flags: CMdRe0, Thread: 0x692C (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00007FF7B19F5453 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: startAnimation() at C:/Users/Admin/Desktop/prodva/Akinator/animation.cpp:39:
+
+     37: 
+     38:         // РџРµСЂРµС…РѕРґ Рє СЃР»РµРґСѓСЋС‰РµРјСѓ РєР°РґСЂСѓ
+=>   39:         curScreen = (curScreen + 1) % screenCounter;
+     40: 
+     41:         // Р—Р°РґРµСЂР¶РєР° РјРµР¶РґСѓ РєР°РґСЂР°РјРё
+
+# 1 0x00007FF7B19303EB in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: main() at C:/Users/Admin/Desktop/prodva/Akinator/main.cpp:15:
+
+     13: int main (void) {
+     14: 
+=>   15:     startAnimation();
+     16: /*
+     17:     tree_t tree = {};
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in int startAnimation() at animation.cpp:36:
+
+     34:         }
+     35: 
+=>   36:         txEnd();
+     37: 
+     38:         // РџРµСЂРµС…РѕРґ Рє СЃР»РµРґСѓСЋС‰РµРјСѓ РєР°РґСЂСѓ
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h
+Compiled:	Nov 14 2025 00:33:11, GNU g++ 13.2.0, std=201703L, MinGW-W64 Runtime 11.0.1 (alpha - rev. 0) 0000-00-00, 64-bit, DEBUG
+Started:	Nov 14 2025 00:33:16
+
+Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
+Directory:	C:\Users\Admin\Desktop\prodva\Akinator
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe,
+
+ВНЕЗАПНО: Целочисленное деление на ноль.
+
+#1: Исключение EXCEPTION_INT_DIVIDE_BY_ZERO (0xC0000094) при выполнении кода по адресу 0x00007FF7B19F5453 в функции startAnimation() в файле C:/Users/Admin/Desktop/prodva/Akinator/animation.cpp на строке 39 в модуле C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции _set_se_translator() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400], Instance: 0x00007FF7B1C60850 (64-bit), Flags: CMdRe0, Thread: 0x692C (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00007FF7B19F5453 in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: startAnimation() at C:/Users/Admin/Desktop/prodva/Akinator/animation.cpp:39:
+
+     37: 
+     38:         // РџРµСЂРµС…РѕРґ Рє СЃР»РµРґСѓСЋС‰РµРјСѓ РєР°РґСЂСѓ
+=>   39:         curScreen = (curScreen + 1) % screenCounter;
+     40: 
+     41:         // Р—Р°РґРµСЂР¶РєР° РјРµР¶РґСѓ РєР°РґСЂР°РјРё
+
+# 1 0x00007FF7B19303EB in C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe: main() at C:/Users/Admin/Desktop/prodva/Akinator/main.cpp:15:
+
+     13: int main (void) {
+     14: 
+=>   15:     startAnimation();
+     16: /*
+     17:     tree_t tree = {};
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in int startAnimation() at animation.cpp:36:
+
+     34:         }
+     35: 
+=>   36:         txEnd();
+     37: 
+     38:         // РџРµСЂРµС…РѕРґ Рє СЃР»РµРґСѓСЋС‰РµРјСѓ РєР°РґСЂСѓ
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\Admin\Downloads\CodeBlocks\TX\TXLib.h
+Compiled:	Nov 14 2025 00:33:11, GNU g++ 13.2.0, std=201703L, MinGW-W64 Runtime 11.0.1 (alpha - rev. 0) 0000-00-00, 64-bit, DEBUG
+Started:	Nov 14 2025 00:33:17
+
+Run file:	C:\Users\Admin\Desktop\prodva\Akinator\akinator.exe
+Directory:	C:\Users\Admin\Desktop\prodva\Akinator
+
+--------------------------------------------------

@@ -1,17 +1,13 @@
 digraph Tree {
     rankdir = TB;
     node [shape = Mrecord, color = black];
-    node0x000001da467d7e50 [rank = 0, label = "{ <addr>0x000001da467d7e50| animal|{<left>YES\n 0x000001da467d7bd0| <right>NO\n 0x000001da467d7e90}}", style = filled, fillcolor = "#c1e0a7ff", color = black];
-    node0x000001da467d7bd0 [rank = 1, label = "{ <addr>0x000001da467d7bd0| Misha's cat|{<left>YES\n 0x000001da466e8b60| <right>NO\n 0x000001da467d7c70}}", style = filled, fillcolor = "#c1e0a7ff", color = black];
-    node0x000001da466e8b60 [rank = 2, label = "{ <addr>0x000001da466e8b60| Fish|{<left>YES\n NULL| <right>NO\n NULL}}", style = filled, fillcolor = "#c1e0a7ff", color = black];
-    node0x000001da467d7c70 [rank = 2, label = "{ <addr>0x000001da467d7c70| Poltorashka|{<left>YES\n NULL| <right>NO\n NULL}}", style = filled, fillcolor = "#c1e0a7ff", color = black];
-    node0x000001da467d7e90 [rank = 1, label = "{ <addr>0x000001da467d7e90| Teaches mathan|{<left>YES\n 0x000001da467d7bf0| <right>NO\n 0x000001da467d7c50}}", style = filled, fillcolor = "#c1e0a7ff", color = black];
-    node0x000001da467d7bf0 [rank = 2, label = "{ <addr>0x000001da467d7bf0| Petrovich|{<left>YES\n NULL| <right>NO\n NULL}}", style = filled, fillcolor = "#c1e0a7ff", color = black];
-    node0x000001da467d7c50 [rank = 2, label = "{ <addr>0x000001da467d7c50| Divari|{<left>YES\n NULL| <right>NO\n NULL}}", style = filled, fillcolor = "#c1e0a7ff", color = black];
-    node0x000001da467d7e50:left -> node0x000001da467d7bd0:addr [color = "#5d510cff"];
-    node0x000001da467d7bd0:left -> node0x000001da466e8b60:addr [color = "#5d510cff"];
-    node0x000001da467d7bd0:right -> node0x000001da467d7c70:addr [color = "#5d510cff"];
-    node0x000001da467d7e50:right -> node0x000001da467d7e90:addr [color = "#5d510cff"];
-    node0x000001da467d7e90:left -> node0x000001da467d7bf0:addr [color = "#5d510cff"];
-    node0x000001da467d7e90:right -> node0x000001da467d7c50:addr [color = "#5d510cff"];
+    node0x0000016aa6229df0 [rank = 0, label = "{ <addr>0x0000016aa6229df0| animal|{<left>YES\n 0x0000016aa6229f50| <right>NO\n 0x0000016aa622a130}}", style = filled, fillcolor = "#c1e0a7ff", color = black];
+    node0x0000016aa6229f50 [rank = 1, label = "{ <addr>0x0000016aa6229f50| Poltorashka|{<left>YES\n NULL| <right>NO\n NULL}}", style = filled, fillcolor = "#c1e0a7ff", color = black];
+    node0x0000016aa622a130 [rank = 1, label = "{ <addr>0x0000016aa622a130| Teaches mathan|{<left>YES\n 0x0000016aa6229b30| <right>NO\n 0x0000016aa6229e10}}", style = filled, fillcolor = "#c1e0a7ff", color = black];
+    node0x0000016aa6229b30 [rank = 2, label = "{ <addr>0x0000016aa6229b30| Petrovich|{<left>YES\n NULL| <right>NO\n NULL}}", style = filled, fillcolor = "#c1e0a7ff", color = black];
+    node0x0000016aa6229e10 [rank = 2, label = "{ <addr>0x0000016aa6229e10| Divari|{<left>YES\n NULL| <right>NO\n NULL}}", style = filled, fillcolor = "#c1e0a7ff", color = black];
+    node0x0000016aa6229df0:left -> node0x0000016aa6229f50:addr [color = "#5d510cff"];
+    node0x0000016aa6229df0:right -> node0x0000016aa622a130:addr [color = "#5d510cff"];
+    node0x0000016aa622a130:left -> node0x0000016aa6229b30:addr [color = "#5d510cff"];
+    node0x0000016aa622a130:right -> node0x0000016aa6229e10:addr [color = "#5d510cff"];
  }
