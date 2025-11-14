@@ -1,7 +1,7 @@
 #ifndef AKINATOR_FUNCTIONS_H
 #define AKINATOR_FUNCTIONS_H
 
-#define dumpMessage(file, string, bufPos)\
+#define DUMP_MESSAGE(file, string, bufPos)\
     fprintf(file, string);\
     fprintf(file, "bufPos == %s\n", bufPos);
 
@@ -30,9 +30,7 @@ int getModeChoice (void);
 
 void fprintfNode (node_t* node, FILE* file);
 
-node_t* nodeCtorByReadBuffer(char** bufPos, tree_t* tree, dump* dumpInfo);
-
-node_t* nodeCtorByReadBuffer2(char** bufPos, tree_t* tree, dump* dumpInfo);
+node_t* nodeCtorByReadBuffer(char** bufPos, tree_t* tree, dump* dumpInfo, FILE* dumpFile);
 
 void skipSpaces (char** bufPos);
 

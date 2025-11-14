@@ -249,7 +249,6 @@ int compareObjects(tree_t* tree, dump* dumpInfo) {
         char speech[COMMAND_LENGTH] = {};
         snprintf(speech, COMMAND_LENGTH, "There is no object \"%s\" in my database.\n", firstObjectName);
         printfWithDelay(speech);
-        //printf("There is no object \"%s\" in my database.\n", firstObjectName);
         return 0;
     }
 
@@ -257,7 +256,6 @@ int compareObjects(tree_t* tree, dump* dumpInfo) {
         char speech[COMMAND_LENGTH] = {};
         snprintf(speech, COMMAND_LENGTH, "There is no object \"%s\" in my database.\n", secondObjectName);
         printfWithDelay(speech);
-        //printf("There is no object \"%s\" in my database.\n", secondObjectName);
         return 0;
     }
 
@@ -283,9 +281,8 @@ void printfComparing(tree_t* tree, const char* firstObjectName, const char* seco
     stackPop(secondObjectRetStack, &secondObjectStep);
 
     if (firstObjectStep == secondObjectStep) {
-        //printf("\"%s\" and \"%s\" are similar in that they both are",firstObjectName, secondObjectName);
         char speech[COMMAND_LENGTH] = {};
-        snprintf(speech, COMMAND_LENGTH, "\"%s\" and \"%s\" are similar in that they both are",firstObjectName, secondObjectName);
+        snprintf(speech, COMMAND_LENGTH, "\"%s\" and \"%s\" are similar in that they both",firstObjectName, secondObjectName);
         printfWithDelay(speech);
     }
 
@@ -293,14 +290,12 @@ void printfComparing(tree_t* tree, const char* firstObjectName, const char* seco
     for( ; firstObjectStep == secondObjectStep; ) {
 
         if (firstObjectStep == yes) {
-            //printf (" %s", *nodeObjectDescription(currentNode));
-            printf(" ");
+            printfWithDelay(" are ");
             printfWithDelay(*nodeObjectDescription(currentNode));
             currentNode = *nodeLeft(currentNode);
         }
         if (firstObjectStep == no) {
-            //printf (" not %s", *nodeObjectDescription(currentNode));
-            printfWithDelay(" not ");
+            printfWithDelay(" are not ");
             printfWithDelay(*nodeObjectDescription(currentNode));
             currentNode = *nodeRight(currentNode);
         }
@@ -313,27 +308,23 @@ void printfComparing(tree_t* tree, const char* firstObjectName, const char* seco
     node_t* branchingNode = currentNode;
     printf("\n");
 
-    //printf("\"%s\" and \"%s\" differ in that", firstObjectName, secondObjectName);
     char speech[COMMAND_LENGTH] = {};
         snprintf(speech, COMMAND_LENGTH, "\"%s\" and \"%s\" differ in that", firstObjectName, secondObjectName);
         printfWithDelay(speech);
 
     if (firstObjectStep != findObject) {
-        //printf("\n\"%s\"", firstObjectName);
         printf("\n");
         printfWithDelay(firstObjectName);
     }
 
     for( ; firstObjectStep != findObject; ) {
         if (firstObjectStep == yes) {
-            //printf (" %s", *nodeObjectDescription(currentNode));
-            printf(" ");
+            printfWithDelay(" is ");
             printfWithDelay(*nodeObjectDescription(currentNode));
             currentNode = *nodeLeft(currentNode);
         }
         if (firstObjectStep == no) {
-            //printf (" not %s", *nodeObjectDescription(currentNode));
-            printf(" not ");
+            printfWithDelay(" is not ");
             printfWithDelay(*nodeObjectDescription(currentNode));
             currentNode = *nodeRight(currentNode);
         }
@@ -344,7 +335,6 @@ void printfComparing(tree_t* tree, const char* firstObjectName, const char* seco
     }
 
     if (secondObjectStep != findObject) {
-        //printf("\n\"%s\"", secondObjectName);
         printf("\n");
         printfWithDelay(secondObjectName);
     }
@@ -352,15 +342,13 @@ void printfComparing(tree_t* tree, const char* firstObjectName, const char* seco
     currentNode = branchingNode;
     for( ; secondObjectStep != findObject; ) {
         if (secondObjectStep == yes) {
-            //printf (" %s", *nodeObjectDescription(currentNode));
-            printf(" ");
+            printfWithDelay(" is ");
             printfWithDelay(*nodeObjectDescription(currentNode));
             currentNode = *nodeLeft(currentNode);
         }
 
         if (secondObjectStep == no) {
-            //printf (" not %s", *nodeObjectDescription(currentNode));
-            printf(" not ");
+            printfWithDelay(" is not ");
             printfWithDelay(*nodeObjectDescription(currentNode));
             currentNode = *nodeRight(currentNode);
         }
@@ -478,56 +466,20 @@ void fprintfNode(node_t* node, FILE* file) {
     fprintf(file, ")");
 }
 
-node_t* nodeCtorByReadBuffer(char** bufPos, tree_t* tree, dump* dumpInfo) {
+node_t* nodeCtorByReadBuffer(char** bufPos, tree_t* tree, dump* dumpInfo, FILE* dumpFile) {
     assert(bufPos);
     assert(dumpInfo);
     assert(tree);
+    assert(dumpFile);
 
-    skipSpaces(bufPos);//
-    if(**bufPos == '(') {
-        *treeSize(tree) += 1;
-
-        (*bufPos)++;
-        skipSpaces(bufPos);//
-
-        int lenOfName = 0;
-
-        char nodeName[NODE_DESCRIPTION_SIZE] = {};
-        sscanf(*bufPos, "\"%[^\"]\"%n", nodeName, &lenOfName);
-
-        node_t* newNode = treeNodeCtor(nodeName);
-
-        (*bufPos) += lenOfName;
-
-        *nodeLeft(newNode) = nodeCtorByReadBuffer(bufPos, tree, dumpInfo);
-        *nodeRight(newNode) = nodeCtorByReadBuffer(bufPos, tree, dumpInfo);
-
-        skipSpaces(bufPos);//
-        (*bufPos)++;
-
-        return newNode;
-    }
-
-    if (strncmp(*bufPos, "nil", 3) == 0) {
-        (*bufPos) += 4;
-        printf("bufpos == %s, from string %d\n", *bufPos, __LINE__);
-        return NULL;
-    }
-
-    return NULL;
-}
-
-node_t* nodeCtorByReadBuffer2(char** bufPos, tree_t* tree, dump* dumpInfo) {
-    assert(bufPos);
-    assert(dumpInfo);
-
-    printf("bufpos == %s, from string %d\n", *bufPos, __LINE__);
-    skipSpaces(bufPos);//
+    DUMP_MESSAGE(dumpFile, "Зашла в функцию создания узла\n", *bufPos);
+    skipSpaces(bufPos);
     if(**bufPos == '(') {
         *treeSize(tree) += 1;
         (*bufPos)++;
-        skipSpaces(bufPos);//
-        printf("bufpos == %s, from string %d\n", *bufPos, __LINE__);
+        skipSpaces(bufPos);
+
+        DUMP_MESSAGE(dumpFile, "Прочитала (\n", *bufPos);
 
         node_t* newNode = (node_t*)calloc(1, sizeof(node_t));
         *nodeObjectDescription(newNode) = (*bufPos) + 1;
@@ -539,27 +491,29 @@ node_t* nodeCtorByReadBuffer2(char** bufPos, tree_t* tree, dump* dumpInfo) {
 
         char* nextQuotes = strchr((*bufPos) + 1, '"');
         *nextQuotes = '\0';
-        printf("*nodeObjectDescription(newNode) == %s\n", *nodeObjectDescription(newNode));
 
-        printf("bufpos == %s, from string %d\n", *bufPos, __LINE__);
         (*bufPos) += lenOfName;
-        printf("bufpos == %s, from string %d\n", *bufPos, __LINE__);
 
+        DUMP_MESSAGE(dumpFile, "Прочитала имя узла.\n", *bufPos);
 
-        *nodeLeft(newNode) = nodeCtorByReadBuffer2(bufPos, tree, dumpInfo);
-        printf("bufpos == %s, from string %d\n", *bufPos, __LINE__);
-        *nodeRight(newNode) = nodeCtorByReadBuffer2(bufPos, tree, dumpInfo);
-        printf("bufpos == %s, from string %d\n", *bufPos, __LINE__);
+        DUMP_MESSAGE(dumpFile, "Сейчас зайду в левое поддерево.\n", *bufPos);
+        *nodeLeft(newNode) = nodeCtorByReadBuffer(bufPos, tree, dumpInfo, dumpFile);
 
-        skipSpaces(bufPos);//
+        DUMP_MESSAGE(dumpFile, "Сейчас зайду в правое поддерево.\n", *bufPos);
+        *nodeRight(newNode) = nodeCtorByReadBuffer(bufPos, tree, dumpInfo, dumpFile);
+
+        skipSpaces(bufPos);
         (*bufPos)++;
-        printf("bufpos == %s, from string %d\n", *bufPos, __LINE__);
+
+        DUMP_MESSAGE(dumpFile, "Прочитала ).\n", *bufPos);
+
         return newNode;
     }
 
     if (strncmp(*bufPos, "nil", 3) == 0) {
+        DUMP_MESSAGE(dumpFile, "Нашла nil.\n", *bufPos);
         (*bufPos) += 4;
-        printf("bufpos == %s, from string %d\n", *bufPos, __LINE__);
+        DUMP_MESSAGE(dumpFile, "Прочитала nil.\n", *bufPos);
         return NULL;
     }
 
@@ -579,14 +533,33 @@ int readFileAndCreateTree (tree_t* tree, dump* dumpInfo, const char* nameOfFile)
     assert(dumpInfo);
     assert(nameOfFile);
 
+    FILE* dumpFile = 0;
+    if(dumpInfo->dumpFileWasOpened)
+        dumpFile = fopen(dumpInfo->nameOfDumpFile, "a");
+    else {
+        dumpFile = fopen(dumpInfo->nameOfDumpFile, "w");
+        dumpInfo->dumpFileWasOpened = 1;
+    }
+
+    if (dumpFile == NULL) {
+        fprintf(stderr, "Error of opening file \"%s\"", dumpInfo->nameOfDumpFile);
+        perror("");
+        return 1;
+    }
+
     char* bufferStart = copyFileContent(nameOfFile);
     if (bufferStart == NULL) {
         printf("Error of copying tree from file\n");
         return 1;
     }
     else
-        *treeRoot(tree) = nodeCtorByReadBuffer2(&bufferStart, tree, dumpInfo);
+        *treeRoot(tree) = nodeCtorByReadBuffer(&bufferStart, tree, dumpInfo, dumpFile);
 
+    if (fclose(dumpFile) != 0) {
+        fprintf(stderr, "Error of closing file \"%s\"", dumpInfo->nameOfDumpFile);
+        perror("");
+        return 1;
+    }
 
     treeDump(tree, dumpInfo, "after Creating a tree");
 
